@@ -1,0 +1,1921 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "allcolors=blue"
+\papersize letterpaper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Users Guide: Quantum Well Solver 
+\end_layout
+
+\begin_layout Author
+Charlie Duke, Emeritus Professor of Physics, Grinnell College
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Physics Department, Grinnell College.
+ Grinnell, IA 50112 USA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This quantum well solver, written with python3, numerically solves the time-inde
+pendent, one-dimensional Schrodinger equation for potential wells defined
+ by the user.
+ Well types include finite and infinite square wells, square wells separated
+ by potential barriers, with sloping bottoms, and with harmonic-oscillator
+ shapes.
+ The GUI graphs show the potential well and the wavefunction for a specific
+ energy set by the user.
+ Or, the solver can determine stationary-state energies and wavefunctions
+ within a specified energy range.
+ The python data class containing all well parameters and the numerical
+ values of a selected stationary state wavefunction and its derivative may
+ be sent to an output file for later use, such as for calculating expectation
+ values or for creating composite time-dependent wavefunctions from stationary
+ state wavefunctions from multi-barrier potential wells.
+ Little prior knowledge of quantum mechanics is necessary, and no prior
+ experience with python is required.
+\end_layout
+
+\begin_layout Abstract
+This User's Guide includes a QuickStart section and sections describing
+ each part of the GUI interface; an appendix, currently under construction,
+ describes utility jupyter notebooks for manipulating wavefunctions produced
+ by the quantum well solver.
+ These notebooks, requiring a basic knowledge of python, are appropriate
+ for students at both the introductory and advanced level.
+ This project, initially completed during the summer and fall of 2014, was
+ written in python3 with PyQt based GUIs.
+ The Anaconda3 package from Continuium Analytics contains all code dependencies.
+ The solver runs on MacOS, Windows7/10, and Linux operating systems.
+ 
+\end_layout
+
+\begin_layout Abstract
+The package is fully licensed under gnu_gpl_v3 as detailed in the included
+ LICENSE file.
+ 
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+The solution to the one-dimensional, time-dependent Schrodinger equation,
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{\hbar^{2}}{2m}\frac{\partial^{2}\Psi(x,t)}{\partial x^{2}}+V(x)\Psi(x,t)=i\hbar\frac{\partial\Psi(x,t)}{\partial t}
+\]
+
+\end_inset
+
+is the probability amplitude, 
+\begin_inset Formula $\Psi(x,t)$
+\end_inset
+
+, for a particle of mass,
+\begin_inset Formula $m$
+\end_inset
+
+, as a function of position and time.
+ After variable separation with 
+\begin_inset Formula $\Psi=\psi(x)\theta(t)$
+\end_inset
+
+ and with the energy, 
+\begin_inset Formula $E$
+\end_inset
+
+, as the separation constant, the solutions to the one-dimensional, time-indepen
+dent Schrodinger equation 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{\hbar^{2}}{2m}\frac{d^{2}\psi(x)}{dx^{2}}+V(x)\psi(x)=E\psi(x)
+\]
+
+\end_inset
+
+are the spatial wavefunctions and stationary-state energies.
+ For bound systems, 
+\begin_inset Formula $\psi(x)$
+\end_inset
+
+, must approach zero as 
+\begin_inset Formula $x\rightarrow\pm\infty$
+\end_inset
+
+.
+ These boundary conditions place restrictions on physically acceptable stationar
+y-state energies and ensure that 
+\begin_inset Formula $\psi(x)$
+\end_inset
+
+ is square integrable over the full range of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+This solver produces numerical solutions of the one-dimensional, time-independen
+t Schrodinger equation.
+ Currently available potential energy functions are finite and infinite
+ square-well potentials that may include internal barriers, sloped well
+ bottoms, and finite harmonic-oscillator potentials, The user defines the
+ well and may request a solution at a specified energy.
+ The solver then determines the boundary conditions on 
+\begin_inset Formula $\psi(0)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{d\psi(0)}{dx}$
+\end_inset
+
+ so that 
+\begin_inset Formula $\lim_{x\to-\infty}\psi(x)=0$
+\end_inset
+
+.
+ The boundary conditions provide a starting point for the solver which then
+ proceeds to calculate the wavefunction and its slope from left to right
+ across the well.
+ If the specified energy deviates from a stationary-state energy, the wavefuncio
+n will eventually diverge past the right edge of the well.
+ 
+\end_layout
+
+\begin_layout Standard
+The solver can also determine the stationary-state energies and wavefunctions
+ within a given energy range.
+ It first determines the wavefunction for closely spaced energies and, for
+ each energy, stores the value of the wavefunction and its first derivative
+ at the right edge of the well.
+ The solver then uses an interpolative process to find the energies where
+ these boundary values result in an exponentially decreasing function outside
+ of the well.
+\end_layout
+
+\begin_layout Standard
+The solver is written in the python3 with PyQt-based GUIs.
+ The scipy 
+\begin_inset CommandInset href
+LatexCommand href
+name "odeint"
+target "http://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html"
+literal "false"
+
+\end_inset
+
+ differential equation solver provides the Schrodinger equation solution.
+ The 
+\begin_inset CommandInset href
+LatexCommand href
+name "Continuum Analytics Anaconda3 distribution"
+target "https://www.anaconda.com/products/individual"
+literal "false"
+
+\end_inset
+
+ contains all dependencies for the solver.
+ No knowledge of python is required to use the solver.
+ Neither is a detailed knowledge of quantum mechanics
+\end_layout
+
+\begin_layout Section
+QuickStart
+\end_layout
+
+\begin_layout Subsection
+Prerequisites
+\end_layout
+
+\begin_layout Itemize
+macOS, Windows 7/10, or Linux operating system 
+\end_layout
+
+\begin_layout Itemize
+python > 3.5, DO NOT USE PYTHON 2.x 
+\end_layout
+
+\begin_layout Itemize
+python modules numpy, scipy, pyqt (version 5), matplotlib, and their prerequisit
+es 
+\end_layout
+
+\begin_layout Standard
+We use the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Continuum Analytics Anaconda3 distribution"
+target "https://www.anaconda.com/products/individual"
+literal "true"
+
+\end_inset
+
+ system which includes all prerequisites, is free, and widely used.
+ The 
+\begin_inset CommandInset href
+LatexCommand href
+name "installation instructions"
+target "https://docs.anaconda.com/anaconda/install/"
+literal "true"
+
+\end_inset
+
+ are clear and complete.
+ For most computers, you should use the 64-bit graphical installer.
+ Unless you use additional python platforms, I recommend that users new
+ to python take all of the anaconda install defaults while paying particular
+ attention to these two options: 
+\end_layout
+
+\begin_layout Itemize
+Select 
+\emph on
+Install for me only
+\emph default
+ rather than selecting 
+\emph on
+Install for all users
+\emph default
+ to avoid needing admin privileges.
+\end_layout
+
+\begin_layout Itemize
+For installs on Windows, select 
+\emph on
+Add Anaconda3 to my path environmental variable
+\emph default
+ even though the installer recommends not using this option.
+ Otherwise, you will have path issues when using the QuantumWell startup
+ scripts.
+ 
+\end_layout
+
+\begin_layout Subsection
+Startup 
+\end_layout
+
+\begin_layout Standard
+Download the QuantumWell compressed file from github <url goes here> and
+ execute the 
+\emph on
+config.py
+\emph default
+ python script as follows:
+\end_layout
+
+\begin_layout Itemize
+Move the github file to any directory; I recommend your Desktop.
+ If necessary, decompress the compressed file (double-clicking usually works).
+ You should see the QuantumWell root directory.
+\end_layout
+
+\begin_layout Itemize
+Open a file browser in the QuantumWell directory.
+ Execute the 
+\emph on
+config.py
+\emph default
+ script by double-clicking on:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+config.bat
+\emph default
+ for Windows 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+config.command
+\emph default
+ for macOS 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+config.sh
+\emph default
+ for Linux 
+\end_layout
+
+\begin_layout Itemize
+or from a terminal or cmd window in the QuantumWell directory, execute 
+\emph on
+python config.py
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The config.py file that you just executed had three tasks:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Confirm that all the above prerequisites are installed and available.
+\end_layout
+
+\begin_layout Itemize
+Create a qwconfig/config file in your home directory that contains the path
+ to the QuantumWell directory (you can ignore this file unless you wish
+ to use the QuantumWell/src python modules e.g.
+ in a jupyter notebook.
+ See the tutorial notebooks in the Utilities directory)
+\end_layout
+
+\begin_layout Itemize
+Create the startQWell.xx startup script both in your QuantumWell directory
+ and on your Desktop (you can copy this file for use in any directory).
+ You should see one of the following scripts depending on your operating
+ system:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+startQWell.bat
+\emph default
+ for Windows machines
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+startQWell.command
+\emph default
+ for macOS machine
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+startQWell.sh
+\emph default
+ for Linux systems
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+Open the QuantumWell GUI using one of the following:
+\end_layout
+
+\begin_layout Itemize
+Double-clicking the 
+\emph on
+startQWell
+\emph default
+ script from a file browser.
+\end_layout
+
+\begin_layout Itemize
+Executing this script from a terminal from a directory containing the startup
+ script
+\end_layout
+
+\begin_layout Itemize
+If you wish to bypass the startQWell script:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for Windows execute: 
+\emph on
+python <path to QuantumWell dir>
+\backslash
+quantumWell.py
+\end_layout
+
+\begin_layout Itemize
+for macOS and Linux execute: 
+\emph on
+python <path to QuantumWell dir>/quantumWell.py
+\end_layout
+
+\begin_layout Standard
+Any files that you create from the GUI will be in the directory from which
+ you opened the GUI.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+To exit the GUI, click the exit button on the lower left of the main GUI
+ window.
+\end_layout
+
+\begin_layout Standard
+If this is your first time with the GUI-based solver, I recommend the following
+ short tutorial which uses only default parameters:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Build a Well
+\series default
+: Click the 
+\begin_inset Formula $BuildWell$
+\end_inset
+
+ button to open its dialog box.
+ Note the default values, especially the 
+\begin_inset Formula $inf$
+\end_inset
+
+ notation for an infinite well height.
+ After you accept the well parameters, a plot of your new well will appear
+ in the main window plot region.
+ After you select your next option, the well parameters will appear in the
+ lower message box (ditto for all options.
+ The results of the previous option is added to the list in the message
+ box)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Add an Internal Barrier
+\series default
+: Click the 
+\begin_inset Formula $AddBarrierPE$
+\end_inset
+
+ button to open its dialog box.
+ Take the defaults and add the barrier.
+ The internal barrier will appear in the main window plot and in the lower
+ message box after you select your next option.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Remove the Internal Barrier
+\series default
+: Click the 
+\begin_inset Formula $RemoveAddedPE$
+\end_inset
+
+ button to open its dialog box and remove your internal barrier.
+ You can also add and remove the other potential types.
+ Watch the message box to see if there's a problem with overlap.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Solve the Schrodinger Equation
+\series default
+: Click the 
+\begin_inset Formula $SolveSchrodingerEq$
+\end_inset
+
+ button to open the solver window.
+ Note the default energy of 10 eV.
+ If this energy corresponds to a stationary-state energy (unlikely), the
+ wavefunction will approach zero on the right-side of the well.
+ Click the button and you'll see that 10 eV is not a stationary state.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Find the Stationary States
+\series default
+: Click the 
+\begin_inset Formula $FindStationaryStates$
+\end_inset
+
+ button to open the stationary-state window.
+ The stationary-state algorithm will find the stationary states between
+ the minimum and maximum energies listed in the window.
+ Click 
+\emph on
+Click to Find States
+\emph default
+.
+ You should see the stationary-state energy lines on the main well plot
+ with values listed in the upper message box.
+ You can identify each state by its ID number.
+ Choose a state ID and make a plot of the stationary-state time-independent
+ wavefunchtion with the 
+\emph on
+Plot Psi
+\emph default
+ button.
+ Then, continue to make Psi plots with other stationary state choices.
+ When you select another option from the main GUI window, the stationary-state
+ energies will appear in the lower message box.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If you select the 
+\emph on
+show graph
+\emph default
+ option and once again find the states, a graph with a red line will also
+ appear.
+ The zero-crossings of the red line occur at the stationary-state energies.
+ The points on the graph are written to the 
+\emph on
+energy_slope.txt
+\emph default
+ file in your current directory.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Input/Output
+\series default
+: You can print the main window using the button in the lower right.
+ You can save or print your log file using the buttons in the lower message
+ box.
+ And, you can save all well parameters plus your last plotted stationary-state
+ wavefunction and its derivative using the 
+\begin_inset Formula $WriteDpwFile$
+\end_inset
+
+ button the on main window.
+ You can also read the well parameters into the solver using the 
+\begin_inset Formula $ReadDpwFile$
+\end_inset
+
+ button.
+ I
+\begin_inset Quotes erd
+\end_inset
+
+ll describe the dpw file in more detail later in the section on reading
+ and writing dpw files.
+ (dpw is the file extension and stands for 
+\series bold
+\noun on
+D
+\series default
+\noun default
+ata 
+\series bold
+P
+\series default
+otential 
+\series bold
+W
+\series default
+ell)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Repositories/QuantumWell/images/mainGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Main GUI Window
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+GUI Windows
+\end_layout
+
+\begin_layout Standard
+Depending on your machine type, double click on the appropriate Start script
+ to open the main GUI window and the message box.
+ Or, you can open a terminal window and execute 
+\begin_inset Formula $python\,quantumWell.py$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+MainWindow
+\end_layout
+
+\begin_layout Standard
+The main window shows the potential-well plot with the usual matplotlib
+ icons, see Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matplotlib-Toolbar"
+
+\end_inset
+
+ for more details.
+ The various buttons in the main window create dialog windows for changing
+ the well dimensions, add internal potentials, remove internal potentials,
+ solve the Schrodinger equation for a specific energy, and find the stationary
+ states over a specified energy range.
+ The read/write buttons provide access to the python class instance describing
+ the well and the stationary-state wavefunction and its derivative.
+ 
+\end_layout
+
+\begin_layout Subsection
+Building a Potential Well
+\end_layout
+
+\begin_layout Standard
+Well dimensions are in nanometers (nm) and energies are in electron volts
+ (eV).
+ The particle mass is the mass of the electron.
+\end_layout
+
+\begin_layout Subsubsection
+BuildWell Dialog Window
+\end_layout
+
+\begin_layout Description
+
+\series medium
+\emph on
+TotalWidth
+\emph default
+:
+\series default
+ Well width in nanometers edge to edge
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $PE\,at\,Left\,Edge:$
+\end_inset
+
+ Well height, left edge, in electron volts; use 
+\begin_inset Formula $inf$
+\end_inset
+
+ for infinite height
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $PE\,at\,Right\,Edge:$
+\end_inset
+
+ Well height, right edge, in electron volts; use 
+\begin_inset Formula $inf$
+\end_inset
+
+ for infinite height
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $Click\,To\,Build\,Well:$
+\end_inset
+
+ Creates the new well; changes appear in the plot window
+\end_layout
+
+\begin_layout Subsubsection
+AddBarrierPE Dialog Window
+\end_layout
+
+\begin_layout Standard
+There is no limit on the number of added barriers as long there is no overlap
+ between barriers.
+ The message box will inform you of overlapping barriers.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Left\,Edge\,of\,Barrier:$
+\end_inset
+
+ Left edge in nm of rectangular barrier, must lie within the basic potential
+ well.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Right\,Edge\,of\,Barrier:$
+\end_inset
+
+ Right edge in nm of rectangular barrier, must be greater than the left
+ edge of the barrier and lie within the well
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Barrier\,Potential\,Energy:$
+\end_inset
+
+ Height in electron volts of the rectangular barrier
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Click\,to\,Add\,Barrier:$
+\end_inset
+
+ Create the barrier, barrier appears in the plot window
+\end_layout
+
+\begin_layout Standard
+Note the barrier description in the message box; in addition to the lower
+ and upper barrier limits, there are three polynomial coefficients, a constant,
+ linear, and quadratic coefficient.
+ These coefficients describe all of our added potentials.
+\end_layout
+
+\begin_layout Subsubsection
+AddMultipleBarrierPE
+\end_layout
+
+\begin_layout Standard
+Add any number of barriers where the distance between adjacent barriers
+ is fixed.
+ Fixing the distance between barriers facilitates creating a simple one-dimensio
+nal crystal and investigating stationary-state energies and wavefunctions
+ with increasing barrier number.
+ Note the distance scaling in the well graph as you change the number of
+ barriers; the total well width must increase as you increase the number
+ of barriers to maintain the fixed distance between adjacent barriers.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Number\,ofBarriers:$
+\end_inset
+
+ Number of Interior Barriers to add
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $SubWell\,Width:$
+\end_inset
+
+ Distance in nm between each barrier (including the well edges)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Barrier\,Width\,and\,Height:$
+\end_inset
+
+ Width in nm and height in eV of each barrier (excluding well edges)
+\end_layout
+
+\begin_layout Standard
+Note the barrier description in the message box; in addition to the lower
+ and upper barrier limits, there are three polynomial coefficients, a constant,
+ linear, and quadratic coefficient.
+ These coefficients describe all of our added potentials.
+\end_layout
+
+\begin_layout Subsubsection
+AddLinearPE Dialog Window
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Xmin:$
+\end_inset
+
+ Left starting position in nm for the linear potential, must lie within
+ the well
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Xmax:$
+\end_inset
+
+ Right ending position in nm for the linear potential, must be greater than
+ 
+\begin_inset Formula $xmin$
+\end_inset
+
+ and lie within the basic well
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $PE\,at\,Xmin:$
+\end_inset
+
+ Potential energy in electron volts at xmin
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $PE\,at\,Xmax:$
+\end_inset
+
+ Potential energy in electron volts at xmax
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Click\,to\,Add\,Potential:$
+\end_inset
+
+ Create the linear potential, the potential line appears in the plot window.
+\end_layout
+
+\begin_layout Standard
+The message box shows the left starting and right ending positions.
+ The first two polynomial parameters give the equation of the potential
+ line relative to 
+\begin_inset Formula $Xmin$
+\end_inset
+
+ and 
+\begin_inset Formula $Xmax$
+\end_inset
+
+.
+ The first parameter is the height at 
+\begin_inset Formula $Xmin$
+\end_inset
+
+; the second parameter is the slope relative to 
+\begin_inset Formula $Xmin$
+\end_inset
+
+ and 
+\begin_inset Formula $Xmax$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $slope$
+\end_inset
+
+=
+\begin_inset Formula $\frac{\nabla V}{Xmax-Xmin}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+AddSimHarOscPE Dialog Window
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $SHO\,Min.\,at\,Well\,Center:$
+\end_inset
+
+ Create simple harmonic-oscillator internal well with minimum at the center
+ of the basic well
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $SHO\,Min.\,at\,Left\,Edge:$
+\end_inset
+
+ Create simple harmonic-oscillator internal well with minimum at the left
+ edge of the basic well
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $PE\,at\,Xmax:$
+\end_inset
+
+ Potential at the right edge of the well.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Click\,to\,Add\,Harmonic\,Oscillator:$
+\end_inset
+
+ Create the SHO potential; potential curve appears in the plot window
+\end_layout
+
+\begin_layout Standard
+Since the SHO covers the entire interior of the well, the message box shows
+ the positions of the left and right edges of the basic well as the starting
+ and ending positions of the SHO potential.
+ The message box also shows the parameters 
+\begin_inset Formula $a,b,c$
+\end_inset
+
+ of the second-order polynomial that describes the SHO potential, i.e.
+ 
+\begin_inset Formula $V_{SHO}=a$
+\end_inset
+
++b*x+c*x
+\begin_inset Formula $^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+AddVshapedPE Dialog Window
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+PE
+\begin_inset space ~
+\end_inset
+
+Zero
+\begin_inset space ~
+\end_inset
+
+in
+\begin_inset space ~
+\end_inset
+
+Well
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+: Well location in nm of the tip of the V-shaped potential.
+ Potential energy of this point will always be zero.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+PE
+\begin_inset space ~
+\end_inset
+
+Left
+\begin_inset space ~
+\end_inset
+
+Edge
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+: Potential energy in eV of V potential at the left edge of the well.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+PE
+\begin_inset space ~
+\end_inset
+
+Right
+\begin_inset space ~
+\end_inset
+
+Edge
+\begin_inset space ~
+\end_inset
+
+: Potential energy in eV of V potential at the right edge of the well.
+\end_layout
+
+\begin_layout Standard
+The message box shows the usual polynomial coefficients for each side of
+ the V potential.
+\end_layout
+
+\begin_layout Subsubsection
+RemoveAddedPE Dialog Window
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $ID\,Number\,of\,Added\,Potential:$
+\end_inset
+
+ The ID number of the added potential from the AddedPE potential list that
+ you wish to remove.
+ The list is in the box in this window.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Click\,to\,Remove\,Added\,PE:$
+\end_inset
+
+ Remove the selected internal potential.
+ The potential curve will disappear in the plot window
+\end_layout
+
+\begin_layout Subsection
+Solving the Schrodinger Equation
+\end_layout
+
+\begin_layout Subsubsection
+SolveSchrodingerEq Dialog Window
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Energy:$
+\end_inset
+
+ The energy in eV of the electron in the potential well (which may or may
+ not lead to a physically acceptable solution)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Click\,to\,Find\,Psi:$
+\end_inset
+
+ Solve the Schrodinger equation and plot the solution in the plot window.
+\end_layout
+
+\begin_layout Standard
+This solver uses the scipy 
+\begin_inset Formula $odeint$
+\end_inset
+
+ function to find the wavefunction and its derivative associated with the
+ potential well and a specified energy.
+ The 
+\begin_inset Formula $odeint$
+\end_inset
+
+ solver moves from left to right, starting at 
+\begin_inset Formula $x=0.0$
+\end_inset
+
+ with initial values of the wavefunction and its derivative, and determines
+ the solution at increasing values of x.
+ The solver chooses the initial values so that the wavefunction for negative
+ values of x is a decreasing exponential for a finite potential well edge
+ or is zero for an infinite potential-well edge.
+ Thus, the 
+\begin_inset Formula $x<0.0$
+\end_inset
+
+ section of the plot is not part of the 
+\begin_inset Formula $odeint$
+\end_inset
+
+ solution, rather these points are calculated from the known decreasing
+ exponential function.
+ The 
+\begin_inset Formula $odeint$
+\end_inset
+
+ code calculates the wavefunction for 
+\begin_inset Formula $x>0.0$
+\end_inset
+
+.
+ You see these points plotted on the graph in the main window.
+ The solver imposes no boundary conditions at the right-edge of the well
+ and the solution will be physically meaningless if the wavefunction diverges.
+ (See the following FindStationaryStates section for further details.) 
+\end_layout
+
+\begin_layout Subsubsection
+FindStationaryStates Dialog Window
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:FindStationaryStates-Box"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Click\,to\,Find\,States:$
+\end_inset
+
+ Find the stationary states within the stated energy range and show these
+ states in the main window plot.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Min\,E:$
+\end_inset
+
+ The stationary state search range is between 
+\begin_inset Formula $Min\,E$
+\end_inset
+
+ and 
+\begin_inset Formula $Max\,E$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Max\,E:$
+\end_inset
+
+ The stationary state search range is between 
+\begin_inset Formula $Min\,E$
+\end_inset
+
+ and 
+\begin_inset Formula $Max\,E$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Num\,X\,bins:$
+\end_inset
+
+ The number of x values between the left and right edges of the potential
+ well.
+ When in doubt, take the default value of 500.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Delta\,E:$
+\end_inset
+
+ The energy difference between trial energy values.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Show\,Graph:$
+\end_inset
+
+ When checked, the solver displays a graph plotting the difference at the
+ right-hand well edge between the wavefunction slope from the 
+\begin_inset Formula $odeint$
+\end_inset
+
+ solution and the calculated slope required for the wavefunction to become
+ a decreasing exponential function for 
+\begin_inset Formula $x>right-well\:edge$
+\end_inset
+
+.
+ The zero-crossings for this plot are the stationary-state energies and
+ are found by a linear interpolation between consecutive E points, one above
+ and the other below the energy axis.
+ The 
+\begin_inset CommandInset href
+LatexCommand href
+name "matplotlib icons "
+target "http://matplotlib.org/users/navigation_toolbar.html"
+literal "false"
+
+\end_inset
+
+(See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matplotlib-Toolbar"
+
+\end_inset
+
+)which enable you to pan and zoom are very useful for determining optimum
+ parameter values, especially when the difference between the stationary
+ energies are only slightly larger than 
+\begin_inset Formula $Delta\,E$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $State\,ID:$
+\end_inset
+
+ Selects a specific stationary state for plotting.
+ The ID numbering starts at 1 not 0.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Plot\,Psi:$
+\end_inset
+
+ Plots the time-independent wavefunction for the selected stationary state
+ on the main window graph.
+ The plots are cumulative and color coded.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Save\,Psi:$
+\end_inset
+
+ Writes the time-independent wavefunction to a specified text file.
+ The four columns in the file are: the wavefunction, its derivative, x,
+ and V(x).
+ The wavefunction is not normalized.
+ 
+\end_layout
+
+\begin_layout Subsection
+Message Box
+\end_layout
+
+\begin_layout Standard
+The message box is always open and contains the history of your work with
+ the solver including the date and time of each action.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Print:$
+\end_inset
+
+ Print the contents of the message box to a specified printer.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $Save:$
+\end_inset
+
+ Save the contents of the message box in a specified text file.
+\end_layout
+
+\begin_layout Section
+Reading and Writing Dpw Files
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Reading-and-Writing"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solver python class, 
+\begin_inset Formula $DataPotentialWell$
+\end_inset
+
+, contains the well construction details.
+ It also contains the stationary-state energies (if available) determined
+ within the 
+\begin_inset Formula $FindStationaryStates$
+\end_inset
+
+ window.
+ In addition, the values of the last wavefunction plotted in the 
+\begin_inset Formula $PlotPsi$
+\end_inset
+
+ option in the 
+\begin_inset Formula $FindStationaryStates$
+\end_inset
+
+ window, its derivative, and associated parameters are contained in the
+ class instance.
+ At any time, you may write this class to a file and later read this file
+ back into the solver.
+ Or you may use the file to create a 
+\begin_inset Formula $DataPotentialWell$
+\end_inset
+
+ class instance in a jupyter notebook or python script and have direct access
+ to all the well data for further analysis such as calculating expectation
+ values of position and momentum.
+ (See the jupyter notebook tutorials in the Tutorials directory and described
+ in later sections of this guide)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $WriteDpwFile:$
+\end_inset
+
+ Clicking this main window button will write the 
+\begin_inset Formula $DataPotentialWell$
+\end_inset
+
+ class to a specified file with a .dpw file extension.
+ A text editor cannot read this binary file.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $ReadDpwFile:$
+\end_inset
+
+ Clicking this main window button will fill the 
+\begin_inset Formula $DataPotentialWell$
+\end_inset
+
+ class instance in the solver with the data from the .dpw file.
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Importing QuantumWell Modules in your Scripts
+\end_layout
+
+\begin_layout Standard
+You can easily create your own python scripts or jupyter notebooks using
+ python modules in the 
+\emph on
+QuantumWell/src
+\emph default
+ directory.
+ For example, you may wish to calculate expectation values or watch an animation
+ of the time development of the probability density determined from composite
+ wavefunctions.
+ However, your enviromental path shown in 
+\emph on
+sys.path 
+\emph default
+must include the path to the 
+\emph on
+QuantumWell/src
+\emph default
+ directory.
+ 
+\end_layout
+
+\begin_layout Standard
+The helper script, 
+\emph on
+getPath.py
+\emph default
+ in the 
+\emph on
+Tutorials
+\emph default
+ directory, obtains the path to your QuantumWell directory from the qwconfig/con
+fig file in your home directory that was created when you initially executed
+ the 
+\emph on
+config
+\emph default
+ script.
+ This is illustrated in the
+\emph on
+ tutorial0_addPath.ipynb 
+\emph default
+notebook in the Tutorial directory.
+\end_layout
+
+\begin_layout Standard
+To learn more, see the
+\emph on
+ 
+\emph default
+other tutorial jupyter notebooks in the Tutorials folder.
+ Don't forget to also move the 
+\emph on
+getPath.py
+\emph default
+ file from the Tutorials folder to the your current directory if you are
+ not working in the Tutorials directory.
+ 
+\end_layout
+
+\begin_layout Section
+The DataPotentialWell Class
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-DataPotentialWell-Class"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Use the DataPotentialWell class methods to access the well data.
+ For example 
+\end_layout
+
+\begin_layout LyX-Code
+dpw1 = DataPotentialWell()
+\end_layout
+
+\begin_layout LyX-Code
+dpw1.readDpwFile('myfilename.dpw')
+\end_layout
+
+\begin_layout LyX-Code
+x = dpw1.getXArray()
+\end_layout
+
+\begin_layout Standard
+returns the x values used in the solver as a numpy float array.
+ 
+\end_layout
+
+\begin_layout Standard
+To see the doc string of the class, place your cursor on the dpw1 instance
+ and do a shift-tab.
+ To see the list of class methods, place your curser immediately after dpw1.
+ and hit the tab key.
+ Select the method you wish to use with your cursor to add it to dpw1.
+ , then immediately do a shift-tab to see the method's doc string.
+\end_layout
+
+\begin_layout Subsubsection
+Useful DataPotentialWell Methods for Accessing Well Data: Partial list
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $getBasicWellProperties():$
+\end_inset
+
+ Returns (wellWidth, wellHeightLeft, wellHeightRight).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $getXArray()$
+\end_inset
+
+: Returns array of x values.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $getVArray()$
+\end_inset
+
+: Returns array of potential energy values.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $getPsiArray()$
+\end_inset
+
+: Returns wavefunction array.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+getPsiArrayNormalized()
+\emph default
+: Returns normalized wavefunction array
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $getPsiPrimeArray()$
+\end_inset
+
+: Returns wavefunction derivative array.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $getPsiEnergy()$
+\end_inset
+
+: Returns the stationary state energy associated with the wavefunction.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+printData()
+\emph default
+: prints well data (but not the large arrays) to the screen 
+\end_layout
+
+\begin_layout Standard
+All of the methods are described in the doc string of the DataPotentialWell
+ class and individually in each method doc string.
+\end_layout
+
+\begin_layout Section
+The BuildPotentialWell Class
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-BuildPotentialWell-Class"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The BuildPotentialWell class can be used within a python script or a Jupyter
+ notebook to build potential wells with specific width and barrier criteria.
+ Have a look at the 
+\emph on
+tutorial 
+\emph default
+notebooks in the Tutorials directory for further details.
+\end_layout
+
+\begin_layout Standard
+More details about this class will be in the next version of this User's
+ Guide.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Utilities"
+
+\end_inset
+
+Tutorials
+\end_layout
+
+\begin_layout Standard
+The Tutorials folder contains the following: 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+tutorial0_addPath.ipynb: jupyter notebook for setting path to src folder
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial1_readDpwFile.ipynb
+\emph default
+: jupyter notebook tutorial for reading a dpw file
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial2_writeDpwFile.ipynb
+\emph default
+: jupyter notebook to create a potential well with any number of equally
+ spaced, fixed height barriers.
+ The notebook writes a dpw file of this well for entering into the solver
+ for further analysis.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial3_analysis.ipynb
+\emph default
+: jupyter notebook with analysis examples, including calculating expectation
+ values and making comparisons with the uncertainty principle.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial4_composite.ipynb
+\emph default
+: jupyter notebook for studying a composite wave function.
+ Notebook illustrates calculating probability densities, expectation values,
+ etc.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial5_animation.ipynb
+\emph default
+: Jupyter notebook for following time evolution of composite wave function.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+getPath.py
+\emph default
+: python script used in jupyter notebooks to add path to src folder
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+psi1.dpw/psi2.dpw
+\emph default
+: two dpw files used in the tutorial notebooks
+\end_layout
+
+\begin_layout Section
+Matplotlib Toolbar
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Matplotlib-Toolbar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All python matplotlib graphs come with a navigation toolbar with very useful
+ tools for expanding selected sections of the graph.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename toolbarImage.png
+	BoundingBox 0bp 0bp 480bp 70bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+You'll find documentation for the toolbar 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://matplotlib.org/users/navigation_toolbar.html"
+literal "false"
+
+\end_inset
+
+.
+ The most useful toolbar buttons are the Pan/Zoom, the Zoom-to-Rectangle,
+ and the Save buttons.
+\end_layout
+
+\begin_layout Subsection
+The Pan/Zoom Button
+\end_layout
+
+\begin_layout Standard
+This Pan/Zoom button has two modes: pan and zoom.
+ Click the toolbar button to activate panning and zooming, then put your
+ mouse somewhere over an axis.
+ Press the left mouse button and hold it to pan the figure, dragging it
+ to a new position.
+ When you release it, the data under the point where you pressed will be
+ moved to the point where you released.
+ If you press ‘x’ or ‘y’ while panning the motion will be constrained to
+ the x or y axis, respectively.
+ Press the right mouse button to zoom, dragging it to a new position.
+ The x axis will be zoomed in proportionate to the rightward movement and
+ zoomed out proportionate to the leftward movement.
+ Ditto for the y axis and up/down motions.
+ The point under your mouse when you begin the zoom remains stationary,
+ allowing you to zoom to an arbitrary point in the figure.
+ You can use the modifier keys ‘x’, ‘y’ or ‘CONTROL’ to constrain the zoom
+ to the x axis, the y axis, or aspect ratio preserve, respectively.
+\end_layout
+
+\begin_layout Subsection
+The Zoom-to-Rectangle Button
+\end_layout
+
+\begin_layout Standard
+Click the Zoom-to-Rectangle button to activate this mode.
+ Put your mouse somewhere over an axis and press the left mouse button.
+ Drag the mouse while holding the button to a new location and release.
+ The axes view limits will be zoomed to the rectangle you have defined.
+ There is also an experimental ‘zoom out to rectangle’ in this mode with
+ the right button, which will place your axes in the region defined by the
+ zoom out rectangle.
+\end_layout
+
+\begin_layout Subsection
+The Save Button
+\end_layout
+
+\begin_layout Standard
+Click the Save button to launch a file save dialog.
+ You can save files with the following formats with these extensions : .png,
+ .ps, .eps, .svg and .pdf.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Code Development
+\end_layout
+
+\begin_layout Standard
+This section is under construction.
+ 
+\end_layout
+
+\begin_layout Standard
+I used `QT designer` (included in the anaconda system) to construct the
+ GUI windows.
+ The designer creates .ui files which must be converted to python .py files
+ using pyuic5 from the anaconda python package.
+ Each .ui file must be processed from a terminal as follows (all on one line):
+\end_layout
+
+\begin_layout LyX-Code
+pyuic5 -x AddBarrierDock.ui -o ui_AddBarrierDock.py
+\end_layout
+
+\begin_layout Standard
+To make this conversion from Mac or Linux machines, you can use the 
+\begin_inset Formula $make$
+\end_inset
+
+ utility by simply executing 
+\begin_inset Formula $make$
+\end_inset
+
+ in the src directory.
+ This code uses its default file, 
+\begin_inset Formula $Makefile$
+\end_inset
+
+, to produce all .py files.
+ (Have a look at the 
+\begin_inset Formula $Makefile$
+\end_inset
+
+ file and you'll see the .ui files produced in QT designer.).
+ If you have not installed the 
+\emph on
+make
+\emph default
+ utility, you can execute the above line from a terminal for each of the
+ .ui files.
+\end_layout
+
+\begin_layout Standard
+From windows machines, you can convert from a cmd terminal all .ui files
+ by executing (have a look at this file)
+\end_layout
+
+\begin_layout LyX-Code
+run_pyuic_Windows.bat
+\end_layout
+
+\end_body
+\end_document
