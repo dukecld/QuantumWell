@@ -35,7 +35,6 @@ def makeConfig():
     # set to False to skip name test for directory
     if True:
         testcwd = str(cwdP.name)[0:11]
-        print('testcwd ',testcwd)
         if (testcwd != 'QuantumWell'):
             print('must execute this script from directory')
             print('  with name that starts with QuantumWell')
@@ -104,7 +103,7 @@ def makeStartScript():
     command = "python " + str(pathF)
     # create start is_file
     platform = sys.platform
-    print('creating start script for platform ',platform)
+    print('creating startfile for platform ',platform)
     cwdP = Path.cwd()
     if platform.startswith('darwin'):
         startfile = Path(cwdP) / 'startQWell.command'
@@ -116,11 +115,11 @@ def makeStartScript():
         print('unknown operating system', platform)
         return
 
-    print('    startfile: ',startfile)
+    print('    startfile name: ',startfile)
 
     startfile.touch()
     startfile.write_text(command)
-    print('    startfile contains')
+    print('    startfile contains this line')
     print('       ',command)
     startfile.chmod(0o744)
 
@@ -129,14 +128,15 @@ def makeStartScript():
         dest = Path.home() / "Desktop" / startfile.name
         dest.write_text(startfile.read_text())
         dest.chmod(0o744)
-        print('    startfile copied to Desktop')
+        print('\n    startfile copied to Desktop')
         #shutil.copyfile(src, dst), could use this
     else:
         print('    could not find your Desktop, start file not copied to Desktop')
 
     print('        can also copy startfile, ',str(dest),', ')
     print('        to any directory and execute from there')
-    #print('Execute from a terminal or double click on the startfile\n')
+    print('\nExecute startfile from a terminal or double click ')
+    print('    the startfile to open the QuantumWell GUI\n')
     return
 
 def existModule(module):
