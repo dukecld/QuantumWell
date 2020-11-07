@@ -376,8 +376,20 @@ Startup
 \end_layout
 
 \begin_layout Standard
-Download the QuantumWell compressed file from github <url goes here> and
- execute the 
+Download the 
+\emph on
+QuantumWell-main.zip
+\emph default
+ compressed file by clicking this link, 
+\begin_inset CommandInset href
+LatexCommand href
+name "QuantumWell Download"
+target "https://github.com/dukecld/QuantumWell/archive/main.zip"
+literal "false"
+
+\end_inset
+
+, and execute the 
 \emph on
 config.py
 \emph default
@@ -385,18 +397,39 @@ config.py
 \end_layout
 
 \begin_layout Itemize
-Move the github file to any directory; I recommend your Desktop.
- If necessary, decompress the compressed file (double-clicking usually works).
- You should see the QuantumWell root directory.
+Move the 
+\emph on
+QuantumWell-main.zip
+\emph default
+ file to any directory; I recommend your Desktop.
+ Decompress and open the compressed file (double-clicking usually works.
+ But you first may have to give your os permission to open this downloaded
+ file.).
+ You should see the 
+\emph on
+QuantumWell-main
+\emph default
+ root directory.
+ From now on, I'll refer to this directory as the 
+\emph on
+QWell
+\emph default
+ directory.
+ You can rename it if you wish.
 \end_layout
 
 \begin_layout Itemize
-Open a file browser in the QuantumWell directory.
+Open a file browser in the 
+\emph on
+QWell
+\emph default
+ directory.
  Execute the 
 \emph on
 config.py
 \emph default
- script by double-clicking on:
+ script by double-clicking on: (ditto per above: you may have to give permission
+ to execute this downloaded script)
 \end_layout
 
 \begin_deeper
@@ -425,7 +458,7 @@ config.sh
 \end_layout
 
 \begin_layout Itemize
-or from a terminal or cmd window in the QuantumWell directory, execute 
+or from a terminal or cmd window in the QWell directory, execute 
 \emph on
 python config.py
 \end_layout
@@ -442,15 +475,15 @@ Confirm that all the above prerequisites are installed and available.
 
 \begin_layout Itemize
 Create a qwconfig/config file in your home directory that contains the path
- to the QuantumWell directory (you can ignore this file unless you wish
- to use the QuantumWell/src python modules e.g.
+ to the QWell directory (you can ignore this file unless you wish to use
+ the QWell/src python modules e.g.
  in a jupyter notebook.
  See the tutorial notebooks in the Utilities directory)
 \end_layout
 
 \begin_layout Itemize
-Create the startQWell.xx startup script both in your QuantumWell directory
- and on your Desktop (you can copy this file for use in any directory).
+Create the startQWell.xx startup script both in your QWell directory and
+ on your Desktop (you can copy this file for use in any directory).
  You should see one of the following scripts depending on your operating
  system:
 \end_layout
@@ -507,7 +540,7 @@ If you wish to bypass the startQWell script:
 \begin_layout Itemize
 for Windows execute: 
 \emph on
-python <path to QuantumWell dir>
+python <path to QWell dir>
 \backslash
 quantumWell.py
 \end_layout
@@ -515,7 +548,7 @@ quantumWell.py
 \begin_layout Itemize
 for macOS and Linux execute: 
 \emph on
-python <path to QuantumWell dir>/quantumWell.py
+python <path to QWell dir>/quantumWell.py
 \end_layout
 
 \begin_layout Standard
