@@ -131,16 +131,24 @@ pendent, one-dimensional Schrodinger equation for potential wells defined
  state wavefunctions from multi-barrier potential wells.
  Little prior knowledge of quantum mechanics is necessary, and no prior
  experience with python is required.
+ The QuickStart section in the README file and in this document provides
+ sufficient information for most of these studies.
 \end_layout
 
 \begin_layout Abstract
-This User's Guide includes a QuickStart section and sections describing
- each part of the GUI interface; an appendix, currently under construction,
- describes utility jupyter notebooks for manipulating wavefunctions produced
- by the quantum well solver.
- These notebooks, requiring a basic knowledge of python, are appropriate
- for students at both the introductory and advanced level.
- This project, initially completed during the summer and fall of 2014, was
+Many of the python modules can be used in Jupyter notebooks or in python
+ scripts for more advanced work such as following the time development of
+ composite wavefunctions in multibarrier wells, investigating the development
+ of energy bands in one-dimensional crystals, and looking for bound states
+ in simple one-electron molecules.
+ Such projects, requiring a basic knowledge of python, are supported by
+ the jupyter tutorial notebooks in this package and are appropriate for
+ students at both the introductory and advanced level.
+ 
+\end_layout
+
+\begin_layout Abstract
+This project, initially completed during the summer and fall of 2014, was
  written in python3 with PyQt based GUIs.
  The Anaconda3 package from Continuium Analytics contains all code dependencies.
  The solver runs on MacOS, Windows7/10, and Linux operating systems.

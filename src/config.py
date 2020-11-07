@@ -30,10 +30,18 @@ def makeConfig():
     # get paths
     homeP = Path.home()
     cwdP  = Path.cwd()
-    if cwdP.name != 'QuantumWell':
-        print('must execute this script from QuantumWell directory')
-        print('exiting script')
-        exit(0)
+
+
+    # set to False to skip name test for directory
+    if True:
+        testcwd = str(cwdP.name)[0:11]
+        print('testcwd ',testcwd)
+        if (testcwd != 'QuantumWell'):
+            print('must execute this script from directory')
+            print('  with name that starts with QuantumWell')
+            print('    current directory: ',str(cwdP))
+            print('exiting script')
+            exit(0)
 
     pathC = homeP / confDir
     # make confDir if necessary
