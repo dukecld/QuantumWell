@@ -167,6 +167,14 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Introduction
 \end_layout
@@ -389,11 +397,10 @@ literal "false"
 
 \end_inset
 
-, and execute the 
-\emph on
-config.py
-\emph default
- python script as follows:
+.
+ If you are familar with git and github, you may wish to clone the QuantumWell
+ repository using standard git/github techniques.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -402,9 +409,8 @@ Move the
 QuantumWell-main.zip
 \emph default
  file to any directory; I recommend your Desktop.
- Decompress and open the compressed file (double-clicking usually works.
- But you first may have to give your os permission to open this downloaded
- file.).
+ Open the compressed file (double-clicking usually works.
+ But you may have to give your os permission to open this downloaded file.).
  You should see the 
 \emph on
 QuantumWell-main
@@ -412,23 +418,23 @@ QuantumWell-main
  root directory.
  From now on, I'll refer to this directory as the 
 \emph on
-QWell
+QuantumWell
 \emph default
  directory.
- You can rename it if you wish.
+ If you wish to rename it, do that now before proceeding further.
 \end_layout
 
 \begin_layout Itemize
 Open a file browser in the 
 \emph on
-QWell
+QuantumWell
 \emph default
  directory.
  Execute the 
 \emph on
 config.py
 \emph default
- script by double-clicking on: (ditto per above: you may have to give permission
+ script by double-clicking it: (ditto per above: you may have to give permission
  to execute this downloaded script)
 \end_layout
 
@@ -458,7 +464,7 @@ config.sh
 \end_layout
 
 \begin_layout Itemize
-or from a terminal or cmd window in the QWell directory, execute 
+or from a terminal or cmd window in the QuantumWell directory, execute 
 \emph on
 python config.py
 \end_layout
@@ -475,17 +481,17 @@ Confirm that all the above prerequisites are installed and available.
 
 \begin_layout Itemize
 Create a qwconfig/config file in your home directory that contains the path
- to the QWell directory (you can ignore this file unless you wish to use
- the QWell/src python modules e.g.
+ to the QuantumWell directory (you can ignore this file unless you wish
+ to use the QuantumWell/src python modules e.g.
  in a jupyter notebook.
- See the tutorial notebooks in the Utilities directory)
+ See the tutorial notebooks in the Tutorials directory)
 \end_layout
 
 \begin_layout Itemize
-Create the startQWell.xx startup script both in your QWell directory and
- on your Desktop (you can copy this file for use in any directory).
- You should see one of the following scripts depending on your operating
- system:
+Create the startQWell.xx startup script both in your QuantumWell directory
+ and on your Desktop (you can copy this file for use in any directory).
+ You should see one of the following scripts in the QuantumWell directory
+ and on your Desktop:
 \end_layout
 
 \begin_deeper
@@ -516,7 +522,17 @@ startQWell.sh
 \end_deeper
 \end_deeper
 \begin_layout Standard
-Open the QuantumWell GUI using one of the following:
+Open the QuantumWell GUI (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Main-GUI-Window"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)using one of the following:
 \end_layout
 
 \begin_layout Itemize
@@ -528,8 +544,8 @@ startQWell
 \end_layout
 
 \begin_layout Itemize
-Executing this script from a terminal from a directory containing the startup
- script
+Executing this script from a terminal from any directory containing the
+ startup script
 \end_layout
 
 \begin_layout Itemize
@@ -540,7 +556,7 @@ If you wish to bypass the startQWell script:
 \begin_layout Itemize
 for Windows execute: 
 \emph on
-python <path to QWell dir>
+python <path to QuantumWell dir>
 \backslash
 quantumWell.py
 \end_layout
@@ -548,7 +564,7 @@ quantumWell.py
 \begin_layout Itemize
 for macOS and Linux execute: 
 \emph on
-python <path to QWell dir>/quantumWell.py
+python <path to QuantumWell dir>/quantumWell.py
 \end_layout
 
 \begin_layout Standard
@@ -700,7 +716,7 @@ Input/Output
 \begin_inset Formula $WriteDpwFile$
 \end_inset
 
- button the on main window.
+ button on the main window.
  You can also read the well parameters into the solver using the 
 \begin_inset Formula $ReadDpwFile$
 \end_inset
@@ -736,12 +752,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Graphics
-	filename /Users/charlesduke/Repositories/QuantumWell/images/mainGui.png
+	filename /Users/charlesduke/Github/QuantumWell/images/mainGui.png
 	lyxscale 30
 	scale 30
 
@@ -752,6 +764,13 @@ status open
 
 \begin_layout Plain Layout
 Main GUI Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Main-GUI-Window"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -783,8 +802,18 @@ MainWindow
 \end_layout
 
 \begin_layout Standard
-The main window shows the potential-well plot with the usual matplotlib
- icons, see Appendix 
+The main window (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Main-GUI-Window"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) shows the potential-well plot with the usual matplotlib icons, see Appendix
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matplotlib-Toolbar"
@@ -811,8 +840,26 @@ Well dimensions are in nanometers (nm) and energies are in electron volts
  The particle mass is the mass of the electron.
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsubsection
 BuildWell Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Build-Well-Window"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -855,8 +902,71 @@ TotalWidth
  Creates the new well; changes appear in the plot window
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/buildWellGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Build Well Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Build-Well-Window"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 AddBarrierPE Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Add-Barrier-PE"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -904,6 +1014,51 @@ Note the barrier description in the message box; in addition to the lower
  and upper barrier limits, there are three polynomial coefficients, a constant,
  linear, and quadratic coefficient.
  These coefficients describe all of our added potentials.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/addPotentialBarrier.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Add Barrier PE Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Add-Barrier-PE"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
