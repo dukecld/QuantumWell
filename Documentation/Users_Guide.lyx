@@ -966,10 +966,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 There is no limit on the number of added barriers as long there is no overlap
  between barriers.
  The message box will inform you of overlapping barriers.
@@ -1066,6 +1062,20 @@ AddMultipleBarrierPE
 \end_layout
 
 \begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Add-Multiple-Barrier"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Add any number of barriers where the distance between adjacent barriers
  is fixed.
  Fixing the distance between barriers facilitates creating a simple one-dimensio
@@ -1107,8 +1117,67 @@ Note the barrier description in the message box; in addition to the lower
  These coefficients describe all of our added potentials.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/addMultipleBarriersGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Add Multiple Barrier PE Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Add-Multiple-Barrier"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 AddLinearPE Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Add-Linear-PE"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1193,8 +1262,67 @@ The message box shows the left starting and right ending positions.
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/addLinearPotentialGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Add Linear PE Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Add-Linear-PE"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 AddSimHarOscPE Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Add-SHO-Potential"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1252,8 +1380,67 @@ Since the SHO covers the entire interior of the well, the message box shows
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/addSHOSmall.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Add SHO Potential Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Add-SHO-Potential"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 AddVshapedPE Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Add-V-Shaped"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1325,8 +1512,67 @@ The message box shows the usual polynomial coefficients for each side of
  the V potential.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/addVShapedPotentialGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Add V Shaped Potential Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Add-V-Shaped"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 RemoveAddedPE Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Remove-Added-PE"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1349,12 +1595,71 @@ RemoveAddedPE Dialog Window
  The potential curve will disappear in the plot window
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/removeAddedPotentialGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Remove Added PE Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Remove-Added-PE"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Solving the Schrodinger Equation
 \end_layout
 
 \begin_layout Subsubsection
 SolveSchrodingerEq Dialog Window
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Solve-Schrodinger-Equation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1419,11 +1724,70 @@ This solver uses the scipy
  (See the following FindStationaryStates section for further details.) 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/potentialWellSolverGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Solve Schrodinger Equation Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Solve-Schrodinger-Equation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 FindStationaryStates Dialog Window
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:FindStationaryStates-Box"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Find-Stationary-States"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -1564,8 +1928,67 @@ reference "sec:Matplotlib-Toolbar"
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/findStatStatesGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Find Stationary States Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Find-Stationary-States"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Message Box
+\end_layout
+
+\begin_layout Standard
+See Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Message-Box-Window"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1587,6 +2010,296 @@ The message box is always open and contains the history of your work with
 \end_inset
 
  Save the contents of the message box in a specified text file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /Users/charlesduke/Github/QuantumWell/images/messageBoxGui.png
+	lyxscale 30
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Message Box Window
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Message-Box-Window"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Example GUI-Based Studies
+\end_layout
+
+\begin_layout Itemize
+Using the default well, plot psi for energies both above and below the energy
+ of a stationary state while watching the divergence of psi on the right
+ side of the well.
+ Plot psi at the energy of the stationary state.
+\end_layout
+
+\begin_layout Itemize
+Using the default well, determine the stationary states.
+ Discuss the relationship between the stationary-state energy, the curvature
+ (second derivative) of the wavefunction, and the sign of the wavefunction.
+ Discuss the relationship between the number of nodes of the wavefunction
+ and the stationary-state energy.
+\end_layout
+
+\begin_layout Itemize
+Add a linear internal potential and discuss the shape of the wavefunction
+ as a function position in the well.
+ Do the same for a V-shaped internal potential and a simple harmonic oscillator
+ internal potential.
+\end_layout
+
+\begin_layout Itemize
+For the above potentials, discuss the symmetry of the stationary-state wavefunct
+ions with respect to the center of the well.
+ What can be said about the probability density associated with each energy
+ state? What value do you expect for the position expection value? For the
+ momentum expectation value?
+\end_layout
+
+\begin_layout Itemize
+Add a single barrier potential and consider the first two energy states
+ and their wavefunctions.
+ For example, is there a relationship between the shape of the wavefunctions
+ and the energy separation between the two states? 
+\end_layout
+
+\begin_layout Itemize
+Create a simple diatomic ion with two potential wells separated by a barrier
+ and having a single electron and no Coulomb forces.
+ (use the addMultipleBarrier option with well edges and barrier heights
+ set to the same value.
+ Set the distance between barriers to some reasonable value such as 0.2 nm.
+ A barrier width of 0.05 nm is also a reasonable value.) Discuss whether or
+ not this ion will be a stable (or a bound) system.
+ What are the conditions for a bound system? If the ion is a stable system,
+ what is its binding energy is eV as determined from the QuantumWell solver
+ options?
+\end_layout
+
+\begin_layout Itemize
+How do you expect the energy levels for the above diatomic molecule to change
+ as the barrier width increases? What about the stability of the ion?
+\end_layout
+
+\begin_layout Itemize
+Investigate the energy levels and their wavefunctions of a well with multiple
+ barriers.
+ What do you expect as the number of barriers increases? You may see the
+ stationary-state wavefunctions begin to diverge on the right-side of the
+ well.
+ If so, go to the SolveSchrodingerEq option and calculate wavefunctions
+ with energies slightly above and below the calculated stationary-state
+ energy.
+\end_layout
+
+\begin_layout Itemize
+For stationary-state wavefunctions that appear to diverge, recalculate the
+ stationary states with the graph option enabled.
+ The zero crossings determine the stationary-state energies.
+ Use the Matplotlib toolbar icon to select and expand a small area around
+ the crossing.
+ How can you improve the calculation so that the wavefunctions do not diverge?
+ Do what extent do these improvements change the value of the stationary-state
+ energy.
+\end_layout
+
+\begin_layout Itemize
+Save one or more of your wells by writing it to a dpw file.
+ Later, recreate the well by reading the dpw file back into the solver.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Utilities"
+
+\end_inset
+
+Tutorials for Jupyter Notebooks
+\end_layout
+
+\begin_layout Standard
+These tutorials emphasize using QuantumWell python modules in jupyter notebooks.
+ The Tutorials folder contains the following notebooks:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial0_addPath.ipynb
+\emph default
+: jupyter notebook for setting path to src folder
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial1_readDpwFile.ipynb
+\emph default
+: jupyter notebook tutorial for reading a dpw file
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial2_writeDpwFile.ipynb
+\emph default
+: jupyter notebook to create a potential well with any number of equally
+ spaced, fixed height barriers.
+ The notebook writes a dpw file of this well for entering into the solver
+ for further analysis.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial3_analysis.ipynb
+\emph default
+: jupyter notebook with analysis examples, including calculating expectation
+ values and making comparisons with the uncertainty principle.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial4_composite.ipynb
+\emph default
+: jupyter notebook for studying a composite wave function.
+ Notebook illustrates calculating probability densities, expectation values,
+ etc.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+tutorial5_animation.ipynb
+\emph default
+: Jupyter notebook for following time evolution of composite wave function.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+getPath.py
+\emph default
+: python script used in jupyter notebooks to add path to src folder
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+psi1.dpw/psi2.dpw
+\emph default
+: two dpw files used in the tutorial notebooks
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Importing QuantumWell Modules 
+\end_layout
+
+\begin_layout Standard
+You can easily create your own python scripts or jupyter notebooks using
+ python modules in the 
+\emph on
+QuantumWell/src
+\emph default
+ directory.
+ For example, you may wish to calculate expectation values or watch an animation
+ of the time development of the probability density determined from composite
+ wavefunctions.
+ However, your enviromental path shown in 
+\emph on
+sys.path 
+\emph default
+must include the path to the 
+\emph on
+QuantumWell/src
+\emph default
+ directory.
+ 
+\end_layout
+
+\begin_layout Standard
+The helper script, 
+\emph on
+getPath.py
+\emph default
+ in the 
+\emph on
+Tutorials
+\emph default
+ directory, obtains the path to your QuantumWell directory from the qwconfig/con
+fig file in your home directory that was created when you initially executed
+ the 
+\emph on
+config
+\emph default
+ script.
+ This is illustrated in the
+\emph on
+ tutorial0_addPath.ipynb 
+\emph default
+notebook in the Tutorial directory.
+\end_layout
+
+\begin_layout Standard
+To learn more, see the
+\emph on
+ 
+\emph default
+other tutorial jupyter notebooks in the Tutorials folder.
+ Don't forget to also move the 
+\emph on
+getPath.py
+\emph default
+ file from the Tutorials folder to the your current directory if you are
+ not working in the Tutorials directory.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1659,71 +2372,6 @@ The solver python class,
 \end_inset
 
  class instance in the solver with the data from the .dpw file.
-\end_layout
-
-\begin_layout Section
-\start_of_appendix
-Importing QuantumWell Modules in your Scripts
-\end_layout
-
-\begin_layout Standard
-You can easily create your own python scripts or jupyter notebooks using
- python modules in the 
-\emph on
-QuantumWell/src
-\emph default
- directory.
- For example, you may wish to calculate expectation values or watch an animation
- of the time development of the probability density determined from composite
- wavefunctions.
- However, your enviromental path shown in 
-\emph on
-sys.path 
-\emph default
-must include the path to the 
-\emph on
-QuantumWell/src
-\emph default
- directory.
- 
-\end_layout
-
-\begin_layout Standard
-The helper script, 
-\emph on
-getPath.py
-\emph default
- in the 
-\emph on
-Tutorials
-\emph default
- directory, obtains the path to your QuantumWell directory from the qwconfig/con
-fig file in your home directory that was created when you initially executed
- the 
-\emph on
-config
-\emph default
- script.
- This is illustrated in the
-\emph on
- tutorial0_addPath.ipynb 
-\emph default
-notebook in the Tutorial directory.
-\end_layout
-
-\begin_layout Standard
-To learn more, see the
-\emph on
- 
-\emph default
-other tutorial jupyter notebooks in the Tutorials folder.
- Don't forget to also move the 
-\emph on
-getPath.py
-\emph default
- file from the Tutorials folder to the your current directory if you are
- not working in the Tutorials directory.
- 
 \end_layout
 
 \begin_layout Section
@@ -1870,95 +2518,6 @@ notebooks in the Tutorials directory for further details.
 \begin_layout Standard
 More details about this class will be in the next version of this User's
  Guide.
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Utilities"
-
-\end_inset
-
-Tutorials
-\end_layout
-
-\begin_layout Standard
-The Tutorials folder contains the following: 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-tutorial0_addPath.ipynb: jupyter notebook for setting path to src folder
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-tutorial1_readDpwFile.ipynb
-\emph default
-: jupyter notebook tutorial for reading a dpw file
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-tutorial2_writeDpwFile.ipynb
-\emph default
-: jupyter notebook to create a potential well with any number of equally
- spaced, fixed height barriers.
- The notebook writes a dpw file of this well for entering into the solver
- for further analysis.
- 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-tutorial3_analysis.ipynb
-\emph default
-: jupyter notebook with analysis examples, including calculating expectation
- values and making comparisons with the uncertainty principle.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-tutorial4_composite.ipynb
-\emph default
-: jupyter notebook for studying a composite wave function.
- Notebook illustrates calculating probability densities, expectation values,
- etc.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-tutorial5_animation.ipynb
-\emph default
-: Jupyter notebook for following time evolution of composite wave function.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-getPath.py
-\emph default
-: python script used in jupyter notebooks to add path to src folder
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\emph on
-psi1.dpw/psi2.dpw
-\emph default
-: two dpw files used in the tutorial notebooks
 \end_layout
 
 \begin_layout Section
