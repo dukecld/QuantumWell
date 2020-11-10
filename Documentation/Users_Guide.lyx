@@ -2308,16 +2308,16 @@ config
 \emph on
  tutorial0_addPath.ipynb 
 \emph default
-notebook in the Tutorial directory.
+notebook in the Tutorial directory which shows two methods using functions
+ in 
+\emph on
+getPath.py
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
-To learn more, see the
-\emph on
- 
-\emph default
-other tutorial jupyter notebooks in the Tutorials folder.
- Don't forget to also move the 
+Don't forget to move the 
 \emph on
 getPath.py
 \emph default
@@ -2349,7 +2349,8 @@ The solver python class,
 \end_inset
 
  window.
- In addition, the values of the last wavefunction plotted in the 
+ In addition, the values of the last wavefunction (if available) plotted
+ in the 
 \begin_inset Formula $PlotPsi$
 \end_inset
 
@@ -2536,7 +2537,8 @@ The BuildPotentialWell class can be used within a python script or a Jupyter
 \emph on
 tutorial 
 \emph default
-notebooks in the Tutorials directory for further details.
+notebooks in the Tutorials directory for further details and checkout the
+ doc strings in the BuildPotentialWell class.
 \end_layout
 
 \begin_layout Standard
@@ -2648,11 +2650,19 @@ This section is under construction.
 \end_layout
 
 \begin_layout Standard
-I used `QT designer` (included in the anaconda system) to construct the
- GUI windows.
- The designer creates .ui files which must be converted to python .py files
- using pyuic5 from the anaconda python package.
- Each .ui file must be processed from a terminal as follows (all on one line):
+I used QT 
+\emph on
+designer
+\emph default
+ software (included in the anaconda system) to construct the GUI windows.
+ The 
+\emph on
+designer
+\emph default
+ creates .ui files which must be converted to python .py files using pyuic5
+ from the anaconda python package.
+ Each .ui file must be processed from a terminal for example (all on one
+ line):
 \end_layout
 
 \begin_layout LyX-Code
@@ -2685,11 +2695,12 @@ make
 \emph default
  utility, you can execute the above line from a terminal for each of the
  .ui files.
+ Or, you create a bash script to automate the commands.
 \end_layout
 
 \begin_layout Standard
-From windows machines, you can convert from a cmd terminal all .ui files
- by executing (have a look at this file)
+From windows machines, you can convert all .ui files by executing from a
+ cmd terminal (have a look at this file):
 \end_layout
 
 \begin_layout LyX-Code
