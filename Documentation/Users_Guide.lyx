@@ -130,21 +130,19 @@ pendent, one-dimensional Schrodinger equation for potential wells defined
  within a specified energy range.
  The python data class containing all well parameters and the numerical
  values of a selected stationary state wavefunction and its derivative may
- be sent to an output file for later use, such as for calculating expectation
- values or for creating composite time-dependent wavefunctions from stationary
- state wavefunctions from multi-barrier potential wells.
+ be sent to an output file for later use.
  Little prior knowledge of quantum mechanics is necessary, and no prior
  experience with python is required.
  The QuickStart section in the README file and in this document provides
- sufficient information for most of these studies.
+ sufficient information for installation and usage.
 \end_layout
 
 \begin_layout Abstract
-Many of the python modules can be used in Jupyter notebooks or in python
- scripts for more advanced work such as following the time development of
- composite wavefunctions in multibarrier wells, investigating the development
- of energy bands in one-dimensional crystals, and looking for bound states
- in simple one-electron molecules.
+Many of the QuantumWell python modules can be used in Jupyter notebooks
+ or in python scripts for more advanced work such as following the time
+ development of composite wavefunctions in multibarrier wells, investigating
+ the development of energy bands multibarrier wells, and looking for bound
+ states in simple one-electron molecules.
  Such projects, requiring a basic knowledge of python, are supported by
  the jupyter tutorial notebooks in this package and are appropriate for
  students at both the introductory and advanced level.
@@ -309,7 +307,7 @@ literal "false"
 
  contains all dependencies for the solver.
  No knowledge of python is required to use the solver.
- Neither is a detailed knowledge of quantum mechanics
+ Neither is a detailed knowledge of quantum mechanics required.
 \end_layout
 
 \begin_layout Section
@@ -343,7 +341,7 @@ literal "true"
 
 \end_inset
 
- system which includes all prerequisites, is free, and widely used.
+ system which includes all prerequisites, is free, and is widely used.
  The 
 \begin_inset CommandInset href
 LatexCommand href
@@ -355,9 +353,9 @@ literal "true"
 
  are clear and complete.
  For most computers, you should use the 64-bit graphical installer.
- Unless you use additional python platforms, I recommend that users new
- to python take all of the anaconda install defaults while paying particular
- attention to these two options: 
+ Unless you use additional python platforms, I recommend that users accept
+ all of the anaconda install defaults while paying particular attention
+ to these two options: 
 \end_layout
 
 \begin_layout Itemize
@@ -414,7 +412,7 @@ QuantumWell-main.zip
 \emph default
  file to any directory; I recommend your Desktop.
  Open the compressed file (double-clicking usually works.
- But you may have to give your os permission to open this downloaded file.).
+ But you may have to give permission to open this downloaded file.).
  You should see the 
 \emph on
 QuantumWell-main
@@ -571,12 +569,12 @@ for macOS and Linux execute:
 python <path to QuantumWell dir>/quantumWell.py
 \end_layout
 
-\begin_layout Standard
-Any files that you create from the GUI will be in the directory from which
- you opened the GUI.
+\end_deeper
+\begin_layout Itemize
+Any files that you create from GUI options will be in the directory from
+ which you opened the GUI.
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 To exit the GUI, click the exit button on the lower left of the main GUI
  window.
@@ -827,9 +825,9 @@ reference "sec:Matplotlib-Toolbar"
 
  for more details.
  The various buttons in the main window create dialog windows for changing
- the well dimensions, add internal potentials, remove internal potentials,
- solve the Schrodinger equation for a specific energy, and find the stationary
- states over a specified energy range.
+ the well dimensions, adding internal potentials, removing internal potentials,
+ solving the Schrodinger equation for a specific energy, and finding the
+ stationary states over a specified energy range.
  The read/write buttons provide access to the python class instance describing
  the well and the stationary-state wavefunction and its derivative.
  
@@ -1096,7 +1094,7 @@ nal crystal and investigating stationary-state energies and wavefunctions
 \begin_inset Formula $Number\,ofBarriers:$
 \end_inset
 
- Number of Interior Barriers to add
+ Number of Interior Barriers to add (can be zero)
 \end_layout
 
 \begin_layout Labeling
@@ -1104,7 +1102,7 @@ nal crystal and investigating stationary-state energies and wavefunctions
 \begin_inset Formula $SubWell\,Width:$
 \end_inset
 
- Distance in nm between each barrier (including the well edges)
+ Distance in nm between each barrier, edge-to-edge, not center-to-center.
 \end_layout
 
 \begin_layout Labeling
@@ -1874,9 +1872,26 @@ noprefix "false"
 \end_inset
 
 .
+ If the right-hand well edge is 
+\emph on
+inf, 
+\emph default
+the plot is the value of 
+\emph on
+psi
+\emph default
+ at the right edge (
+\emph on
+psi
+\emph default
+ must be zero at the 
+\emph on
+inf
+\emph default
+ edge for stationary states).
  The zero-crossings for this plot are the stationary-state energies and
  are found by a linear interpolation between consecutive E points, one above
- and the other below the energy axis.
+ and one below the energy axis.
  The 
 \begin_inset CommandInset href
 LatexCommand href
@@ -2083,7 +2098,7 @@ Using the default well, determine the stationary states.
 
 \begin_layout Itemize
 Add a linear internal potential and discuss the shape of the wavefunction
- as a function position in the well.
+ as a function of position in the well.
  Do the same for a V-shaped internal potential and a simple harmonic oscillator
  internal potential.
 \end_layout
@@ -2092,8 +2107,7 @@ Add a linear internal potential and discuss the shape of the wavefunction
 For the above potentials, discuss the symmetry of the stationary-state wavefunct
 ions with respect to the center of the well.
  What can be said about the probability density associated with each energy
- state? What value do you expect for the position expection value? For the
- momentum expectation value?
+ state? What value do you expect for the position expection value? 
 \end_layout
 
 \begin_layout Itemize
@@ -2112,13 +2126,14 @@ Create a simple diatomic ion with two potential wells separated by a barrier
  A barrier width of 0.05 nm is also a reasonable value.) Discuss whether or
  not this ion will be a stable (or a bound) system.
  What are the conditions for a bound system? If the ion is a stable system,
- what is its binding energy is eV as determined from the QuantumWell solver
- options?
+ what is its binding energy in eV as determined from the QuantumWell solver
+ options.
 \end_layout
 
 \begin_layout Itemize
 How do you expect the energy levels for the above diatomic molecule to change
- as the barrier width increases? What about the stability of the ion?
+ as the barrier width increases? What about the stability of the ion? Does
+ it increase or decrease?
 \end_layout
 
 \begin_layout Itemize
@@ -2139,7 +2154,7 @@ For stationary-state wavefunctions that appear to diverge, recalculate the
  Use the Matplotlib toolbar icon to select and expand a small area around
  the crossing.
  How can you improve the calculation so that the wavefunctions do not diverge?
- Do what extent do these improvements change the value of the stationary-state
+ To what extent do these improvements change the value of the stationary-state
  energy.
 \end_layout
 
@@ -2191,7 +2206,11 @@ tutorial2_writeDpwFile.ipynb
  spaced, fixed height barriers.
  The notebook writes a dpw file of this well for entering into the solver
  for further analysis.
- 
+ Of course, you can create the same well using the multipleBarrier option
+ in the solver.
+ But, for example, if you wanted to create equally spaced simple harmonic
+ oscillator subwells or a series of V-shaped potentials, you could make
+ use of the techniques in this tutorial.
 \end_layout
 
 \begin_layout Labeling
@@ -2211,8 +2230,8 @@ tutorial3_analysis.ipynb
 tutorial4_composite.ipynb
 \emph default
 : jupyter notebook for studying a composite wave function.
- Notebook illustrates calculating probability densities, expectation values,
- etc.
+ The notebook illustrates calculating probability densities, expectation
+ values, etc.
 \end_layout
 
 \begin_layout Labeling
