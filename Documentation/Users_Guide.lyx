@@ -113,14 +113,18 @@ Physics Department, Grinnell College.
 
 \end_layout
 
+\begin_layout Date
+November 10, 2020
+\end_layout
+
 \begin_layout Abstract
-This quantum well solver, written with python3, numerically solves the time-inde
+This quantum-well solver, written with python3, numerically solves the time-inde
 pendent, one-dimensional Schrodinger equation for potential wells defined
  by the user.
  Well types include finite and infinite square wells, square wells separated
  by potential barriers, with sloping bottoms, and with harmonic-oscillator
  shapes.
- The GUI graphs show the potential well and the wavefunction for a specific
+ The GUI windows show the potential well and the wavefunction for a specific
  energy set by the user.
  Or, the solver can determine stationary-state energies and wavefunctions
  within a specified energy range.
@@ -746,6 +750,7 @@ ell)
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
