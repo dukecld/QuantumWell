@@ -10,7 +10,7 @@ This package uses python3 and a variety of python modules. If you are new to pyt
 * python > 3.5, DO NOT USE PYTHON 2.x
 * python modules numpy, scipy, pyqt (version 5), matplotlib, and their prerequisites; all are included in the anaconda platform.
 
-Unless you use additional python platforms, I recommend that users new to python take the anaconda install defaults while paying particular attention to these two options:
+Unless you use additional python platforms, I recommend that users take the anaconda install defaults while paying particular attention to these two options:
 
 1. Select *Install for me only* rather than selecting *Install for all users* to avoid needing admin privileges.
 2. For installs on Windows, select *Add Anaconda3 to my path environmental variable* even though the installer recommends not using this option. Otherwise, you will have path issues when using the QuantumWell startup scripts.
@@ -18,7 +18,7 @@ Unless you use additional python platforms, I recommend that users new to python
 ### Installing and Opening the main GUI
 
 * Download the compressed file from Github by double-clicking [https://github.com/dukecld/QuantumWell/archive/main.zip](https://github.com/dukecld/QuantumWell/archive/main.zip).
-* Move the downloaded file to any directory; I recommend your Desktop. If necessary, decompress and extract the contents (double-clicking usually works). You should see the QuantumWell-main directory.
+* Move the downloaded file to any directory; I recommend your Desktop. Extract the contents (double-clicking usually works for zipped files). You should see the QuantumWell-main directory.
 * (OR if you are familiar with git software, you may obtain a clone of the git repository. The main directory name will now be QuantumWell. The -main from the zipped file shows that the downloaded file is the contents of the main branch in the repository.)
 * From now on, I will use the name, QuantumWell, for the QuantumWell-main directory.
 *   Open a file browser in the QuantumWell  directory Execute the config script by double-clicking on:
@@ -27,7 +27,7 @@ Unless you use additional python platforms, I recommend that users new to python
 >* `config.sh` for Linux os.
 >* or from a terminal window in the QuantumWell directory, execute `python config.py`
 
-The `config.py` script first determines if you have all the QuantumWell prerequisites. It then proceeds to create a startup script for the GUI and records the path to the QuantumWell directory in a config file.
+The `config.py` script first determines if you have all the QuantumWell prerequisites. It then proceeds to create a startup script for the QuantumWell main GUI and records the path to the QuantumWell directory in a config file.
 
 Depending on your operating system, the `config.py` script produces one of the following startup scripts both in your QuantumWell directory and on your Desktop:
 * `startQWell.bat` script for Windows machines
@@ -39,16 +39,13 @@ You can copy the appropriate `startQWell.xx` to any directory you wish and open 
 The `config.py` python script also creates a `qwconfig/config` file off of your home directory which contains the path to your QuantumWell directory and can be used to set the path for importing modules from the `src` directory into e.g. jupyter notebooks. There are more details in the [Documentation/UsersGuide](Documentation/Users_Guide.pdf). If you are only using the GUIs, you can ignore this paragraph.
 
 Open the QuantumWell GUI by
-* Double-clicking the `startQWell` script from a file browser set on any directory containing the script.
-* or from a cmd Windows terminal typing,
-`python <path to QuantumWell directory>\quantumWell.py`.
-* or from a macOS or Linux terminal typing,
-`python <path to QuantumWell directory>/quantumWell.py`.
-* or open a terminal, `cd` to the location of your `startQWell` script, and execute the script from the terminal prompt.
+* Double-clicking the `startQWell` script from a file browser set on any directory containing the script
+* or executing the script from a terminal.
+
 
 ## Usage
 
-The QuantumWell GUIs are largely selfexplanatory. Each button on the main GUI opens a side window to set and record well parameters. The *SolveSchrodingerEq* window shows the wavefunction for a given energy (and will diverge if the energy is not a stationary-state energy). The *FindStationaryStates* window permits determination of the stationary-state energies and plotting selected state wavefunctions on the main window. The always present *Message* window shows the history of your session; sending the history to a file and/or to a printer are *Message* window options.
+The QuantumWell GUIs are largely selfexplanatory. Each button on the main GUI opens a side window to set and record well parameters. The *SolveSchrodingerEq* window shows produces the wavefunction for a given energy (which will diverge if the energy is not a stationary-state energy). The *FindStationaryStates* window produces the stationary-state energies and selected state wavefunction plots on the main window. The always present *Message* window shows the history of your session; sending the history to a file and/or to a printer are *Message* window options.
 
 You can find more details in the [Documentation/UsersGuide](Documentation/Users_Guide.pdf)
 
