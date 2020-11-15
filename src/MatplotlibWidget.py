@@ -45,11 +45,12 @@ class MatplotlibWidget(Canvas):
     from numpy import linspace
     x = linspace(-10, 10)
     self.widget.axes.plot(x, x**2)
-    self.wdiget.axes.plot(x, x**3)
+    self.widget.axes.plot(x, x**3)
     """
     def __init__(self, parent=None, title='', xlabel='', ylabel='',
                  xlim=None, ylim=None, xscale='linear', yscale='linear',
                  width=16, height=12, dpi=100, hold=False):
+
         self.figure = Figure(figsize=(width, height), dpi=dpi)
         self.axes = self.figure.add_subplot(111)
         self.axes.set_title(title)
@@ -84,7 +85,6 @@ class MatplotlibWidget(Canvas):
         printer.HighResolution
         printer.Color
         # 9feb2019, works ok without parent
-        # anotherWidget= QPrintDialog(printer,self)
         anotherWidget = QPrintDialog(printer)
         if(anotherWidget.exec_() == QDialog.Accepted):
             p = self.grab()
@@ -122,18 +122,13 @@ if __name__ == '__main__':
             self.axes = self.mplwidget.axes
 
             # make the first two plots
-            self.plot()
-            x = linspace(-10, 10)
-
-            # make a third plot on second set of y axes.
-            self.twinx = self.axes.twinx()
-            x = linspace(-10, 10)
-            self.twinx.plot(x, x**2)
-
-        def plot(self):
             x = linspace(-10, 10)
             self.axes.plot(x, x*2)
             self.axes.plot(x, x)
+
+            # make a third plot on second set of y axes.
+            self.twinx = self.axes.twinx()
+            self.twinx.plot(x, x**2)
 
     app = QApplication(sys.argv)
     win = ApplicationWindow()
