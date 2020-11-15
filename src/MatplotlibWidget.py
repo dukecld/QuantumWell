@@ -114,21 +114,26 @@ if __name__ == '__main__':
             QMainWindow.__init__(self)
             self.mplwidget = MatplotlibWidget(self, title='Example',
                                               xlabel='Linear scale',
-                                              ylabel='Log scale',
+                                              ylabel='Linear scale',
                                               hold=True, yscale='linear')
             self.mplwidget.setFocus()
             self.setCentralWidget(self.mplwidget)
 
             self.axes = self.mplwidget.axes
-            self.plot(self.axes)
+
+            # make the first two plots
+            self.plot()
+            x = linspace(-10, 10)
+
+            # make a third plot on second set of y axes.
             self.twinx = self.axes.twinx()
             x = linspace(-10, 10)
-            self.twinx.plot(x, x*3)
+            self.twinx.plot(x, x**2)
 
-        def plot(self, axes):
+        def plot(self):
             x = linspace(-10, 10)
-            axes.plot(x, x*2)
-            axes.plot(x, x)
+            self.axes.plot(x, x*2)
+            self.axes.plot(x, x)
 
     app = QApplication(sys.argv)
     win = ApplicationWindow()
