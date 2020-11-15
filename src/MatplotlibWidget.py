@@ -126,6 +126,9 @@ if __name__ == '__main__':
             self.axes.plot(x, x*2)
             self.axes.plot(x, x)
 
+            # this will clear the axes (hold deprecated)
+            #self.axes.clear()
+
             # make a third plot on second set of y axes.
             self.twinx = self.axes.twinx()
             self.twinx.plot(x, x**2)
