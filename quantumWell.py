@@ -1,3 +1,4 @@
+
 # quantum potential well
 #       Charlie Duke
 #       Physics Department, Grinnell College
@@ -981,8 +982,8 @@ class PotentialWellWindow(QMainWindow):
             sendMessageTE(strr, self.addvpe.te_addvpe, True)
 
         # are the left and right heights within the well
-        elif (vleft < 0.0) or (vleft > whl) or (vright < 0.0)\
-                   or (vright > whr):
+        elif (vleft < 0.0) or (vleft > whl) or \
+             (vright < 0.0) or (vright > whr):
             strr = "V potential left or right height(s) outside well"
             sendMessageTE(strr, self.addvpe.te_addvpe, True)
 
