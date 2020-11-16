@@ -1066,7 +1066,7 @@ class PotentialWellWindow(QMainWindow):
                 sendMessageTE(self.dpw.printAddedVArray(),
                               self.addshowd.te_addsho, False)
             else:
-                print('****calling addHarmonicOscillatorPotential')
+                # print('****calling addHarmonicOscillatorPotential')
                 self.sp.addHarmonOscillPotential(centerFlag, vxmax)
 
                 sendMessageTE(self.dpw.printAddedVArray(),
