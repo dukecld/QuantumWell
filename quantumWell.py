@@ -1034,7 +1034,7 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ addSHODockOK -----------------
 
     def addSHODockOK(self):
-        debug = True
+        debug = False
         if debug:
             print(" in addSHODockOK")
 

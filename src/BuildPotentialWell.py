@@ -193,7 +193,7 @@ class BuildPotentialWell:
                 self.dpw.printData()
 
         # remake well, set edges to vxmax, should put in calling method
-        self.buildNewWell(wellWidth,wellHL,wellHR)
+        self.buildNewWell(wellWidth, wellHL, wellHR)
 
         if debug:
             print("      after setBasicWellParameters")
@@ -206,7 +206,7 @@ class BuildPotentialWell:
         self.dpw.barrierCt += 1
 
         self.dpw.updateBarrierDict()
-        if True:
+        if False:
             print("after add sho barrier")
             print('ba')
             print(self.dpw.barriers)
@@ -235,10 +235,14 @@ class BuildPotentialWell:
         #     self.dpw.barrier
         ba = np.copy(self.dpw.barriers)
 
+        # the next function arg is a list comprehension - iterable
         indexL = next(
             (i for i, v in enumerate(ba)
-             if (xmin1 >= v[0] and xmax1 <= v[1] and isclose(v[2], 0.0)
-                 and isclose(v[3], 0.0) and isclose(v[4], 0.0))), None)
+             if ((xmin1 >= v[0])
+                 and (xmax1 <= v[1])
+                 and isclose(v[2], 0.0)
+                 and isclose(v[3], 0.0)
+                 and isclose(v[4], 0.0))), None)
 
         if debug:
             print(" ba ")
@@ -527,7 +531,7 @@ class BuildPotentialWell:
         debug = False
         if debug:
             print("in buildNewWell with BuildPotentialWell")
-            #self.dpw.printData()
+            # self.dpw.printData()
 
         # make sure that well is reset (may want to change this later)
         self.dpw.resetWell()
