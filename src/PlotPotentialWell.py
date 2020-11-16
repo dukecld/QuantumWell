@@ -17,8 +17,9 @@ class PlotPotentialWell:
 
     makeNormalPlot():  makes the plot, but not the energy lines
 
-    addEnergyLine(e):  adds horizontal line at energy e, can be called either before or after
-                                calling makeNormalPlot
+    addEnergyLine(e):  adds horizontal line at energy e, can be
+                       called either before or after
+                       calling makeNormalPlot
     """
     def __init__(self, ax, dpw1, infHeight=100.0):
 
@@ -33,7 +34,7 @@ class PlotPotentialWell:
         self.dpw = dpw1
         self.lineH = list()
 
-    ############################ setupPlot ######################
+    # ------------- setupPlot -----------------
     def setupPlot(self):
         """
         fills various arrays and parameters from dpw to be used by plotter
@@ -78,7 +79,6 @@ class PlotPotentialWell:
         if debug:
             print("hoPot=0, no har.oscill. added. hoPOT = ", self.hoPot)
 
-        #if self.hoPot ==0:
         self.vmax = self.getMaxHeight()
         self.dpw.vmax = self.vmax
 
@@ -93,7 +93,7 @@ class PlotPotentialWell:
 
         if not np.isfinite(self.wellHeightRight):
             self.wellHeightRight = self.infiniteHeight
-            self.ax.text(self.xhigh*0.85, self.infiniteHeight*0.95, \
+            self.ax.text(self.xhigh * 0.85, self.infiniteHeight * 0.95,
                          '$\\uparrow$ to $\infty$', fontsize=16)
 
         # find vertical scale, need to treat ho as special case later
@@ -114,10 +114,11 @@ class PlotPotentialWell:
                         lv.append(v)
 
         if debug:
-            print("        wellHeightLeft/Right vmax", self.vmax, self.wellHeightLeft, \
-                  self.wellHeightRight, self.wellWidth)
+            print("        wellHeightLeft/Right vmax", self.vmax,
+                  self.wellHeightLeft, self.wellHeightRight,
+                  self.wellWidth)
 
-    ############################## getMaxHeight ##########################
+    # ---------------- getMaxHeight ------------------------
     def getMaxHeight(self):
         """
         internal use only
@@ -146,7 +147,7 @@ class PlotPotentialWell:
 
         return maxHeight
 
-    ########################### makeNormalPlot #################################3
+    # ------------------- makeNormalPlot -------------------------
     def makeNormalPlot(self, infHeight=100):
         """
         makes all plots
@@ -181,8 +182,9 @@ class PlotPotentialWell:
                          self.wellHeightLeft, ec="none", alpha=alphaL,
                          color=colorL)
         ax.add_patch(rect)
-        rect = Rectangle((self.xmax, 0.0), self.xhigh - self.xmax, self.wellHeightRight,\
-                         ec="none", alpha=alphaL, color=colorL)
+        rect = Rectangle((self.xmax, 0.0), self.xhigh - self.xmax,
+                         self.wellHeightRight, ec="none",
+                         alpha=alphaL, color=colorL)
         ax.add_patch(rect)
 
         for row in self.barriers:
@@ -190,8 +192,8 @@ class PlotPotentialWell:
             # plot additional square barriers (using Rectangle patches)
             if ((row[2] > 0.0) and (row[3] == 0.0) and (row[4] == 0.0)):
                 rect = Rectangle((row[0], 0.0), row[1] - row[0],
-                                 row[2], ec = "none",\
-                                 alpha = alphaL, color = colorL)
+                                 row[2], ec="none",
+                                 alpha=alphaL, color=colorL)
                 ax.add_patch(rect)
             # plot any sloping barriers
             if ((row[3] != 0.0) or (row[4] != 0.0)):
@@ -217,7 +219,7 @@ class PlotPotentialWell:
 
         ax.grid(axis='both')
 
-    ############################### addEnergyLine #############################3
+    # ------------------ addEnergyLine ------------------------
     def addEnergyLine(self, e):
         """
         plot energy line at energy e
@@ -225,7 +227,7 @@ class PlotPotentialWell:
         debug = False
         if debug:
             print("  -- addEnergyLine")
-            print("         e, self.xmin, self.xmax, self.vmax", e, self.xmin,\
+            print("         e, self.xmin, self.xmax, self.vmax", e, self.xmin,
                   self.xmax, self.vmax)
         # start with line at height e, from xmin to xmax
         if e < self.vmax:
@@ -233,7 +235,7 @@ class PlotPotentialWell:
             pt2 = [e, e]
             self.lineH = self.ax.plot(pt1, pt2, 'k', linewidth=1.0)
 
-    ############################### removeEnergyLine #############################
+    # ------------------- removeEnergyLine --------------------
     def removeEnergyLine(self):
         """
         remove energy line, uses previously stored line pointer
@@ -241,11 +243,11 @@ class PlotPotentialWell:
         if len(self.lineH) > 0:
             self.lineH.pop(0).remove()
 
-    ################################ addEnergyLinesFromDict ######################
+    # ----------------------- addEnergyLinesFromDict ---------------------
     def addEnergyLinesFromDict(self):
         """
-        adds energy lines for each stationary state, energies previously stored in
-        dStates dictionary
+        adds energy lines for each stationary state, energies previously
+        stored in dStates dictionary
         """
         debug = False
         if debug:
@@ -261,8 +263,10 @@ class PlotPotentialWell:
                 if e < self.vmax:
                     pt1 = [self.xlow, self.xhigh]
                     pt2 = [e, e]
-                    # just store the line reference rather than the list returned by plot
-                    # for plotting one line, len(ax.plot(...) is always 1, nothing missed
+                    # just store the line reference rather than
+                    # the list returned by plot
+                    # for plotting one line, len(ax.plot(...)
+                    # is always 1, nothing missed
                     self.dStatesPlot[i] = (self.ax.plot(pt1,
                                                         pt2,
                                                         'k',

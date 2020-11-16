@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
             # make the first two plots
             x = linspace(-10, 10)
-            self.axes.plot(x, x*2)
+            self.axes.plot(x, x * 2)
             self.axes.plot(x, x)
 
             # this will clear the axes (hold deprecated)

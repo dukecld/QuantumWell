@@ -1,7 +1,6 @@
-import scipy
+
 from numpy import isclose
 import numpy as np
-import matplotlib.pyplot as plt
 import pickle
 import os
 
@@ -10,7 +9,7 @@ import os
 class DataPotentialWell:
     """ Container class for all potential well parameters and data.
 
-	This class contains all well parameters and
+    This class contains all well parameters and
     data such as the array of x values,
     stationary state energies (if previously
     calculated), psi array, etc. The class
@@ -144,7 +143,8 @@ Methods:
 
         #  resetWelll to default values, create dStates dictionary
 
-        #      dStates dictionary used to store energies of stationary states, key = integer
+        #      dStates dictionary used to store energies of
+        #          stationary states, key = integer
         #      filled in potentialWell.py
         # dStates[integer key] = energy of stationary state
         self.dStates = dict()
@@ -152,7 +152,7 @@ Methods:
         # clears well and set default values
         self.resetWell()
 
-#----------------------- resetWell -------------------
+# ----------------------- resetWell -------------------
 
     def resetWell(self):
         # xlow/xhigh are the limits of the well as seen on the screen
@@ -164,9 +164,9 @@ Methods:
 
         # should have an easier way of setting the number of bins
         # set in solver, but may need a setter here?
-        #self.numX = 50
+        # self.numX = 50
         self.numX = 500  # number of bins, xlow to xhigh, default 500
-        #self.numX = 1000
+        # self.numX = 1000
 
         self.xMinMax = np.array([])  # xarray from xmin to xmax
         self.xMinHigh = np.array([])  # xarray from xmin to xhigh
@@ -217,7 +217,7 @@ Methods:
         self.maxESolve = 100.0
         self.infiniteWellFlag = False  # true for infinite well.
 
-    #------------------ printXVArrays -----------------------
+    # ------------------ printXVArrays -----------------------
     def printXVArrays(self):
         """
         print method, misnamed - currently prints
@@ -227,10 +227,10 @@ Methods:
 
         print("  -- DataPotentialWell::printSVArrays")
 
-        #print "      vA array, all x and V "
-        #for r in self.vA:
+        # print "      vA array, all x and V "
+        # for r in self.vA:
         #    print r[0],r[1]
-        #print "\n"
+        # print "\n"
 
         print("      xLowMin array")
         for r in self.xLowMin:
@@ -241,8 +241,7 @@ Methods:
         for r in self.xMinMax:
             print(r)
 
-
-#----------------------- printData --------------
+# ----------------------- printData --------------
 
     def printData(self):
         """ Print all well properties to screen. """
@@ -251,14 +250,12 @@ Methods:
               self.xlow, self.xhigh)
         print("       numX,  len(xMinMax), len(xMinHigh) ", self.numX,
               len(self.xMinMax), len(self.xMinHigh))
-        #print "       binW, len(vA) set in Solver ", self.binW, len(self.vA)
         print("       binW,  ", self.binW)
-        print("       wellWidth, wellHeightLeft, wellHeightRight ", self.wellWidth, \
-          self.wellHeightLeft, self.wellHeightRight)
+        print("       wellWidth, wellHeightLeft, wellHeightRight ",
+              self.wellWidth, self.wellHeightLeft, self.wellHeightRight)
         print("       vmax set in Plotter, fractRt, fractLf ", self.vmax,
               self.fractRt, self.fractLf)
         print("       k2 ", self.k2)
-        #print("       len(x) ",len(self.x))
         print("       AddedVCt ", self.barrierCt)
         print("       AddedVDict ", self.barrierDict)
         print("       AddedV array ")
@@ -275,7 +272,7 @@ Methods:
         print("self.statStateNumber ", self.statStateNumber)
         print("self.psiEnergy ", self.psiEnergy)
 
-    #--------------------- printBasicWellParms --------------
+    # --------------------- printBasicWellParms --------------
     def printBasicWellParms(self):
         """
         returns string formatted for message box of basic well parameters
@@ -283,17 +280,26 @@ Methods:
         cr = "\n"
         sp = "  "
         dataB = "Basic Well Parameters " + cr
-        l1 = "     width  " + "{:6.3f}".format(self.wellWidth) + "  nm" + cr
-        l2 = "     heightLeft  heightRight  " + "{:6.3f}".format(self.wellHeightLeft) + sp \
-          + "{:6.3f}".format(self.wellHeightRight) + "  eV" + cr
+        l10 = "     width  " + "{:6.3f}".format(self.wellWidth)
+        l11 = "  nm" + cr
+        l1 = l10 + l11
+        # l1 = "     width  " + "{:6.3f}".format(self.wellWidth) + "  nm" + cr
+        l20 = "     heightLeft  heightRight  "
+        l21 = "{:6.3f}".format(self.wellHeightLeft) + sp
+        l22 = "{:6.3f}".format(self.wellHeightRight) + "  eV" + cr
+        l2 = l20 + l21 + l22
+        # l2 = "     heightLeft  heightRight  "
+        # + "{:6.3f}".format(self.wellHeightLeft) + sp \
+        #  + "{:6.3f}".format(self.wellHeightRight) + "  eV" + cr
         dataB = dataB + l1 + l2
         return dataB
 
-    #---------------------- printAddedVArray ------------------------
+    # ---------------------- printAddedVArray ------------------------
     def printAddedVArray(self):
         """ prints addedV array to screen.
 
-            The printout labels each column of the addedV array. The columns are:
+            The printout labels each column of the addedV array.
+            The columns are:
                 ID:  identification number of addedV potential
                 xmin: start energy for potential
                 xmax: ending energy for potential
@@ -301,9 +307,13 @@ Methods:
         """
         sp = "  "
         strR = "Current AddedPE list" + "\n"
-        #import pdb; pdb.set_trace()
+
         if self.barrierCt > 0:
-            strR += "    ID            lo         hi          polynomial coeffs" + "\n"
+            strR0 = "    ID            lo         hi          "
+            strR1 = "polynomial coeffs" + "\n"
+            strR = strR0 + strR1
+            # strR += "    ID            lo         hi
+            # polynomial coeffs" + "\n"
             for i, v in self.barrierDict.items():
                 xminS = "{:6.3f}".format(self.barriers[v][0])
                 xmaxS = "{:6.3f}".format(self.barriers[v][1])
@@ -318,19 +328,20 @@ Methods:
 
         return strR
 
-    #--------------------------- updateBarrierDict ------------------
+    # --------------------------- updateBarrierDict ------------------
     def updateBarrierDict(self):
         """used when adding new barrier, see calls from BuildPotentialWell
         """
         debug = False
         if debug:
             print("  -- updateAddedVDict")
-        #import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         barrDict = dict()
         if self.barrierCt > 0:
             count = 1
             for i, v in enumerate(self.barriers):
-                if not (isclose(v[2], 0.0) and isclose(v[3], 0.0)
+                if not (isclose(v[2], 0.0)
+                        and isclose(v[3], 0.0)
                         and isclose(v[4], 0.0)):
                     # either v0,vs,or vss is nonzero
                     # so this v is a barrier row
@@ -346,7 +357,7 @@ Methods:
 
         return
 
-    #--------------------------- pickleDpw ------------------------
+    # --------------------------- pickleDpw ------------------------
     def writeDpwFile(self, dpwFileName):
         """ writes DataPotentialWell class instance to a .dpw file.
 
@@ -379,7 +390,7 @@ Methods:
 
         f.close()
 
-    #--------------------------- unpickleDpw ------------------------
+    # --------------------------- unpickleDpw ------------------------
     def readDpwFile(self, fileName):
         """ reads .dpw file into a DataPotentialWell instance.
 
@@ -415,7 +426,7 @@ Methods:
         # probably need to
         return newDpw
 
-    #--------------------------- copyData ------------------------
+    # --------------------------- copyData ------------------------
     def copyData(self, newdpw):
         """ copy all well parameters from newdpw into self.dpw
         used internally
@@ -457,13 +468,15 @@ Methods:
             print("       new dpw from read file ")
             self.printData()
 
-    #--------------------------- getPsi ------------------------
+    # --------------------------- getPsi ------------------------
     def getPsiArray(self):
         """ return non-normalized stationary state psi array.
 
-            The stationary state psi array, calculated in the potential well solver,
-            is the last psi array plotted in the findStationaryStates window. The array
-            is empty if no stationary state wavefunction is plotted on the main window.
+            The stationary state psi array, calculated in the
+            potential well solver, is the last psi array plotted
+            in the findStationaryStates window. The array is empty
+            if no stationary state wavefunction is plotted
+            on the main window.
 
             Returns:
                 non-normalized psi-array: float numpy array-type
@@ -473,7 +486,7 @@ Methods:
             print("starting getPsi ")
         return self.psiArray[:, 0]
 
-    #--------------------------- getPsiArrayNormalized --------------
+    # --------------------------- getPsiArrayNormalized --------------
     def getPsiArrayNormalized(self):
         """ returns normalized stationary state psi array.
 
@@ -499,9 +512,11 @@ Methods:
             psi = self.psiArray[:, 0]
             return psi / self.psiNorm
 
-    #--------------------------- findPsiNorm ------------------------
+    # --------------------------- findPsiNorm ------------------------
     def findPsiNorm(self):
-        """ find normalization constant for normalizing psi and psiPrime arrays. """
+        """ find normalization constant for normalizing
+        psi and psiPrime arrays.
+        """
         debug = False
         if debug:
             print("starting findPsiNorm")
@@ -511,16 +526,20 @@ Methods:
         if debug:
             print("self.psiNorm ", self.psiNorm)
 
-    #--------------------------- getPsiPrime ------------------------
+    # --------------------------- getPsiPrime ------------------------
     def getPsiPrimeArray(self):
-        """ return non-normalized stationary state first derivative of psi array.
+        """ return non-normalized stationary state first
+        derivative of psi array.
 
-            The stationary state psi array, calculated in the potential well solver,
-            is the last psi array plotted in the findStationaryStates window. The array
-            is empty if no stationary state wavefunction is plotted on the main window.
+            The stationary state psi array, calculated
+            in the potential well solver, is the last psi
+            array plotted in the findStationaryStates window.
+            The array is empty if no stationary state
+            wavefunction is plotted on the main window.
 
             Returns:
-                non-normalized first derivative of psi-array: float numpy array-type
+                non-normalized first derivative of psi-array:
+                float numpy array-type
         """
 
         debug = False
@@ -528,7 +547,7 @@ Methods:
             print("starting getPsiPrime ")
         return self.psiArray[:, 1]
 
-    #--------------------------- getPsiPrimeArrayNormalized ------------------------
+    # -------------- getPsiPrimeArrayNormalized -------------------
     def getPsiPrimeArrayNormalized(self):
         """ returns first derivative of normalized-psi array.
 
@@ -549,7 +568,7 @@ Methods:
             psiPrime = self.psiArray[:, 1]
             return psiPrime / self.psiNorm
 
-    #--------------------------- getXArrau ------------------------
+    # --------------------------- getXArrau ------------------
     def getXArray(self):
         """ return array of x values used in solver
 
@@ -568,7 +587,7 @@ Methods:
             print("starting getX ")
         return self.psiArray[:, 2]
 
-    #--------------------------- getVArray ------------------------
+    # --------------------------- getVArray --------------------
     def getVArray(self):
         """ return array of potential energies used in solver.
 
@@ -584,7 +603,7 @@ Methods:
             print("starting getV ")
         return self.psiArray[:, 3]
 
-    #--------------------------- getPsiEnergy ------------------------
+    # --------------------------- getPsiEnergy --------------------
     def getPsiEnergy(self):
         """ returns the energy of last plotted wavefunction..
 
@@ -599,7 +618,7 @@ Methods:
             print("starting getPsiEnergy")
         return self.psiEnergy
 
-    #--------------------------- getBasicWellProperties ------------------------
+    # --------------------- getBasicWellProperties -----------
     def getBasicWellProperties(self):
         """ return tuple (wellWidth, wellHeightLeft, wellHeightRight). """
 
@@ -609,11 +628,12 @@ Methods:
             print("returning tuple: (width, VLeft, VRight) ")
         return (self.wellWidth, self.wellHeightLeft, self.wellHeightRight)
 
-    #--------------------------- getXArrayIndexWellEdges ------------------------
+    # -------------- getXArrayIndexWellEdges ------------------------
     def getXArrayIndexWellEdges(self):
         """ returns indices of well edges in the x array.
 
-            Returns: int numpy array: [left-edge index, right-edge index]
+            Returns: int numpy array: [left-edge index,
+            right-edge index]
         """
         debug = False
         if debug:
@@ -624,18 +644,20 @@ Methods:
 
         return np.array([i_min, i_max])
 
-    #--------------------------- getNumberOfAddedVPotentials ------------------------
+    # ----------------- getNumberOfAddedVPotentials -----------------
     def getNumberOfAddedVPotentials(self):
-        """ returns the number of internal added potentials in potential well.
+        """ returns the number of internal added potentials
+        in potential well.
 
             Returns:
                Number of added potentials: int-type
         """
         return self.barrierCt
 
-    #--------------------------- getBarriersArray ------------------------
+    # ----------------------- getBarriersArray ----------------
     def getPotentialList(self):
-        """ array of all potential energy functions used in potential well.
+        """ array of all potential energy functions
+        used in potential well.
 
             Each row in the array has the following fields:
                 starting energy:
@@ -648,7 +670,7 @@ Methods:
         """
         return self.barriers
 
-    #--------------------------- getXBinWidth ------------------------
+    # ---------------------- getXBinWidth ------------------
     def getXBinWidth(self):
         """ return width of each x bin.
 
@@ -657,16 +679,18 @@ Methods:
         """
         return self.binW
 
-    #----------------- get2mOverhbar2 ------------------
-    def get2mOverhbar2():
+    # ----------------- get2mOverhbar2 ------------------
+    def get2mOverhbar2(self):
         """ 2*m/(hbar^hbar) for electron in eV/(nm*nm)
-
+            This is set in BuildPotential well,
+            sorry for rhe confusion
+            
             Returns:
                 float-type
         """
         return self.k2
 
-    #---------------- getStationaryStateEnergies -------------
+    # ---------------- getStationaryStateEnergies ---------
     def getStationaryStateEnergies(self):
         """ Returns: numpy array float-type """
         if len(self.dStates) == 0:
