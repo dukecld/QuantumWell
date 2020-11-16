@@ -15,8 +15,8 @@ import pickle
 _pth = Path(sys.path[0])
 _pthsrc = _pth / 'src'
 _pthutil = _pth / 'Utilities'
-sys.path.insert(0,str(_pthsrc))
-#sys.path.insert(0,str(_pthutil))
+sys.path.insert(0, str(_pthsrc))
+# sys.path.insert(0,str(_pthutil))
 # print(sys.path)
 
 if sys.version_info[0] < 3:
@@ -34,7 +34,7 @@ from PyQt5 import QtCore
 from matplotlib.backends.backend_qt5agg import \
     NavigationToolbar2QT as NavigationToolbar
 from MatplotlibWidget import MatplotlibWidget
-from PlotPotentialWell import *
+from PlotPotentialWell import PlotPotentialWell
 from DataPotentialWell import *
 from BuildPotentialWell import *
 from SolvePotentialWell import *
