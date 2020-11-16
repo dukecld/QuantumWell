@@ -694,7 +694,7 @@ class PotentialWellWindow(QMainWindow):
 # ------------ AddBarrierOK -------------------------------
 
     def addBarrierOK(self):
-        debug = True
+        debug = False
         if debug:
             print("in addBarrierOK")
         qxmin = self.addwd.le_xmin.text()

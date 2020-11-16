@@ -684,7 +684,7 @@ Methods:
         """ 2*m/(hbar^hbar) for electron in eV/(nm*nm)
             This is set in BuildPotential well,
             sorry for rhe confusion
-            
+
             Returns:
                 float-type
         """
