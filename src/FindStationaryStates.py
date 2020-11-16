@@ -113,17 +113,22 @@ class FindStationaryStates:
             # for wellHeightRight infinite, use sign change in psi
             self.delSlope = psiLast
 
-        delSign, = np.where(((np.sign(self.delSlope[1:])) !=
-                             (np.sign(self.delSlope[:-1]))))
+        delSign, = np.where(((np.sign(self.delSlope[1:]))
+                             != (np.sign(self.delSlope[:-1]))))
 
         statE = self.eA[delSign]
 
         if self.interpolationFlag:
             # include interpolation
-            statE = statE + ((self.eA[delSign + 1] - self.eA[delSign]) /
-                             (self.delSlope[delSign] -
-                             self.delSlope[delSign+1])) * \
-                             self.delSlope[delSign]
+            statE = statE + ((self.eA[delSign + 1] - self.eA[delSign])
+                             / (self.delSlope[delSign]
+                             - self.delSlope[delSign + 1])) * \
+                self.delSlope[delSign]
+
+            # statE = statE + ((self.eA[delSign + 1] - self.eA[delSign]) /
+            #                 (self.delSlope[delSign] -
+            #                 self.delSlope[delSign+1])) * \
+            #                 self.delSlope[delSign]
 
         # eA_delSlope = np.vstack( (self.eA,self.delSlope) ).transpose()
         # np.savetxt("energy_slope.txt",eA_delSlope)
