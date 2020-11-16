@@ -1,4 +1,4 @@
-#  quantum potential well
+# quantum potential well
 #       Charlie Duke
 #       Physics Department, Grinnell College
 #       duke@grinnell.edu
@@ -35,11 +35,11 @@ from matplotlib.backends.backend_qt5agg import \
     NavigationToolbar2QT as NavigationToolbar
 from MatplotlibWidget import MatplotlibWidget
 from PlotPotentialWell import PlotPotentialWell
-from DataPotentialWell import *
-from BuildPotentialWell import *
-from SolvePotentialWell import *
-from FindStationaryStates import *
-from plotPsi import *
+from DataPotentialWell import DataPotentialWell
+from BuildPotentialWell import BuildPotentialWell
+from SolvePotentialWell import SolvePotentialWell
+from FindStationaryStates import FindStationaryStates
+from plotPsi import plotPsi
 
 from utilQt import sendMessageTE, BuildWellDock, SolveWellDock
 from utilQt import MessageDock, printMessageTE, saveMessageTE
@@ -651,7 +651,7 @@ class PotentialWellWindow(QMainWindow):
         heightR, okR = stringToFloat(qheightR)
 
         # see if all boxes contain numbers
-        if not all([okW,okL,okR]):
+        if not all([okW, okL, okR]):
             strre = self.errorMFloat
             sendMessageTE(strre, self.buildwd.te_message, False)
         else:
@@ -704,7 +704,7 @@ class PotentialWellWindow(QMainWindow):
         qbarrierv = self.addwd.le_barrierv.text()
         barrierv, okBa = stringToFloat(qbarrierv)
 
-        if not all([okMi,okMa,okBa]):
+        if not all([okMi, okMa, okBa]):
             strre = self.errorMFloat
             sendMessageTE(strre, self.addwd.te_addbarrier, False)
         else:
@@ -898,10 +898,9 @@ class PotentialWellWindow(QMainWindow):
         qvxmax = self.addspwd.le_vxmax.text()
         vxmax, okVMa = stringToFloat(qvxmax)
 
-        if not all([okMi,okMa,okVMi,okVMa]):
+        if not all([okMi, okMa, okVMi, okVMa]):
             strre = self.errorMFloat
             sendMessageTE(strre, self.addspwd.te_addslope, False)
-
         else:
             # get current well heights and widths
             (ww, whl, whr) = self.dpw.getBasicWellProperties()
@@ -922,11 +921,11 @@ class PotentialWellWindow(QMainWindow):
 
             if not addBarrierFlag:
                 strb = "nothing added: do limits overlap other barriers"
-                #sendMessageTE(strb, self.addwd.te_addbarrier)
+                # sendMessageTE(strb, self.addwd.te_addbarrier)
                 sendMessageTE(strb, self.addspwd.te_addslope)
             else:
                 sendMessageTE(self.dpw.printAddedVArray(),
-                    self.addspwd.te_addslope)
+                              self.addspwd.te_addslope)
 
                 # bring solver up to date (dpw has possibly changed)
                 self.ws.resetSolver()
@@ -982,29 +981,32 @@ class PotentialWellWindow(QMainWindow):
             sendMessageTE(strr, self.addvpe.te_addvpe, True)
 
         # are the left and right heights within the well
-        elif (vleft < 0.0) or (vleft > whl) or (vright < 0.0) or (vright > whr):
+        elif (vleft < 0.0) or (vleft > whl) or (vright < 0.0)\
+                   or (vright > whr):
             strr = "V potential left or right height(s) outside well"
             sendMessageTE(strr, self.addvpe.te_addvpe, True)
 
         else:
 
-            # buildNewWell will reset the well and set the basic well parameters
+            # buildNewWell will reset the well and set
+            # the basic well parameters
             self.sp.buildNewWell(ww, whl, whr)
 
             # bring solver up to date (dpw has possibly changed)
             self.ws.resetSolver()
 
-            xminL = [0.0,xzero]
-            xmaxL = [xzero,ww]
-            v0L = [vleft,0.0]
+            xminL = [0.0, xzero]
+            xmaxL = [xzero, ww]
+            v0L = [vleft, 0.0]
             vs0 = (0.0 - vleft) / (xmaxL[0] - xminL[0])
             vs1 = (vright - 0.0) / (xmaxL[1] - xminL[1])
-            vsL = [vs0,vs1]
-            vssL = [0.0,0.0]
+            vsL = [vs0, vs1]
+            vssL = [0.0, 0.0]
 
-            for i in [0,1]:
+            for i in [0, 1]:
                 self.sp.addBarrier(xminL[i], xmaxL[i], v0L[i], vsL[i], vssL[i])
-                sendMessageTE(self.dpw.printAddedVArray(), self.addvpe.te_addvpe)
+                sendMessageTE(self.dpw.printAddedVArray(),
+                              self.addvpe.te_addvpe)
 
             # bring solver up to date (dpw has possibly changed)
             self.ws.resetSolver()
@@ -1059,7 +1061,7 @@ class PotentialWellWindow(QMainWindow):
 
         else:
             if False:
-            #if self.dpw.barrierCt > 0:
+                # if self.dpw.barrierCt > 0:
                 sendMessageTE(self.dpw.printAddedVArray(),
                               self.addshowd.te_addsho, False)
             else:
@@ -1194,7 +1196,7 @@ class PotentialWellWindow(QMainWindow):
 
         if debug:
             print("numX delE emin emax ", numX, dele, emin, emax)
-            print("okNum, okD okMi okMa", okNumokD, okMi, okMa)
+            # print("okNum, okD okMi okMa", okNumokD, okMi, okMa)
 
         if (okD and okMi and okMa) is False:
             strre = self.errorMFloat
@@ -1314,7 +1316,6 @@ class PotentialWellWindow(QMainWindow):
         if np.isfinite(wellH0):
             y0 = 1.0
             y01 = np.sqrt((self.dpw.k2) * (wellH0 - energy)) * y0
-            extrapolateLeft = True
         else:
             y0 = 0.0
             y01 = 40. * (0.4 / self.dpw.wellWidth)
