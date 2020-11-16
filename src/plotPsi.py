@@ -1,7 +1,8 @@
 # plotPsi function to plot solver wavefunction after extending to x < 0 region
 
 import numpy as np
-from extendPsi import *
+from extendPsi import extendPsi
+
 
 def plotPsi(ax, psi, e, dpw, plotFlagLower, plotFlagUpper, color='r'):
     """

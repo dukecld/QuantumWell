@@ -163,8 +163,8 @@ class SolvePotentialWell:
             if False:
                 print("self.barriers ", self.barriers)
                 print("                         in getV ", x)
-                v = [(bar[2] + bar[3]*(x - bar[0]) +
-                      bar[4] * (x-bar[0]) * (x-bar[0])) for bar in
+                v = [(bar[2] + bar[3] * (x - bar[0])
+                      + bar[4] * (x - bar[0]) * (x - bar[0])) for bar in
                      self.barriers if (bar[0] <= x) and (x <= bar[1])][0]
                 print(" in getV ", x, v)
                 exit()
