@@ -225,7 +225,7 @@ Methods:
         Not currently used
         """
 
-        print("  -- DataPotentialWell::printSVArrays")
+        print("  -- DataPotentialWell::printXVArrays")
 
         # print "      vA array, all x and V "
         # for r in self.vA:
@@ -233,6 +233,8 @@ Methods:
         # print "\n"
 
         print("      xLowMin array")
+        print('shape xLowMin',self.xLowMin.shape)
+        print('shape xMaxHigh',self.xMaxHigh.shape)
         for r in self.xLowMin:
             print(r)
         print("\n")

@@ -74,9 +74,9 @@ def extendPsi(psi, dbw, energy):
     # 3 columns, psi, psiDeriv, x
     psiLX = np.hstack((psiL, psiLDeriv, xA))
 
-    if (0):
-        print("psiLX ", psiLX)
+    if debug:
+        # print("psiLX ", psiLX)
         print("psiLX.shape ", psiLX.shape)
-        exit()
+        # exit()
 
     return psiLX
