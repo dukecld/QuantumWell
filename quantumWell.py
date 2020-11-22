@@ -17,9 +17,7 @@ _pth = Path(sys.path[0])
 _pthsrc = _pth / 'src'
 _pthutil = _pth / 'Utilities'
 sys.path.insert(0, str(_pthsrc))
-# sys.path.insert(0,str(_pthutil))
-# print(sys.path)
-
+# breakpoint()
 if sys.version_info[0] < 3:
     raise Exception("Must use Python 3")
 
@@ -1268,7 +1266,7 @@ class PotentialWellWindow(QMainWindow):
         for i, v in self.pltt.dStatesPlot.items():
             self.axes.lines.remove(v)
         self.pltt.dStatesPlot.clear()
-        # self.dpw.dStates.clear()
+
         self.findstate.te_findstates.clear()
         self.axTwinx.cla()
         self.axTwinx.set_axis_off()
@@ -1419,6 +1417,7 @@ class PotentialWellWindow(QMainWindow):
 # ------------- readDpwFile --------------------------
 
     def readDpwFile(self):
+        self.closeOpenDock()
         debug = False
         if debug:
             print("  -- readDpwFile")
