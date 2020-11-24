@@ -498,6 +498,9 @@ class PotentialWellWindow(QMainWindow):
 # -------------- openBuildWellDock ------------------------------
 
     def openBuildWellDock(self):
+        """ Qt connect from BuildWell button on main window
+        """
+
         debug = False
         if debug:
             print("  in openBuildWellDock(")
@@ -511,6 +514,8 @@ class PotentialWellWindow(QMainWindow):
 # ----------- openAddBarrierDock ----------------------------
 
     def openAddBarrierDock(self):
+        """ Qt connect from AddBarrierPE button on main window
+        """
         debug = False
         if debug:
             print("  in openAddBarrierDock")
@@ -524,6 +529,10 @@ class PotentialWellWindow(QMainWindow):
 # --------------- openAddMultiBarriersDock ------------------------
 
     def openAddMultiBarriersDock(self):
+        """ Qt connect from AddMultipleBarrierPE button
+            on main window
+        """
+
         debug = False
         if debug:
             print("  in openAddMultiBarriersDock")
@@ -538,6 +547,10 @@ class PotentialWellWindow(QMainWindow):
 # ---------------- openRemoveBarrierDock -------------------------
 
     def openRemoveBarrierDock(self):
+        """ Qt connect from RemoveAddedPE button
+            on main window
+        """
+        
         debug = False
         if debug:
             print("in openRemoveBarrierDock")
@@ -552,6 +565,9 @@ class PotentialWellWindow(QMainWindow):
 # --------------- openAddSlopedBaseDock ----------------------------
 
     def openAddSlopedBaseDock(self):
+        """ Qt connect from AddLinearPE button on main window
+        """
+
         debug = False
         if debug:
             print(" in openAddSlopedBaseDock")
@@ -565,6 +581,9 @@ class PotentialWellWindow(QMainWindow):
 # --------------- openAddVpeDock ----------------------------
 
     def openAddVpeDock(self):
+        """ Qt connect from AddVshapedPE button on main window
+        """
+
         debug = False
         if debug:
             print(" in openAddVpeDock")
@@ -578,6 +597,10 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ openSHOBaseDock -----------------------------
 
     def openSHOBaseDock(self):
+        """ Qt connect from AddSimHarOscPE button
+            on main window
+        """
+
         debug = False
         if debug:
             print(" in openSHOBaseDock")
@@ -591,6 +614,9 @@ class PotentialWellWindow(QMainWindow):
 # ----------------- openSolveWellDock -------------------------------
 
     def openSolveWellDock(self):
+        """ Qt connect from SolveSchrodingerEq button
+            on main window
+        """
         debug = False
         if debug:
             print("  -- openSolveWellDock")
@@ -603,6 +629,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------- openInfoDock -----------------------------
 
     def openInfoDock(self):
+        """ Qt connect from Info button on main window
+        """
+
         debug = False
         if debug:
             print("  -- openInfoDock")
@@ -615,6 +644,9 @@ class PotentialWellWindow(QMainWindow):
 # --------------- openFindStatStatesDock ----------------------------------
 
     def openFindStatStatesDock(self):
+        """ Qt connect from FindStationaryStates button
+            on main window
+        """
         debug = False
         if debug:
             print("  -- openFindStatStatesDock")
@@ -1417,6 +1449,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------- readDpwFile --------------------------
 
     def readDpwFile(self):
+        """ Qt connect from ReadDpwFile button on main window
+        """
+
         self.closeOpenDock()
         debug = False
         if debug:
@@ -1499,6 +1534,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ writeDpwFile ------------------------------------
 
     def writeDpwFile(self):
+        """ Qt connect from WriteDpwFile button on main window
+        """
+
         debug = False
         if debug:
             print("  -- writeDpwFile")
