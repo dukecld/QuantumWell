@@ -233,8 +233,8 @@ Methods:
         # print "\n"
 
         print("      xLowMin array")
-        print('shape xLowMin',self.xLowMin.shape)
-        print('shape xMaxHigh',self.xMaxHigh.shape)
+        print('shape xLowMin', self.xLowMin.shape)
+        print('shape xMaxHigh', self.xMaxHigh.shape)
         for r in self.xLowMin:
             print(r)
         print("\n")
