@@ -550,7 +550,7 @@ class PotentialWellWindow(QMainWindow):
         """ Qt connect from RemoveAddedPE button
             on main window
         """
-        
+
         debug = False
         if debug:
             print("in openRemoveBarrierDock")
@@ -664,6 +664,9 @@ class PotentialWellWindow(QMainWindow):
 # ---------------- buildOK -----------------------------
 
     def buildOK(self):
+        """ connect from Click-to-Build-Well button
+            in BuildWell window
+        """
         debug = False
         if debug:
             print("in buildOK")
@@ -707,6 +710,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ closeBuildWellDock -------------------------
 
     def closeBuildWellDock(self):
+        """ make BuildWell window invisible
+        """
+
         debug = False
         if debug:
             print("in closeBuildWellDock")
@@ -724,6 +730,10 @@ class PotentialWellWindow(QMainWindow):
 # ------------ AddBarrierOK -------------------------------
 
     def addBarrierOK(self):
+        """ connect from Click-to-Add-Barrier button
+            in Add Barrier window
+        """
+
         debug = False
         if debug:
             print("in addBarrierOK")
@@ -760,6 +770,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ closeAddBarrierDock ------------------------
 
     def closeAddBarrierDock(self):
+        """ make Add Barrier window invisible
+        """
+
         debug = False
         if debug:
             print("in closeAddBarrierDock")
@@ -772,6 +785,10 @@ class PotentialWellWindow(QMainWindow):
 # --------------- addMultiBarriersOK -------------------
 
     def addMultiBarriersOK(self):
+        """ connect from Click-to-Add-Barriers button
+            in Add Multiple Barriers window
+            """
+
         debug = False
         if debug:
             print("in addMultiBarriersOK")
@@ -845,6 +862,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------- closeAddMultiBarriersDock -----------------------
 
     def closeAddMultiBarriersDock(self):
+        """ make Multiple Barriers Window invisible
+        """
+
         debug = False
         if debug:
             print("in closeAddMultiBarriersDock")
@@ -857,6 +877,10 @@ class PotentialWellWindow(QMainWindow):
 # ------------ removeBarrierNum -----------------------------
 
     def removeBarrierNum(self):
+        """ connect from Click-to-Remove-Added-PE
+            button in RemoveAddedV window
+        """
+
         debug = False
         if debug:
             print("  removeBarrierNum")
@@ -893,6 +917,9 @@ class PotentialWellWindow(QMainWindow):
 # --------------- closeRemoveBarrierDock ------------------------
 
     def closeRemoveBarrierDock(self):
+        """ make RemoveAddedV window invisible
+        """
+
         debug = False
         if debug:
             print(" closeRemoveBarrierDock")
@@ -905,7 +932,8 @@ class PotentialWellWindow(QMainWindow):
 # ----------------------- addSlopedBaseOK -------------------
 
     def addSlopedBaseOK(self):
-        """ addSlopedBase Potential within potential well
+        """ connect from Click-to-Add-Potential button
+            in Add-Linear-Potential window
 
         Parameters from dock widget
             location and PE of left edge of sloping  PE: xmin, vxmin
@@ -971,6 +999,9 @@ class PotentialWellWindow(QMainWindow):
 # ---------------- closeAddSlopedBaseDock ---------------------------
 
     def closeAddSlopedBaseDock(self):
+        """ make Add-Linear-Potential window invisible
+        """
+
         debug = False
         if debug:
             print(" in closeAddSlopedBaseDock")
@@ -983,8 +1014,10 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ addVpeDockOK -----------------
 
     def addVpeDockOK(self):
-        """ add v-shaped potential energy within well
+        """ connect from Add-V-PE button on
+            Add-V-Shaped-Potential window
         """
+
         debug = False
         if debug:
             print("  -- in addVpeDockOK")
@@ -1051,7 +1084,8 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ closeAddVpeDock -----------------
 
     def closeVpeDock(self):
-        """ set Visibility off, write log message """
+        """ make Add-V-Shaped-Potential window invisible
+        """
 
         self.addvpe.setVisible(False)
         sss = "addVpe\n" + self.dpw.printAddedVArray()
@@ -1064,6 +1098,10 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ addSHODockOK -----------------
 
     def addSHODockOK(self):
+        """ connect from Click-to-Add-Harmonic-oscillator
+            button on Add-SHO-Potential window
+        """
+
         debug = False
         if debug:
             print(" in addSHODockOK")
@@ -1115,6 +1153,9 @@ class PotentialWellWindow(QMainWindow):
 # -------------------- closeAddSHOBaseDock ------------------
 
     def closeAddSHOBaseDock(self):
+        """ make Add-SHO-Potential window invisible
+        """
+
         debug = False
         if debug:
             print(" in closeAddSHOBaseDock")
@@ -1127,6 +1168,9 @@ class PotentialWellWindow(QMainWindow):
 # ---------------- solveSolve -------------------------
 
     def solveSolve(self):
+        """ connect from Click-to-Find-Psi button
+            on Potential-Well-Solver window
+        """
 
         okE = True
         qsolve = self.solvewd.le_solve.text()
@@ -1175,6 +1219,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------- closeSolveWellDock -----------------------------
 
     def closeSolveWellDock(self):
+        """ make Potential-Well-Solver window invisible
+        """
+
         debug = False
         if debug:
             print("  -- in closeSolveWellDock")
@@ -1189,6 +1236,9 @@ class PotentialWellWindow(QMainWindow):
 # ---------------- closeInfoDock ---------------------
 
     def closeInfoDock(self):
+        """ make Solver Information window invisible
+        """
+
         debug = False
         if debug:
             print("      -- in closeInfoDock")
@@ -1199,6 +1249,9 @@ class PotentialWellWindow(QMainWindow):
 # --------------- findStatesPb ---------------------
 
     def findStatesPb(self):
+        """ connect from Click-to-Find-States button
+            on Find-Stationary-States window
+        """
 
         for i, v in self.pltt.dStatesPlot.items():
             self.axes.lines.remove(v)
@@ -1290,6 +1343,9 @@ class PotentialWellWindow(QMainWindow):
 # ----------------- closeFindStatStatesDock --------------------------------
 
     def closeFindStatStatesDock(self):
+        """ make Find-Stationary-States invisible
+        """
+
         debug = False
         if debug:
             print("  -- closeFindStatStatesDock")
@@ -1323,6 +1379,10 @@ class PotentialWellWindow(QMainWindow):
 # ------------------- findStatesSavePsi ------------------------------
 
     def findStatesSavePsi(self):
+        """ connect from Save-Psi button on
+            Find-Stationary-States window
+        """
+
         debug = False
         if debug:
             print(" -- findStatesSavePsi")
@@ -1390,6 +1450,9 @@ class PotentialWellWindow(QMainWindow):
 # ------------------- findStatesPlotPsi --------------------------------------
 
     def findStatesPlotPsi(self):
+        """ connect from Plot-Psi button on
+            Find-Stationary-States window
+        """
 
         debug = False
         if debug:
@@ -1449,7 +1512,7 @@ class PotentialWellWindow(QMainWindow):
 # ------------- readDpwFile --------------------------
 
     def readDpwFile(self):
-        """ Qt connect from ReadDpwFile button on main window
+        """ connect from ReadDpwFile button on main window
         """
 
         self.closeOpenDock()
@@ -1496,6 +1559,8 @@ class PotentialWellWindow(QMainWindow):
 # --------------- pickleDpw ----------------------------------------
 
     def pickleDpw(self, dpwFileName):
+        """ write pickled file
+        """
         debug = False
         if debug:
             print("  -- pickleDpw ")
@@ -1512,6 +1577,11 @@ class PotentialWellWindow(QMainWindow):
 # --------------- unpickleDpw --------------------------------------------
 
     def unpickleDpw(self, fileName):
+        """ read pickled file, unpickle the file
+            into a new dpw instance
+
+            Return: new dpw instance
+        """
 
         debug = False
         if debug:
@@ -1534,7 +1604,7 @@ class PotentialWellWindow(QMainWindow):
 # ------------------ writeDpwFile ------------------------------------
 
     def writeDpwFile(self):
-        """ Qt connect from WriteDpwFile button on main window
+        """ connect from WriteDpwFile button on main window
         """
 
         debug = False

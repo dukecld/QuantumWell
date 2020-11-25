@@ -65,7 +65,10 @@ def sendMessageTE(message, texted, dateFlag=True, endFlag=True):
 
 # ----------------------------------------------------------------
 def printMessageTE(textEd):
-    #  textEd is a qtextedit or qlabel widget
+    """ Print qtextedit or global widget,
+        Uses QPrintDialog
+    """
+
     debug = False
     if debug:
         print("  -- in printLog")
@@ -84,7 +87,10 @@ def printMessageTE(textEd):
 # -------------------------------------------------------------
 # ----------------------------------------------------
 def saveMessageTE(textEd):
-    # textEd is a qtextedit or a qlabel widget
+    """ write qtextedit or global widget
+        to a file, uses QFileDialog
+    """
+
     debug = False
     if debug:
         print("  -- in saveLog")
