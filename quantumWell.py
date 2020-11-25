@@ -52,7 +52,7 @@ from utilQt import stringToInt, stringToFloat
 ###############################################################
 
 
-class PotentialWellWindow(QMainWindow):
+class QuantumWell(QMainWindow):
     """  class for event loop, initiate in __main__
     """
 
@@ -1658,7 +1658,7 @@ class PotentialWellWindow(QMainWindow):
 qAppM = QApplication(sys.argv)
 
 # instantiate the above class
-aw = PotentialWellWindow()
+aw = QuantumWell()
 
 # show and raise required for osx, linux and windows don't need these
 #  but they don't mind them either.
