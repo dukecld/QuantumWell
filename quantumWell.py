@@ -1663,9 +1663,11 @@ aw = QuantumWell()
 # show and raise required for osx, linux and windows don't need these
 #  but they don't mind them either.
 # raise_ since raise is a reserved word: QWidget::raise_()
+# C. Duke 11/25/20 commented out raise lines, work ok in macos
+# aw.show() required for macos, try later on windows
 aw.show()
-aw.raise_()
-aw.mswd.raise_()
+# aw.raise_()
+# aw.mswd.raise_()
 
 # start the Qt main loop execution
 sys.exit(qAppM.exec_())
