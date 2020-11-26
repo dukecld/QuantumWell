@@ -1648,26 +1648,25 @@ class QuantumWell(QMainWindow):
 
 # ################# end of potentialWell class ############################
 
-
 # #####################################################
+if __name__ == "__main__":
+    # the following creates and runs the event loop, as required by the PyQt Gui.
+    # create the GUI application
 
-# the following creates and runs the event loop, as required by the PyQt Gui.
-# create the GUI application
+    # instantiate the ApplicationWindow widget
+    qAppM = QApplication(sys.argv)
 
-# instantiate the ApplicationWindow widget
-qAppM = QApplication(sys.argv)
+    # instantiate the above class
+    aw = QuantumWell()
 
-# instantiate the above class
-aw = QuantumWell()
+    # show and raise required for osx, linux and windows don't need these
+    #  but they don't mind them either.
+    # raise_ since raise is a reserved word: QWidget::raise_()
+    # C. Duke 11/25/20 commented out raise lines, work ok in macos
+    # aw.show() required for macos, try later on windows
+    aw.show()
+    # aw.raise_()
+    # aw.mswd.raise_()
 
-# show and raise required for osx, linux and windows don't need these
-#  but they don't mind them either.
-# raise_ since raise is a reserved word: QWidget::raise_()
-# C. Duke 11/25/20 commented out raise lines, work ok in macos
-# aw.show() required for macos, try later on windows
-aw.show()
-# aw.raise_()
-# aw.mswd.raise_()
-
-# start the Qt main loop execution
-sys.exit(qAppM.exec_())
+    # start the Qt main loop execution
+    sys.exit(qAppM.exec_())
