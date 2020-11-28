@@ -2654,9 +2654,116 @@ Click the Save button to launch a file save dialog.
 Code Development
 \end_layout
 
+\begin_layout Subsection
+Overview
+\end_layout
+
 \begin_layout Standard
-This section is under construction.
+The 
+\emph on
+quantumWell.py
+\emph default
+ file contains the QuantumWell class.
+ Python code following the 
+\emph on
+if __name__==__main__:
+\emph default
+ statement instantiates this class and involkes the pyqt event loop to service
+ button presses on the GUI windows.
  
+\end_layout
+
+\begin_layout Standard
+The QuantumWell class assembles the main window, instantiates all action
+ classes in src modules, and handles all window buttons as decribed below.
+ 
+\end_layout
+
+\begin_layout Standard
+The code that constructs each window QWidget was built using Qt 
+\emph on
+designer
+\emph default
+ with the 
+\emph on
+.ui
+\emph default
+ files included in the 
+\emph on
+src
+\emph default
+ directory.
+ The classes that serve action buttons in the subwindows are in their respective
+ modules in the 
+\emph on
+src
+\emph default
+ directory.
+ 
+\end_layout
+
+\begin_layout Standard
+Since the action classes have their own module, they can be instantiated
+ in user-produced code; the Tutorials directory includes example tutorials
+ for such use.
+\end_layout
+
+\begin_layout Standard
+All well data, calculated or specified energy levels, and the last calculated
+ (if available) wave function and its derivative are stored in the important
+ 
+\emph on
+DataPotentialWell
+\emph default
+ class contained in the 
+\emph on
+DataPotentialWell.py
+\emph default
+ module in the src directory.
+\end_layout
+
+\begin_layout Standard
+I recommend using the 
+\emph on
+doxygen
+\emph default
+ documentation software to scan the 
+\emph on
+quantumWell.py
+\emph default
+ file with its QuantumWell class and the classes in the modules in the 
+\emph on
+src
+\emph default
+ directory.
+ After installing doxygen, copy the Doxygen configuration file from the
+ Documentation directory to the QuantumWell directory and execute the command,
+ 
+\emph on
+doxygen, 
+\emph default
+from a terminal.
+ The software will use the configuration file and create an 
+\emph on
+html
+\emph default
+ directory with associated html documentation files.
+ Go to that directory and open a browser on the 
+\emph on
+index.html
+\emph default
+ file.
+ You should see the README file in the main window.
+ Click on the menus at the top of the main window to move through the files
+ or the classes.
+ Most useful is to select the QuantumWell class; clicking on one of its
+ methods shows this method in a listing of all methods that includes the
+ method doc strings.
+ Ditto for all other classes.
+\end_layout
+
+\begin_layout Subsection
+Qt Windows
 \end_layout
 
 \begin_layout Standard
@@ -2664,15 +2771,20 @@ I used QT
 \emph on
 designer
 \emph default
- software (included in the anaconda system) to construct the GUI windows.
+ software (included in the anaconda system) to construct the GUI window
+ widgets (with the exception of the Matplotlib widget).
  The 
 \emph on
 designer
 \emph default
- creates .ui files which must be converted to python .py files using pyuic5
+ software creates .ui files which must be converted to python .py files using
+ 
+\emph on
+pyuic5
+\emph default
  from the anaconda python package.
- Each .ui file must be processed from a terminal for example (all on one
- line):
+ Each .ui file must be processed from a terminal e.g.
+ (all on one line):
 \end_layout
 
 \begin_layout LyX-Code
@@ -2705,7 +2817,7 @@ make
 \emph default
  utility, you can execute the above line from a terminal for each of the
  .ui files.
- Or, you create a bash script to automate the commands.
+ Or, you can create a bash script to automate the commands.
 \end_layout
 
 \begin_layout Standard
@@ -2715,6 +2827,139 @@ From windows machines, you can convert all .ui files by executing from a
 
 \begin_layout LyX-Code
 run_pyuic_Windows.bat
+\end_layout
+
+\begin_layout Standard
+You can observe each window (for testing) by executing each file in python
+ to run the code following the usual 
+\emph on
+if __name__==__main__:
+\emph default
+ statement.
+ 
+\end_layout
+
+\begin_layout Standard
+Note that I did not use 
+\emph on
+designer
+\emph default
+ to create the 
+\emph on
+MatplotlibWidget.py
+\emph default
+ file; you can execute this file to see an example plot in the matplotlib
+ QWidget window.
+\end_layout
+
+\begin_layout Standard
+The QuantumWell class instance imports each of these files as 
+\emph on
+QWidgets
+\emph default
+ from the 
+\emph on
+utilQt.py 
+\emph default
+file after a simple inheritance from the ui_...py file.
+ The QuantumWell code creates and assembles the main window from the various
+ 
+\emph on
+QWidgets
+\emph default
+ described above.
+ The class also instantiates the subwindows and sets, with the exception
+ of the 
+\emph on
+message
+\emph default
+ subwindow, their 
+\emph on
+visibility
+\emph default
+ parameter to 
+\emph on
+False
+\emph default
+.
+ Thus, you only observe the 
+\emph on
+message
+\emph default
+ subwindow when you initially run the 
+\emph on
+quantumWell.py
+\emph default
+ script.
+\end_layout
+
+\begin_layout Subsection
+Button Management
+\end_layout
+
+\begin_layout Standard
+When you depress a button on the main window, the visibility of the current
+ subwindow is set to 
+\emph on
+False
+\emph default
+ and that of the selected subwindow is set to 
+\emph on
+True.
+ 
+\emph default
+Thus, all subwindows are open and overlapping, but only one is visible at
+ any given time.
+ Each button on the main window connects to a corresponding QuantumWell
+ method whose name begins with 
+\emph on
+open
+\emph default
+, e.g.
+ 
+\emph on
+openBuildWellDock(self)
+\emph default
+.
+ A corresponding 
+\emph on
+close
+\emph default
+ method sets the visibility to 
+\emph on
+False.
+\end_layout
+
+\begin_layout Standard
+When you depress a button on a subwindow (window to the left of the main
+ window), the connect method in the QuantumWell class reads the subwindow
+ parameters, checks for formatting accuracy, and calls the appropropriate
+ action class in its module in the 
+\emph on
+src
+\emph default
+ directory.
+ 
+\end_layout
+
+\begin_layout Subsection
+Action Classes
+\end_layout
+
+\begin_layout Standard
+The action classes, located in modules of the same name in the 
+\emph on
+src
+\emph default
+ directory, are those that perform a specific task, such as finding the
+ stationary states.
+ They use the potential well information in the DataPotentialWell class
+ instance and have no knowledge of the windows or subwindows from the QuantumWel
+l class.
+ This separation permits their use in user produced python scripts and jupyter
+ notebooks (see the Tutorials directory notebooks).
+ The most useful action classes have python doc strings that describe their
+ use.
 \end_layout
 
 \end_body
