@@ -2266,13 +2266,23 @@ getPath.py
 \labelwidthstring 00.00.0000
 
 \emph on
-psi1.dpw/psi2.dpw
+psi1.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+dpw/psi2.dpw
 \emph default
 : two dpw files used in the tutorial notebooks
 \end_layout
 
 \begin_layout Section
-\start_of_appendix
+Appendices
+\end_layout
+
+\begin_layout Subsection
 Importing QuantumWell Modules 
 \end_layout
 
@@ -2336,7 +2346,7 @@ getPath.py
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Reading and Writing Dpw Files
 \begin_inset CommandInset label
 LatexCommand label
@@ -2409,7 +2419,7 @@ The solver python class,
  class instance in the solver with the data from the .dpw file.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 The DataPotentialWell Class
 \begin_inset CommandInset label
 LatexCommand label
@@ -2529,7 +2539,7 @@ All of the methods are described in the doc string of the DataPotentialWell
  class and individually in each method doc string.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 The BuildPotentialWell Class
 \begin_inset CommandInset label
 LatexCommand label
@@ -2556,7 +2566,7 @@ More details about this class will be in the next version of this User's
  Guide.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Matplotlib Toolbar
 \begin_inset CommandInset label
 LatexCommand label
@@ -2568,15 +2578,54 @@ name "sec:Matplotlib-Toolbar"
 \end_layout
 
 \begin_layout Standard
-All python matplotlib graphs come with a navigation toolbar with very useful
- tools for expanding selected sections of the graph.
+All python matplotlib graphs come with a navigation toolbar (see Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Matplotllib-Toolbar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) with very useful tools for expanding selected sections of the graph.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename toolbarImage.png
-	BoundingBox 0bp 0bp 480bp 70bp
-	clip
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matplotllib Toolbar
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Matplotllib-Toolbar"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -2596,14 +2645,25 @@ literal "false"
 .
  The most useful toolbar buttons are the Pan/Zoom, the Zoom-to-Rectangle,
  and the Save buttons.
+ 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 The Pan/Zoom Button
 \end_layout
 
 \begin_layout Standard
-This Pan/Zoom button has two modes: pan and zoom.
+This Pan/Zoom button (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Matplotllib-Toolbar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) has two modes: pan and zoom.
  Click the toolbar button to activate panning and zooming, then put your
  mouse somewhere over an axis.
  Press the left mouse button and hold it to pan the figure, dragging it
@@ -2622,12 +2682,22 @@ This Pan/Zoom button has two modes: pan and zoom.
  to the x axis, the y axis, or aspect ratio preserve, respectively.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 The Zoom-to-Rectangle Button
 \end_layout
 
 \begin_layout Standard
-Click the Zoom-to-Rectangle button to activate this mode.
+Click the Zoom-to-Rectangle button (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Matplotllib-Toolbar"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to activate this mode.
  Put your mouse somewhere over an axis and press the left mouse button.
  Drag the mouse while holding the button to a new location and release.
  The axes view limits will be zoomed to the rectangle you have defined.
@@ -2636,25 +2706,15 @@ Click the Zoom-to-Rectangle button to activate this mode.
  zoom out rectangle.
 \end_layout
 
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Subsection
-The Save Button
-\end_layout
-
-\begin_layout Standard
-Click the Save button to launch a file save dialog.
- You can save files with the following formats with these extensions : .png,
- .ps, .eps, .svg and .pdf.
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Section
 Code Development
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Overview
 \end_layout
 
@@ -2762,7 +2822,7 @@ index.html
  Ditto for all other classes.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Qt Windows
 \end_layout
 
@@ -2893,7 +2953,7 @@ quantumWell.py
  script.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Button Management
 \end_layout
 
@@ -2942,7 +3002,7 @@ src
  
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Action Classes
 \end_layout
 
