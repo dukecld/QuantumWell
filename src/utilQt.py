@@ -26,10 +26,15 @@ from ui_AddVpeDock import Ui_AddVpeDock
 def sendMessageTE(message, texted, dateFlag=True, endFlag=True):
     """ Send a message to a QTextEdit instance.
 
-    message:  message string
-    texted:   QTextEdit instance
-    dateFlag: if True, include date and time with message
-    endFlag:  if True, move cursor to bottom of window
+    Parameters:
+        message:  message string
+        texted:   QTextEdit instance
+        dateFlag: if True, include date and time with message
+        endFlag:  if True, move cursor to bottom of window
+
+    Returns:
+        pstr: complete message string
+
    """
     debug = False
     if debug:
@@ -116,6 +121,11 @@ def saveMessageTE(textEd):
 
 # ---------------- stringToFloat -------------------
 def stringToFloat(string, numD=6):
+    """ Convert string to float type
+
+    Returns: tuple stringFloat, okfloat
+
+    """
     okfloat = True
     try:
         stringFloat = float(string)
@@ -126,13 +136,17 @@ def stringToFloat(string, numD=6):
     if okfloat:
         if np.isfinite(stringFloat):
             stringFloat = np.around(stringFloat, numD)
-            # stringFloat = np.around(stringFloat*100000.0)/100000.0
 
     return stringFloat, okfloat
 
 
 # ----------------- stringToInt ---------------------------------
 def stringToInt(string):
+    """ convert string to integer type
+
+    Returns: tuple stringint, okint
+
+    """
     okint = True
     try:
         stringint = int(string)

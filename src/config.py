@@ -161,7 +161,7 @@ def getPythonVersion():
 
     return (vers_major, vers_minor)
 
-
+# ##########################################################
 if __name__ == "__main__":
     print('\nChecking python version, must be 3.6 or greater')
     versT = getPythonVersion()

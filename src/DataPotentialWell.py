@@ -4,8 +4,6 @@ import numpy as np
 import pickle
 import os
 
-
-# a dictionary might be faster? Start with a class
 class DataPotentialWell:
     """ Container class for all potential well parameters and data.
 
@@ -140,13 +138,13 @@ Methods:
 
     """
     def __init__(self):
+        """ set all well parameters to default values
 
-        #  resetWelll to default values, create dStates dictionary
+        """
 
         #      dStates dictionary used to store energies of
         #          stationary states, key = integer
-        #      filled in potentialWell.py
-        # dStates[integer key] = energy of stationary state
+        # dStates[integer] = energy of stationary state
         self.dStates = dict()
 
         # clears well and set default values
@@ -155,6 +153,10 @@ Methods:
 # ----------------------- resetWell -------------------
 
     def resetWell(self):
+
+        """ set all well parameters to default values
+
+        """
         # xlow/xhigh are the limits of the well as seen on the screen
         self.xlow = 0.0
         self.xhigh = 0.0
@@ -224,13 +226,15 @@ Methods:
         xLowMin and xMinMax
         Not currently used
         """
+        debug = False
 
         print("  -- DataPotentialWell::printXVArrays")
 
-        # print "      vA array, all x and V "
-        # for r in self.vA:
-        #    print r[0],r[1]
-        # print "\n"
+        if debug:
+            print("      vA array, all x and V ")
+            for r in self.vA:
+                print(r[0], r[1])
+                print("\n")
 
         print("      xLowMin array")
         print('shape xLowMin', self.xLowMin.shape)
@@ -246,7 +250,10 @@ Methods:
 # ----------------------- printData --------------
 
     def printData(self):
-        """ Print all well properties to screen. """
+        """ Print all well properties to screen.
+
+        """
+
         print("    -- DataPotentialWell::printData")
         print("       xmin, xmax, xlow, xhigh ", self.xmin, self.xmax,
               self.xlow, self.xhigh)
@@ -276,8 +283,8 @@ Methods:
 
     # --------------------- printBasicWellParms --------------
     def printBasicWellParms(self):
-        """
-        returns string formatted for message box of basic well parameters
+        """ returns string formatted for message box
+            of basic well parameters
         """
         cr = "\n"
         sp = "  "
@@ -290,9 +297,6 @@ Methods:
         l21 = "{:6.3f}".format(self.wellHeightLeft) + sp
         l22 = "{:6.3f}".format(self.wellHeightRight) + "  eV" + cr
         l2 = l20 + l21 + l22
-        # l2 = "     heightLeft  heightRight  "
-        # + "{:6.3f}".format(self.wellHeightLeft) + sp \
-        #  + "{:6.3f}".format(self.wellHeightRight) + "  eV" + cr
         dataB = dataB + l1 + l2
         return dataB
 
@@ -314,8 +318,7 @@ Methods:
             strR0 = "    ID            lo         hi          "
             strR1 = "polynomial coeffs" + "\n"
             strR = strR0 + strR1
-            # strR += "    ID            lo         hi
-            # polynomial coeffs" + "\n"
+
             for i, v in self.barrierDict.items():
                 xminS = "{:6.3f}".format(self.barriers[v][0])
                 xmaxS = "{:6.3f}".format(self.barriers[v][1])
@@ -332,12 +335,13 @@ Methods:
 
     # --------------------------- updateBarrierDict ------------------
     def updateBarrierDict(self):
-        """used when adding new barrier, see calls from BuildPotentialWell
+        """used when adding new barrier, see calls
+           from BuildPotentialWell
         """
         debug = False
         if debug:
             print("  -- updateAddedVDict")
-        # import pdb; pdb.set_trace()
+
         barrDict = dict()
         if self.barrierCt > 0:
             count = 1
@@ -407,6 +411,8 @@ Methods:
             Parameters:
                 dpwFileName: string-type
 
+            Returns: new dpw instance
+
         """
         debug = False
         if debug:
@@ -425,7 +431,6 @@ Methods:
         # copy all well parameters from newDpw into self.dpw
         self.copyData(newDpw)
 
-        # probably need to
         return newDpw
 
     # --------------------------- copyData ------------------------
@@ -697,4 +702,5 @@ Methods:
         """ Returns: numpy array float-type """
         if len(self.dStates) == 0:
             return 0
+
         return np.array(list(self.dStates.values()))

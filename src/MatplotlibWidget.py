@@ -10,7 +10,6 @@ from matplotlib.figure import Figure
 from matplotlib import rcParams
 rcParams['font.size'] = 9
 
-
 class MatplotlibWidget(Canvas):
 
     """ QWidget containing a matplotlib figure.
@@ -64,8 +63,6 @@ class MatplotlibWidget(Canvas):
             self.axes.set_xlim(*xlim)
         if ylim is not None:
             self.axes.set_ylim(*ylim)
-        #  axes.hold deprecated, clear axes/figure to remove "hold"
-        # self.axes.hold(hold)
 
         Canvas.__init__(self, self.figure)
         self.setParent(parent)
@@ -75,9 +72,7 @@ class MatplotlibWidget(Canvas):
         Canvas.updateGeometry(self)
 
     def goPrinter(self):
-        """
-        prints the self.mpl widget, better to make a utility function
-        and pass in self.mpl??
+        """ Prints the self.mpl widget by calling QPrintDialog
         """
         printer = QPrinter()
 
@@ -99,7 +94,6 @@ class MatplotlibWidget(Canvas):
             painter.setWindow(printLabel.pixmap().rect())
             painter.drawPixmap(0, 0, printLabel.pixmap())
             del painter
-
 
 # ===========================================================================
 #   Example

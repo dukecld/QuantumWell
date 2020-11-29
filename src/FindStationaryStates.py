@@ -1,9 +1,16 @@
 import numpy as np
 from PyQt5 import QtCore
 
-
 class FindStationaryStates:
     def __init__(self, ws, interpolationFlag, stDock):
+        """ Initializes variablesfo
+
+        Parameters:
+            ws: SolvePotentialWell(self.dpw) instance,
+                dpw instance is ws.dpwFileNam
+            interpolationFlag: if True, interpolate for zero
+                               crossing
+        """
         self.stDock = stDock
         self.dpw = ws.dpw
         self.ws = ws
@@ -13,6 +20,10 @@ class FindStationaryStates:
             print("  -- FindStationaryStates")
 
     def findStates(self, emin, emax, delE):
+        """ find the stationary states between emin and emax.
+
+            delE is the distance in eV between solution points
+        """
         debug = False
         psiLast = np.array([])
         psiSlopeLast = np.array([])
@@ -101,7 +112,6 @@ class FindStationaryStates:
             psiLast = np.append(psiLast, wfunc[len(wfunc) - 1])
             psiSlopeLast = np.append(psiSlopeLast, wslope[len(wslope) - 1])
 
-        # self.pbar.setVisible(False)
         self.stDock.proBar.reset()
         QtCore.QCoreApplication.processEvents()
         # get difference between calculated slope and slope if stationary state
@@ -125,17 +135,12 @@ class FindStationaryStates:
                              - self.delSlope[delSign + 1])) * \
                 self.delSlope[delSign]
 
-            # statE = statE + ((self.eA[delSign + 1] - self.eA[delSign]) /
-            #                 (self.delSlope[delSign] -
-            #                 self.delSlope[delSign+1])) * \
-            #                 self.delSlope[delSign]
-
-        # eA_delSlope = np.vstack( (self.eA,self.delSlope) ).transpose()
-        # np.savetxt("energy_slope.txt",eA_delSlope)
-
         return statE
 
     def plotStatStates(self, ax):
+        """ Plot slope difference vs energy using ax as axes
+            Write energy_slope.txt file
+        """
 
         ax.plot(self.eA, self.delSlope, 'r.')
         ax.grid()

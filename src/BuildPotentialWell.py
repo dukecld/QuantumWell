@@ -57,6 +57,7 @@ class BuildPotentialWell:
     buildNewWell(wid, hgtL, hgtR)
         reset and build new simple well with these width and heights
     """
+
     def __init__(self, dpw, ww1=0.40, whl1=64., whr1=64.):
         """ init method for BuildPotentialWell
 
@@ -231,7 +232,7 @@ class BuildPotentialWell:
                   prS(vss))
 
         # best to start with a copy since using vstack,insert,etc.
-        # these np builtins create a new array that longer references
+        # these np builtins create a new array that no longer references
         #     self.dpw.barrier
         ba = np.copy(self.dpw.barriers)
 

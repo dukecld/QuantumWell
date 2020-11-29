@@ -4,8 +4,7 @@ from scipy.integrate import odeint
 
 
 class SolvePotentialWell:
-    """
-    SolvePotentialWell: solves Schroedinger's equation for potential well,
+    """ SolvePotentialWell: solves Schroedinger's equation.
 
     methods:
 
@@ -30,11 +29,24 @@ class SolvePotentialWell:
                   position x, x values restricted to those in the
                   x array specified in solveSquareWell method
 
+                  Not currently used and is untested
+
     makeVArray():  create array of V values for each value of x in the x array
 
     makeXArray():  create x arrays for storage in DataPotentialWell
     """
     def __init__(self, dpw):
+        """ constructor
+
+        Parameters:
+            dpw: DataPotentialWell reference, carriers all well parameters
+            numX: number of x values for the solved region
+                  used to create several arrays in DataPotentialWell that
+                  can be usedin odeint.  This is somewhat circular, but
+                  is more flexible
+
+        """
+
         self.debug = False
         debug = False
         if debug:
@@ -44,6 +56,10 @@ class SolvePotentialWell:
 
     # call this method if change well details after instantiating the solver
     def resetSolver(self):
+        """ Resets solver to default values
+
+        """
+
         debug = False
         if debug:
             print(" in resetSolver")
@@ -85,33 +101,38 @@ class SolvePotentialWell:
             # self.makeVArray()
 
     def solveSquareWell(self, e, y0, y01, x):
+        """ Solve Schrodinger equation for energy # -*- coding: utf-8 -*-
 
-        # probably don't need x, just use dpw array, fix later
+        Parameters:
+            e: energy (eV)
+            y0:  psi initial condition
+            y01: initial condition for derivative of psi
+            x:   array of x values used in odeint,
+                       can come from DataPotentialWell
+        Returns:
+            psiX array: 3 columns, psi   psiDeriv   x
+
+        """
+        debug = False
 
         self.e = e
         self.y0 = y0
         self.y01 = y01
-        if False:
+        if debug:
             print("-- in solveSquareWell")
             print("   dpw ")
             self.dpw.printData()
             print("       e ", self.e)
             print("       self.y0,self.y01", self.y0, self.y01)
 
-        # import pdb; pdb.set_trace()
-        # print x
-
-        # exit()
-        # print "y0,y01,e,x ",self.y0,self.y01,e,x
         psi = odeint(self.deriv, (self.y0, self.y01), x)
-        # print "after odeint call "
-        # exit()
+
         # add x column and return
         lenx = len(x)
         xnew = x.reshape((lenx, 1))
         psiX = np.append(psi, xnew, axis=1)
 
-        if (0):
+        if debug:
             print("  following odeint: psi")
             for row in psiX:
                 print(row)
@@ -121,7 +142,11 @@ class SolvePotentialWell:
         #  psiX row, 3 columns: psi   psiDeriv   x
         return psiX
 
-    def getV(self, x):  # valid for constant, linear, and quadratic potentials
+    def getV(self, x):
+        """ Returns value of potential energy at position x
+            for constant, linear, and quadratic potentials
+
+        """
 
         if (not np.isfinite(self.dpw.wellHeightRight)) and (x > self.xmax):
             x = self.xmax
@@ -134,9 +159,6 @@ class SolvePotentialWell:
         if (x < self.xmin):
             v = self.wellHeightLeft
 
-        # elif ( ( self.xmax <= x ) and (x <= self.xhigh)):
-        # elif ( ( self.xmax < x ) and (x <= self.xhigh)):
-        # elif (  self.xmax < x  ) and (not np.isclose(self.xmax,x)):
         elif (self.xmax < x):
             v = self.wellHeightRight
 
@@ -173,7 +195,12 @@ class SolvePotentialWell:
 
     # only use when x values are restricted to those in the x array!!!!!!
     def getVFast(self, x):
+        """ Quickly return value of potential energy at
+            position x, x values restricted to those in the
+            x array specified in solveSquareWell method
 
+            Not currently used and is untested
+        """
         ind = np.searchsorted(self.vA[:, 0], x)
         print("x,ind ", x, ind)
         v = self.vA[ind, 1]
@@ -192,6 +219,10 @@ class SolvePotentialWell:
         return v
 
     def makeVArray(self):
+        """ Create array of V values for each value
+            of x in the x array
+
+        """
 
         # can I do this using an array directly
         vA = [[xi, self.getV(xi)] for xi in self.x]
@@ -218,6 +249,9 @@ class SolvePotentialWell:
         return dret
 
     def makeXArray(self):
+        """ create x arrays for storage in DataPotentialWell
+
+        """
         debug = False
         if debug:
             print("  -- makeXArray")

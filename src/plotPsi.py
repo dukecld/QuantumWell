@@ -6,17 +6,23 @@ from extendPsi import extendPsi
 
 def plotPsi(ax, psi, e, dpw, plotFlagLower, plotFlagUpper, color='r'):
     """
-        PlotPsi function:  plots psi function, might need to extend to
+        Plots psi function with possible need to extend to
         lower region with call to extendPsi
 
-        PlotPsi(ax,psie,dpw,plotFlagLower,plotFlagUpper)
-             ax:   axis reference for plot
+        Parameters:
+             ax:   axes reference for plot
              psi:  psi array from solver
              dpw: DataPotentialWell reference, contains well details
              plotFlagLower: extends psi to x values < 0.0
              plotFlagUpper: extends psi to x values > xmax (NOT IMPLEMENTED)
+                 (extension to x < xmax made within solver)
 
              need to make sure that psi is within +- 10 from xmin to xmax.
+
+        Returns: psiAll array, (psi,psiprime, x)
+
+        TODO: separate plotting and assembling arrays.
+            C.Duke 11/29/2020
 
     """
     debug = False

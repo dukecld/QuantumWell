@@ -21,6 +21,7 @@ class PlotPotentialWell:
                        called either before or after
                        calling makeNormalPlot
     """
+
     def __init__(self, ax, dpw1, infHeight=100.0):
 
         # graph axis
@@ -37,9 +38,12 @@ class PlotPotentialWell:
     # ------------- setupPlot -----------------
     def setupPlot(self):
         """
-        fills various arrays and parameters from dpw to be used by plotter
-        later, internal use to this class only
+        fills various arrays and parameters from dpw to be
+        used by the plotter later,
+        internal use to this class only
+
         """
+
         self.wellHeightLeft = self.dpw.wellHeightLeft
         self.wellHeightRight = self.dpw.wellHeightRight
         self.wellWidth = self.dpw.wellWidth
@@ -149,9 +153,10 @@ class PlotPotentialWell:
 
     # ------------------- makeNormalPlot -------------------------
     def makeNormalPlot(self, infHeight=100):
+        """ Makes all potential energy plots
+
         """
-        makes all plots
-        """
+
         self.ax.clear()
         colorL = 'brown'
         alphaL = 0.3
@@ -221,9 +226,10 @@ class PlotPotentialWell:
 
     # ------------------ addEnergyLine ------------------------
     def addEnergyLine(self, e):
+        """ Plot energy line at energy e
+
         """
-        plot energy line at energy e
-        """
+
         debug = False
         if debug:
             print("  -- addEnergyLine")
@@ -237,18 +243,18 @@ class PlotPotentialWell:
 
     # ------------------- removeEnergyLine --------------------
     def removeEnergyLine(self):
-        """
-        remove energy line, uses previously stored line pointer
+        """ Remove energy line if lineM has value
         """
         if len(self.lineH) > 0:
             self.lineH.pop(0).remove()
 
     # ----------------------- addEnergyLinesFromDict ---------------------
     def addEnergyLinesFromDict(self):
+        """ Adds energy lines for each stationary state,
+            energies from dStates dictionary
+
         """
-        adds energy lines for each stationary state, energies previously
-        stored in dStates dictionary
-        """
+
         debug = False
         if debug:
             print("  -- addEnergyLinesFromDict")
