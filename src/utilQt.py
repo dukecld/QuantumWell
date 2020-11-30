@@ -162,73 +162,108 @@ def stringToInt(string):
 
 
 class MainDockWidget(QDockWidget, Ui_MainDockWidget):
+    """ Inherit from Ui_MainDockWidget
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
-# derived classes to control closeEvent signals - ignore them all
 class BuildWellDock(QDockWidget, Ui_BuildWellDock):
+    """ Inherit from Ui_MainDockWidget
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class AddMultiBarriersDock(QDockWidget, Ui_AddMultiBarriersDock):
+    """ Inherit from Ui_MainDockWidget
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class SolveWellDock(QDockWidget, Ui_SolveWellDock):
+    """ Inherit from Ui_MainDockWidget
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class MessageDock(QDockWidget, Ui_MessageDock):
+    """ Inherit from Ui_MessageDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class AddBarrierDock(QDockWidget, Ui_AddBarrierDock):
+    """ Inherit from Ui_AddBarrierDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class RemoveBarrierDock(QDockWidget, Ui_RemoveBarrierDock):
+    """ Inherit from Ui_RemoveBarrierDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class FindStatesWellDock(QDockWidget, Ui_FindStatesWellDock):
+    """ Inherit from Ui_FindStatesWellDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class AddSlopedPotentialDock(QDockWidget, Ui_AddSlopedPotentialDock):
+    """ Inherit from Ui_AddSlopedPotentialDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class AddSHODock(QDockWidget, Ui_AddSHODock):
+    """ Inherit from Ui_AddSHODock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class InfoDock(QDockWidget, Ui_InfoDock):
+    """ Inherit from Ui_InfoDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
 
 
 class AddVpeDock(QDockWidget, Ui_AddVpeDock):
+    """ Inherit from Ui_AddVpeDock
+    """
+
     def __init__(self, parent=None, f=QtCore.Qt.WindowFlags()):
         QDockWidget.__init__(self, parent, f)
         self.setupUi(self)
