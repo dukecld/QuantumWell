@@ -84,6 +84,8 @@ class BuildPotentialWell:
 
         # set up constants for electron: 2*m/hbar**2, get values from scipy
         # may want to do the same for proton/neutron
+        # change following to eliminate warning from scipy.constants: 
+        #    C.Duke 16March2022
         #hbarc = cons.value('Planck constant over 2 pi times c in MeV fm')
         hbarc = cons.value('reduced Planck constant times c in MeV fm')
         if (False):
