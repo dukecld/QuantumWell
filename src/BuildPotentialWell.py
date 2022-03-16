@@ -84,7 +84,10 @@ class BuildPotentialWell:
 
         # set up constants for electron: 2*m/hbar**2, get values from scipy
         # may want to do the same for proton/neutron
-        hbarc = cons.value('Planck constant over 2 pi times c in MeV fm')
+        #hbarc = cons.value('Planck constant over 2 pi times c in MeV fm')
+        hbarc = cons.value('reduced Planck constant times c in MeV fm')
+        if (False):
+            print('hbarc = ',hbarc)
         eEnergy = cons.value('electron mass energy equivalent in MeV')
         self.k2 = 2 * eEnergy * 1.0e+06 / (hbarc * hbarc)  # 26.25 1/(eV*nm*nm)
 
