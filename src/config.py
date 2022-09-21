@@ -97,18 +97,39 @@ def makeStartScript():
     if not pathF.is_file():
         print(pathF, ' does not exist, stopping code')
         return
-
-    command = "python " + str(pathF)
+    
     # create start is_file
     platform = sys.platform
     print('creating startfile for platform ', platform)
     cwdP = Path.cwd()
     if platform.startswith('darwin'):
         startfile = Path(cwdP) / 'startQWell.command'
+        command = "python " + str(pathF)
     elif platform.startswith('linux'):
         startfile = Path(cwdP) / 'startQWell.sh'
+        command = "python " + str(pathF)
     elif platform.startswith('win32'):
         startfile = Path(cwdP) / 'startQWell.bat'
+        command1 = """@echo off
+SETLOCAL enabledelayedexpansion
+echo %PATH%
+echo.
+rem move to activate batch file\n"""
+        command2 = "call " + str(Path(pathQ) / 'src' / 'activateAnaconda.bat')
+        command3 = """
+
+echo.
+
+echo %PATH%
+echo.
+echo try to get python version to check path
+call python --version
+echo.
+
+"""
+        command = command1 + command2 + command3
+        command = command + "call python " + str(pathF)
+        command = command + "\nENDLOCAL"
     else:
         print('unknown operating system', platform)
         return
