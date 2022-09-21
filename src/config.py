@@ -124,9 +124,9 @@ echo try to get python version to check path
 call python --version
 echo.
 
-python + str(pathF)
-
 """
+        command = command + "call python " + str(pathF)
+        command = command + "\npause \nENDLOCAL"
     else:
         print('unknown operating system', platform)
         return
