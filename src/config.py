@@ -110,12 +110,14 @@ def makeStartScript():
         command = "python " + str(pathF)
     elif platform.startswith('win32'):
         startfile = Path(cwdP) / 'startQWell.bat'
-        command = """@echo off
+        command1 = """@echo off
 SETLOCAL enabledelayedexpansion
 echo %PATH%
 echo.
-rem move to activate batch file
-call src/activateAnaconda.bat
+rem move to activate batch file\n"""
+        command2 = "call " + str(Path(pathQ) / 'src' / 'activateAnaconda.bat')
+        command3 = """
+
 echo.
 
 echo %PATH%
@@ -125,6 +127,7 @@ call python --version
 echo.
 
 """
+        command = command1 + command2 + command3
         command = command + "call python " + str(pathF)
         command = command + "\npause \nENDLOCAL"
     else:
