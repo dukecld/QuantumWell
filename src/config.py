@@ -129,7 +129,7 @@ echo.
 """
         command = command1 + command2 + command3
         command = command + "call python " + str(pathF)
-        command = command + "\npause \nENDLOCAL"
+        command = command + "\nENDLOCAL"
     else:
         print('unknown operating system', platform)
         return
