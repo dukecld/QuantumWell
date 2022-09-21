@@ -1,9 +1,19 @@
-
-
 @echo off
-python src\config.py
+SETLOCAL enabledelayedexpansion
+echo %PATH%
+echo.
+rem move to activate batch file
+call src/activateAnaconda.bat
+echo.
 
-REM completed checks, made directory qwconfig with config file. created startscript
-REM you can close this terminal window
+echo %PATH%
+echo.
+echo try to get python version to check path
+call python --version
+echo.
 
-PAUSE
+rem run config.py
+call python src\config.py
+
+pause
+ENDLOCAL

@@ -1,6 +1,4 @@
-@echo off
-SETLOCAL enabledelayedexpansion
-echo %PATH%
+
 set pathOK=abc
 
 set path1=C:%HomePath%\Anaconda3\condabin\activate.bat
@@ -13,7 +11,7 @@ if exist %path2% (
 )
 
 rem is conda and thus anaconda already available
-call conda --version >nul 2>&1
+call python --version >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
 	echo.
 	echo conda path not set
@@ -27,7 +25,3 @@ if %ERRORLEVEL% NEQ 0 (
 	echo conda path already available
 	echo ready to call python script
 )
-echo %PATH%
-
-pause
-ENDLOCAL
