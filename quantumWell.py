@@ -1203,7 +1203,7 @@ class QuantumWell(QMainWindow):
                 y01 = 40. * (0.4 / self.dpw.wellWidth)
                 extrapolateLeft = False
 
-            psi = self.ws.solveSquareWell(energy, y0, y01, xsolve)
+            psi = self.ws.solveQuantumWell(energy, y0, y01, xsolve)
 
             self.axTwinx.cla()
             self.pltt.removeEnergyLine()
@@ -1411,7 +1411,7 @@ class QuantumWell(QMainWindow):
             y0 = 0.0
             y01 = 40. * (0.4 / self.dpw.wellWidth)
 
-        psi = self.ws.solveSquareWell(energy, y0, y01, xsolve)
+        psi = self.ws.solveQuantumWell(energy, y0, y01, xsolve)
 
         self.axTwinx.set_axis_on()
 
@@ -1486,7 +1486,7 @@ class QuantumWell(QMainWindow):
             y0 = 0.0
             y01 = 40. * (0.4 / self.dpw.wellWidth)
 
-        psi = self.ws.solveSquareWell(energy, y0, y01, xsolve)
+        psi = self.ws.solveQuantumWell(energy, y0, y01, xsolve)
 
         self.axTwinx.set_axis_on()
 

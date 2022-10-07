@@ -1,7 +1,8 @@
+# SolvePotentialWell class
+# C. Duke, Grinnell College,ver. 07Oct2022
 
 import numpy as np
 from scipy.integrate import odeint
-
 
 class SolvePotentialWell:
     """ SolvePotentialWell: solves Schroedinger's equation.
@@ -15,7 +16,7 @@ class SolvePotentialWell:
                 can be usedin odeint.  This is somewhat circular, but
                 is more flexible
 
-    solveS quareWell(e,y0,y01,x)
+    solveQuantumWell(e,y0,y01,x)
           e: energy (eV)
           y0:  psi initial condition
           y01: initial condition for derivative of psi
@@ -27,7 +28,7 @@ class SolvePotentialWell:
 
     getVFast(x):  quickly return value of potential energy at
                   position x, x values restricted to those in the
-                  x array specified in solveSquareWell method
+                  x array specified in solveQuantumWell method
 
                   Not currently used and is untested
 
@@ -100,7 +101,7 @@ class SolvePotentialWell:
             self.makeXArray()
             # self.makeVArray()
 
-    def solveSquareWell(self, e, y0, y01, x):
+    def solveQuantumWell(self, e, y0, y01, x):
         """ Solve Schrodinger equation for energy # -*- coding: utf-8 -*-
 
         Parameters:
@@ -119,7 +120,7 @@ class SolvePotentialWell:
         self.y0 = y0
         self.y01 = y01
         if debug:
-            print("-- in solveSquareWell")
+            print("-- in solveQuantumWell")
             print("   dpw ")
             self.dpw.printData()
             print("       e ", self.e)
@@ -197,7 +198,7 @@ class SolvePotentialWell:
     def getVFast(self, x):
         """ Quickly return value of potential energy at
             position x, x values restricted to those in the
-            x array specified in solveSquareWell method
+            x array specified in solveQuantumWell method
 
             Not currently used and is untested
         """
