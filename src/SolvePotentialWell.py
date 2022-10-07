@@ -9,12 +9,8 @@ class SolvePotentialWell:
 
     methods:
 
-    constructor:__init__(dpw,numX)
+    constructor:__init__(dpw)
           dpw: DataPotentialWell reference, carriers all well parameters
-          numX: number of x values for the solved region
-                used to create several arrays in DataPotentialWell that
-                can be usedin odeint.  This is somewhat circular, but
-                is more flexible
 
     solveQuantumWell(e,y0,y01,x)
           e: energy (eV)
@@ -41,10 +37,6 @@ class SolvePotentialWell:
 
         Parameters:
             dpw: DataPotentialWell reference, carriers all well parameters
-            numX: number of x values for the solved region
-                  used to create several arrays in DataPotentialWell that
-                  can be usedin odeint.  This is somewhat circular, but
-                  is more flexible
 
         """
 
@@ -59,7 +51,7 @@ class SolvePotentialWell:
     def resetSolver(self):
         """ Resets solver to default values
 
-        call this method if change well details after
+        call this method if you change well details after
         instantiating the solver
 
         """
@@ -87,8 +79,6 @@ class SolvePotentialWell:
         self.xLowMin = np.array([])
         self.xMaxHigh = np.array([])
 
-        # schro.eq; D2Y/DX2 = K2*(V-E)Y, where K2 = 26.25/(eV*nm*nm)
-        # K = sqrt(26.25)
         self.k2 = self.dpw.k2
         self.barrierDict = dict()
 
@@ -106,7 +96,8 @@ class SolvePotentialWell:
 
     ##############################################
     def solveQuantumWell(self, e, y0, y01, x):
-        """ Solve Schrodinger equation for energy # -*- coding: utf-8 -*-
+        """ Solve Schrodinger equation using shooter method with
+        scipy odeint method for initial value problem
 
         Parameters:
             e: energy (eV)
@@ -133,9 +124,7 @@ class SolvePotentialWell:
         psi = odeint(self.deriv, (self.y0, self.y01), x)
 
         # add x column and return
-        lenx = len(x)
-        xnew = x.reshape((lenx, 1))
-        psiX = np.append(psi, xnew, axis=1)
+        psiX = np.column_stack( (psi, x))
 
         if debug:
             print("  following odeint: psi")
