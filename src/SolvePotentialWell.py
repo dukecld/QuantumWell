@@ -55,9 +55,12 @@ class SolvePotentialWell:
         self.dpw = dpw
         self.resetSolver()
 
-    # call this method if change well details after instantiating the solver
+    ##############################################
     def resetSolver(self):
         """ Resets solver to default values
+
+        call this method if change well details after
+        instantiating the solver
 
         """
 
@@ -101,6 +104,7 @@ class SolvePotentialWell:
             self.makeXArray()
             # self.makeVArray()
 
+    ##############################################
     def solveQuantumWell(self, e, y0, y01, x):
         """ Solve Schrodinger equation for energy # -*- coding: utf-8 -*-
 
@@ -143,6 +147,7 @@ class SolvePotentialWell:
         #  psiX row, 3 columns: psi   psiDeriv   x
         return psiX
 
+    ##############################################
     def getV(self, x):
         """ Returns value of potential energy at position x
             for constant, linear, and quadratic potentials
@@ -195,6 +200,7 @@ class SolvePotentialWell:
         return v
 
     # only use when x values are restricted to those in the x array!!!!!!
+    ##############################################
     def getVFast(self, x):
         """ Quickly return value of potential energy at
             position x, x values restricted to those in the
@@ -219,6 +225,7 @@ class SolvePotentialWell:
 
         return v
 
+    ##############################################
     def makeVArray(self):
         """ Create array of V values for each value
             of x in the x array
@@ -240,6 +247,7 @@ class SolvePotentialWell:
         self.dpw.vA = vAA
         self.vA = vAA
 
+    ##############################################
     def deriv(self, y, x):
         debug = False
         v = self.getV(x)
@@ -249,6 +257,7 @@ class SolvePotentialWell:
         dret = [y[1], kk * y[0]]
         return dret
 
+    ##############################################
     def makeXArray(self):
         """ create x arrays for storage in DataPotentialWell
 
