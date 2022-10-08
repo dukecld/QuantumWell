@@ -123,7 +123,7 @@ class SolvePotentialWell:
 
         psi = odeint(self.deriv, (self.y0, self.y01), x)
 
-        # add x column and return
+        # add x column to psi array
         psiX = np.column_stack( (psi, x))
 
         if debug:
@@ -139,7 +139,6 @@ class SolvePotentialWell:
     ##############################################
     def getV(self, x):
         """ Returns value of potential energy at position x
-            for constant, linear, and quadratic potentials
 
         """
 
@@ -147,10 +146,6 @@ class SolvePotentialWell:
             x = self.xmax
         v = -1.0
 
-        # import pdb; pdb.set_trace()
-        # if ( (self.xlow <= x) and (x <= self.xmin) ):
-
-        # if ( (self.xlow <= x) and (x < self.xmin) ):
         if (x < self.xmin):
             v = self.wellHeightLeft
 
@@ -160,8 +155,11 @@ class SolvePotentialWell:
         else:
             for bar in self.barriers:
                 if ((bar[0] <= x) and (x <= bar[1])):
-                    v = bar[2] + bar[3] * (x - bar[0]) + bar[4] * (
-                        x - bar[0]) * (x - bar[0])
+                    delxbar0 = x - bar[0]
+                    v = bar[2] + bar[3] * (delxbar0) + bar[4] * (
+                        delxbar0) * (delxbar0)
+                    #v = bar[2] + bar[3] * (x - bar[0]) + bar[4] * (
+                    #    x - bar[0]) * (x - bar[0])
                     break
 
         if v < 0.0:
