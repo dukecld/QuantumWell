@@ -114,7 +114,7 @@ class SolvePotentialWell:
         self.e = e
         self.y0 = y0
         self.y01 = y01
-        if True:
+        if debug:
             print("-- in solveQuantumWell")
             print("   dpw ")
             self.dpw.printData()
