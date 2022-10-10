@@ -114,13 +114,13 @@ class SolvePotentialWell:
         self.e = e
         self.y0 = y0
         self.y01 = y01
-        if debug:
+        if True:
             print("-- in solveQuantumWell")
             print("   dpw ")
             self.dpw.printData()
             print("       e ", self.e)
             print("       self.y0,self.y01", self.y0, self.y01)
-
+            
         psi = odeint(self.deriv, (self.y0, self.y01), x)
 
         # add x column to psi array
@@ -158,8 +158,6 @@ class SolvePotentialWell:
                     delxbar0 = x - bar[0]
                     v = bar[2] + bar[3] * (delxbar0) + bar[4] * (
                         delxbar0) * (delxbar0)
-                    #v = bar[2] + bar[3] * (x - bar[0]) + bar[4] * (
-                    #    x - bar[0]) * (x - bar[0])
                     break
 
         if v < 0.0:
