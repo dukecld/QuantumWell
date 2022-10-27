@@ -137,6 +137,46 @@ class SolvePotentialWell:
         return psiX
 
     ##############################################
+    def getVNew(self, x):
+        """ new potential finder
+        """
+        
+        if (not np.isfinite(self.dpw.wellHeightRight)) and (x > self.xmax):
+            x = self.xmax
+        v = -1.0
+
+        if (x < self.xmin):
+            v = self.wellHeightLeft
+
+        elif (self.xmax < x):
+            v = self.wellHeightRight
+
+        else:
+            hiEdgeAll, = np.where(x <= self.barriers[:,1])
+            hiEdgeFirst = hiEdgeAll[0]
+
+            bar = self.barriers[hiEdgeFirst,:]
+
+            delxbar0 = x - bar[0]
+            v = bar[2] + bar[3] * (delxbar0) + bar[4] * (
+                delxbar0) * (delxbar0)
+
+        if v < 0.0:
+            print(" in getV( x)  v<0.0, x = ", x)
+            print("  v = ", v)
+            print("( self.xmax < x )  ", (self.xmax < x))
+            print("(x <= self.xhigh) ", (x <= self.xhigh))
+            print(" ( ( self.xmax < x ) and (x <= self.xhigh)) ",
+                  ((self.xmax < x) and (x <= self.xhigh)))
+            print("x self.xmax del ", x, self.xmax, x - self.xmax)
+            print(" not np.isclose(self.xmax,x) ",
+                  not np.isclose(self.xmax, x, rtol=1e-04))
+            self.dpw.printData()
+            exit()
+                               
+        return v
+        
+    ##############################################
     def getV(self, x):
         """ Returns value of potential energy at position x
 
@@ -155,9 +195,12 @@ class SolvePotentialWell:
         else:
             for bar in self.barriers:
                 if ((bar[0] <= x) and (x <= bar[1])):
-                    delxbar0 = x - bar[0]
-                    v = bar[2] + bar[3] * (delxbar0) + bar[4] * (
-                        delxbar0) * (delxbar0)
+                    if ( (bar[3] == 0.0) & (bar[4] == 0.0) ):
+                        v = bar[2]
+                    else:
+                        delxbar0 = x - bar[0]
+                        v = bar[2] + bar[3] * (delxbar0) + bar[4] * (
+                            delxbar0) * (delxbar0)
                     break
 
         if v < 0.0:
