@@ -84,7 +84,7 @@ class BuildPotentialWell:
 
         # set up constants for electron: 2*m/hbar**2, get values from scipy
         # may want to do the same for proton/neutron
-        # change following to eliminate warning from scipy.constants: 
+        # change following to eliminate warning from scipy.constants:
         #    C.Duke 16March2022
         #hbarc = cons.value('Planck constant over 2 pi times c in MeV fm')
         hbarc = cons.value('reduced Planck constant times c in MeV fm')
@@ -506,8 +506,8 @@ class BuildPotentialWell:
 
         self.dpw.xmin = self.barriers[0][0]
         self.dpw.xmax = self.barriers[len(self.barriers) - 1][1]
-        self.dpw.xlow = self.dpw.xmin - 0.2 * self.wellWidth
-        self.dpw.xhigh = self.dpw.xmax + 0.2 * self.wellWidth
+        self.dpw.xlow = self.dpw.xmin - self.fractRt * self.wellWidth
+        self.dpw.xhigh = self.dpw.xmax + self.fractLf * self.wellWidth
         self.dpw.k2 = self.k2
         self.dpw.fractRt = self.fractRt
         self.dpw.fractLf = self.fractLf

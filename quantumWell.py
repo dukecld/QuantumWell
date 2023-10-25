@@ -1203,7 +1203,7 @@ class QuantumWell(QMainWindow):
                 y01 = 40. * (0.4 / self.dpw.wellWidth)
                 extrapolateLeft = False
 
-            psi = self.ws.solveSquareWell(energy, y0, y01, xsolve)
+            psi = self.ws.solveQuantumWell(energy, y0, y01, xsolve)
 
             self.axTwinx.cla()
             self.pltt.removeEnergyLine()
@@ -1252,9 +1252,23 @@ class QuantumWell(QMainWindow):
         """ connect from Click-to-Find-States button
             on Find-Stationary-States window
         """
-
+        debug = False
+        if debug:
+            print(" -- findStatesPb")
+            print('len', len(self.pltt.dStatesPlot))
         for i, v in self.pltt.dStatesPlot.items():
-            self.axes.lines.remove(v)
+            if debug:
+                # self.pltt instance of PlotPotentialWell class
+                print('i',i)
+                print('type(axes.lines)',
+                 type(self.axes.lines))
+                print('type(v)', type(v))
+                print('v', v)
+                print('len(axes.lines',len(self.axes.lines))
+
+            v.remove()
+            
+        debug = False
         self.mpl.draw()
         self.pltt.dStatesPlot.clear()
         self.dpw.dStates.clear()
@@ -1265,9 +1279,9 @@ class QuantumWell(QMainWindow):
         self.mpl.draw()
 
         self.colorIndex = 0
-        debug = False
-        if debug:
-            print(" -- findStatesPb")
+        #debug = False
+        #if debug:
+        #    print(" -- findStatesPb")
         qnumx = self.findstate.le_numx.text()
 
         numX, okNum = stringToInt(qnumx)
@@ -1349,10 +1363,21 @@ class QuantumWell(QMainWindow):
         debug = False
         if debug:
             print("  -- closeFindStatStatesDock")
+            print('len', len(self.pltt.dStatesPlot))
+
         self.findstate.setVisible(False)
 
         for i, v in self.pltt.dStatesPlot.items():
-            self.axes.lines.remove(v)
+            if debug:
+                print('i',i)
+                print('type(axes.lines)',
+                type(self.axes.lines))
+                print('type(v)', type(v))
+                print('v', v)
+                print('len(axes.lines', len(self.axes.lines))
+ 
+            v.remove()
+
         self.pltt.dStatesPlot.clear()
 
         self.findstate.te_findstates.clear()
@@ -1411,7 +1436,7 @@ class QuantumWell(QMainWindow):
             y0 = 0.0
             y01 = 40. * (0.4 / self.dpw.wellWidth)
 
-        psi = self.ws.solveSquareWell(energy, y0, y01, xsolve)
+        psi = self.ws.solveQuantumWell(energy, y0, y01, xsolve)
 
         self.axTwinx.set_axis_on()
 
@@ -1486,7 +1511,7 @@ class QuantumWell(QMainWindow):
             y0 = 0.0
             y01 = 40. * (0.4 / self.dpw.wellWidth)
 
-        psi = self.ws.solveSquareWell(energy, y0, y01, xsolve)
+        psi = self.ws.solveQuantumWell(energy, y0, y01, xsolve)
 
         self.axTwinx.set_axis_on()
 
