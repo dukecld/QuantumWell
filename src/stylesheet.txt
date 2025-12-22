@@ -1,0 +1,17 @@
+
+QLineEdit, QTextEdit, QComboBox
+{
+	
+	
+	background-color: rgb(210, 210, 210);
+}
+QPushButton
+{
+	
+	background-color: rgb(200, 200, 200);
+}
+QLabel
+{
+
+}
+
