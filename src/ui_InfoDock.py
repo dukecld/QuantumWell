@@ -15,6 +15,23 @@ class Ui_InfoDock(object):
     def setupUi(self, InfoDock):
         InfoDock.setObjectName("InfoDock")
         InfoDock.resize(481, 372)
+        InfoDock.setStyleSheet("\n"
+"QLineEdit, QTextEdit, QComboBox\n"
+"{\n"
+"    \n"
+"    \n"
+"    background-color: rgb(210, 210, 210);\n"
+"}\n"
+"QPushButton\n"
+"{\n"
+"    \n"
+"    background-color: rgb(200, 200, 200);\n"
+"}\n"
+"QLabel\n"
+"{\n"
+"\n"
+"}\n"
+"")
         InfoDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")

@@ -13,6 +13,25 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+QLineEdit, QTextEdit, QComboBox
+{
+	
+	
+	background-color: rgb(210, 210, 210);
+}
+QPushButton
+{
+	
+	background-color: rgb(200, 200, 200);
+}
+QLabel
+{
+
+}
+</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
