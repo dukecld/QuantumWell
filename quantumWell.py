@@ -12,12 +12,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-# add path to src and to Utilities
-_pth = Path(sys.path[0])
-_pthsrc = _pth / 'src'
-_pthutil = _pth / 'Utilities'
-sys.path.insert(0, str(_pthsrc))
-# breakpoint()
+# Path to the directory containing this file (main.py)
+BASE_DIR = Path(__file__).resolve().parent
+
+# Path to src/
+SRC_DIR = BASE_DIR / "src"
+
+# Add to sys.path if not already present
+if str(SRC_DIR) not in sys.path:
+    sys.path.insert(0, str(SRC_DIR))
+
 if sys.version_info[0] < 3:
     raise Exception("Must use Python 3")
 
