@@ -9,18 +9,18 @@ from PyQt5.QtWidgets import QDockWidget, QDialog, QFileDialog
 from PyQt5.QtPrintSupport import QPrinter, QPrintDialog
 
 # All ui modules built with Qt-Designer
-from ui_MainDockWidget import Ui_MainDockWidget
-from ui_BuildWellDock import Ui_BuildWellDock
-from ui_SolveWellDock import Ui_SolveWellDock
-from ui_FindStatesWellDock import Ui_FindStatesWellDock
-from ui_MessageDock import Ui_MessageDock
-from ui_AddBarrierDock import Ui_AddBarrierDock
-from ui_RemoveBarrierDock import Ui_RemoveBarrierDock
-from ui_AddSlopedPotentialDock import Ui_AddSlopedPotentialDock
-from ui_AddSHODock import Ui_AddSHODock
-from ui_AddMultiBarriersDock import Ui_AddMultiBarriersDock
-from ui_InfoDock import Ui_InfoDock
-from ui_AddVpeDock import Ui_AddVpeDock
+from ui.ui_MainDockWidget import Ui_MainDockWidget
+from ui.ui_BuildWellDock import Ui_BuildWellDock
+from ui.ui_SolveWellDock import Ui_SolveWellDock
+from ui.ui_FindStatesWellDock import Ui_FindStatesWellDock
+from ui.ui_MessageDock import Ui_MessageDock
+from ui.ui_AddBarrierDock import Ui_AddBarrierDock
+from ui.ui_RemoveBarrierDock import Ui_RemoveBarrierDock
+from ui.ui_AddSlopedPotentialDock import Ui_AddSlopedPotentialDock
+from ui.ui_AddSHODock import Ui_AddSHODock
+from ui.ui_AddMultiBarriersDock import Ui_AddMultiBarriersDock
+from ui.ui_InfoDock import Ui_InfoDock
+from ui.ui_AddVpeDock import Ui_AddVpeDock
 
 
 def sendMessageTE(message, texted, dateFlag=True, endFlag=True):
