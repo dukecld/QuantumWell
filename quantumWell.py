@@ -1679,11 +1679,38 @@ class QuantumWell(QMainWindow):
 
 # #####################################################
 if __name__ == "__main__":
+    import platform
     # the following creates and runs the event loop, as required by the PyQt Gui.
     # create the GUI application
 
     # instantiate the ApplicationWindow widget
     qAppM = QApplication(sys.argv)
+
+
+    base_stylesheet = """
+QWidget {
+    font-size: 13px;
+}
+
+QPushButton {
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+"""
+
+    if platform.system() == "Darwin":
+        accent = "#0A84FF"
+    elif platform.system() == "Windows":
+        accent = "#2563EB"
+    else:
+        accent = "#3B82F6"
+
+    qAppM.setStyleSheet(base_stylesheet + f"""
+QPushButton {{
+    background-color: {accent};
+}}
+""")
 
     # instantiate the above class
     aw = QuantumWell()
