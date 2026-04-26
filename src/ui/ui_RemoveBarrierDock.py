@@ -16,23 +16,6 @@ class Ui_RemoveBarrierDock(object):
         RemoveBarrierDock.setObjectName("RemoveBarrierDock")
         RemoveBarrierDock.resize(399, 381)
         RemoveBarrierDock.setMinimumSize(QtCore.QSize(296, 248))
-        RemoveBarrierDock.setStyleSheet("\n"
-"QLineEdit, QTextEdit, QComboBox\n"
-"{\n"
-"    \n"
-"    \n"
-"    background-color: rgb(210, 210, 210);\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    \n"
-"    background-color: rgb(200, 200, 200);\n"
-"}\n"
-"QLabel\n"
-"{\n"
-"\n"
-"}\n"
-"")
         RemoveBarrierDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")

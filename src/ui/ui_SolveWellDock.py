@@ -16,23 +16,6 @@ class Ui_SolveWellDock(object):
         SolveWellDock.setObjectName("SolveWellDock")
         SolveWellDock.resize(372, 387)
         SolveWellDock.setMinimumSize(QtCore.QSize(280, 261))
-        SolveWellDock.setStyleSheet("\n"
-"QLineEdit, QTextEdit, QComboBox\n"
-"{\n"
-"    \n"
-"    \n"
-"    background-color: rgb(210, 210, 210);\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    \n"
-"    background-color: rgb(200, 200, 200);\n"
-"}\n"
-"QLabel\n"
-"{\n"
-"\n"
-"}\n"
-"")
         SolveWellDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")

@@ -21,23 +21,6 @@ class Ui_BuildWellDock(object):
         sizePolicy.setHeightForWidth(BuildWellDock.sizePolicy().hasHeightForWidth())
         BuildWellDock.setSizePolicy(sizePolicy)
         BuildWellDock.setMinimumSize(QtCore.QSize(62, 311))
-        BuildWellDock.setStyleSheet("\n"
-"QLineEdit, QTextEdit, QComboBox\n"
-"{\n"
-"    \n"
-"    \n"
-"    background-color: rgb(210, 210, 210);\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    \n"
-"    background-color: rgb(200, 200, 200);\n"
-"}\n"
-"QLabel\n"
-"{\n"
-"\n"
-"}\n"
-"")
         BuildWellDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setMinimumSize(QtCore.QSize(10, 0))

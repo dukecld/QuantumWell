@@ -15,23 +15,6 @@ class Ui_AddSlopedPotentialDock(object):
     def setupUi(self, AddSlopedPotentialDock):
         AddSlopedPotentialDock.setObjectName("AddSlopedPotentialDock")
         AddSlopedPotentialDock.resize(549, 424)
-        AddSlopedPotentialDock.setStyleSheet("\n"
-"QLineEdit, QTextEdit, QComboBox\n"
-"{\n"
-"    \n"
-"    \n"
-"    background-color: rgb(210, 210, 210);\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    \n"
-"    background-color: rgb(200, 200, 200);\n"
-"}\n"
-"QLabel\n"
-"{\n"
-"\n"
-"}\n"
-"")
         AddSlopedPotentialDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")

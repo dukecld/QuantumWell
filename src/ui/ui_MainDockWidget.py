@@ -15,23 +15,6 @@ class Ui_MainDockWidget(object):
     def setupUi(self, MainDockWidget):
         MainDockWidget.setObjectName("MainDockWidget")
         MainDockWidget.resize(403, 616)
-        MainDockWidget.setStyleSheet("\n"
-"QLineEdit, QTextEdit, QComboBox\n"
-"{\n"
-"    \n"
-"    \n"
-"    background-color: rgb(210, 210, 210);\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    \n"
-"    background-color: rgb(200, 200, 200);\n"
-"}\n"
-"QLabel\n"
-"{\n"
-"\n"
-"}\n"
-"")
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.dockWidgetContents)

@@ -15,23 +15,6 @@ class Ui_FindStatesWellDock(object):
     def setupUi(self, FindStatesWellDock):
         FindStatesWellDock.setObjectName("FindStatesWellDock")
         FindStatesWellDock.resize(434, 525)
-        FindStatesWellDock.setStyleSheet("\n"
-"QLineEdit, QTextEdit, QComboBox\n"
-"{\n"
-"    \n"
-"    \n"
-"    background-color: rgb(210, 210, 210);\n"
-"}\n"
-"QPushButton\n"
-"{\n"
-"    \n"
-"    background-color: rgb(200, 200, 200);\n"
-"}\n"
-"QLabel\n"
-"{\n"
-"\n"
-"}\n"
-"")
         FindStatesWellDock.setFeatures(QtWidgets.QDockWidget.DockWidgetFloatable|QtWidgets.QDockWidget.DockWidgetMovable)
         FindStatesWellDock.setWindowTitle("")
         self.dockWidgetContents = QtWidgets.QWidget()
