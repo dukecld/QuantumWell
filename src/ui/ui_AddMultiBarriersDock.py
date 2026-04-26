@@ -104,13 +104,13 @@ class Ui_AddMultiBarriersDock(object):
         _translate = QtCore.QCoreApplication.translate
         AddMultiBarriersDock.setWindowTitle(_translate("AddMultiBarriersDock", "Add Multiple Barriers"))
         self.label.setText(_translate("AddMultiBarriersDock", "Add Multiple Barriers"))
-        self.testLabel.setText(_translate("AddMultiBarriersDock", "Number of Barriers"))
+        self.testLabel.setText(_translate("AddMultiBarriersDock", "NumberBars"))
         self.le_numbarriers.setText(_translate("AddMultiBarriersDock", "2"))
-        self.label_3.setText(_translate("AddMultiBarriersDock", "Barrier Width (nm)"))
+        self.label_3.setText(_translate("AddMultiBarriersDock", "BarWid (nm)"))
         self.le_barwidth.setText(_translate("AddMultiBarriersDock", "0.05"))
-        self.label_2.setText(_translate("AddMultiBarriersDock", "SubWellWidth (nm)"))
+        self.label_2.setText(_translate("AddMultiBarriersDock", "WellWids (nm)"))
         self.le_width.setText(_translate("AddMultiBarriersDock", "0.2"))
-        self.label_4.setText(_translate("AddMultiBarriersDock", "and Height (eV)"))
+        self.label_4.setText(_translate("AddMultiBarriersDock", "BarHgt (eV)"))
         self.le_barheight.setText(_translate("AddMultiBarriersDock", "64.0"))
         self.pb_addbarriers.setText(_translate("AddMultiBarriersDock", "Click to Add Barriers"))
 
