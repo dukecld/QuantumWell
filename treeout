@@ -1,0 +1,295 @@
+.
+├── __pycache__
+│   ├── quantumWell.cpython-38.pyc
+│   └── testmod.cpython-38.pyc
+├── #quantumWell.py#
+├── config_linux.sh
+├── config_macos.command
+├── config_windows.bat
+├── Documentation
+│   ├── Doxyfile
+│   ├── InstructionsModernLab.docx
+│   ├── InstructionsModernLab.pdf
+│   ├── toolbarImage.png
+│   ├── Users_Guide.lyx
+│   └── Users_Guide.pdf
+├── energy_slope.txt
+├── images
+│   ├── addLinearPotentialGui.png
+│   ├── addMultipleBarriersGui.png
+│   ├── addPotentialBarrier.png
+│   ├── addSHOPotential.png
+│   ├── addSHOSmall.png
+│   ├── addVShapedPotentialGui.png
+│   ├── buildWellGui.png
+│   ├── findStatStates2.png
+│   ├── findStatStatesGui.png
+│   ├── mainGui.png
+│   ├── messageBoxGui.png
+│   ├── potentialWellSolverGui.png
+│   └── removeAddedPotentialGui.png
+├── LICENSE
+├── MERGE_MSG
+├── nul
+├── out.profile
+├── out00.profile
+├── out03.profile
+├── out2.profile
+├── out23.profile
+├── profile_quantumWell.ipynb
+├── profileQW
+├── project_layout.docx
+├── quantumWell_main.py
+├── quantumWell.py
+├── README.md
+├── README.pdf
+├── setscreen.txt
+├── settings.json
+├── src
+│   ├── __pycache__
+│   │   ├── BuildPotentialWell.cpython-311.pyc
+│   │   ├── BuildPotentialWell.cpython-312.pyc
+│   │   ├── BuildPotentialWell.cpython-313.pyc
+│   │   ├── BuildPotentialWell.cpython-38.pyc
+│   │   ├── BuildPotentialWell.cpython-39.pyc
+│   │   ├── DataPotentialWell.cpython-311.pyc
+│   │   ├── DataPotentialWell.cpython-312.pyc
+│   │   ├── DataPotentialWell.cpython-313.pyc
+│   │   ├── DataPotentialWell.cpython-38.pyc
+│   │   ├── DataPotentialWell.cpython-39.pyc
+│   │   ├── extendPsi.cpython-311.pyc
+│   │   ├── extendPsi.cpython-312.pyc
+│   │   ├── extendPsi.cpython-313.pyc
+│   │   ├── extendPsi.cpython-38.pyc
+│   │   ├── extendPsi.cpython-39.pyc
+│   │   ├── FindStationaryStates.cpython-311.pyc
+│   │   ├── FindStationaryStates.cpython-312.pyc
+│   │   ├── FindStationaryStates.cpython-313.pyc
+│   │   ├── FindStationaryStates.cpython-38.pyc
+│   │   ├── FindStationaryStates.cpython-39.pyc
+│   │   ├── MatplotlibWidget.cpython-311.pyc
+│   │   ├── MatplotlibWidget.cpython-312.pyc
+│   │   ├── MatplotlibWidget.cpython-313.pyc
+│   │   ├── MatplotlibWidget.cpython-38.pyc
+│   │   ├── MatplotlibWidget.cpython-39.pyc
+│   │   ├── PlotPotentialWell.cpython-311.pyc
+│   │   ├── PlotPotentialWell.cpython-312.pyc
+│   │   ├── PlotPotentialWell.cpython-313.pyc
+│   │   ├── PlotPotentialWell.cpython-38.pyc
+│   │   ├── PlotPotentialWell.cpython-39.pyc
+│   │   ├── plotPsi.cpython-311.pyc
+│   │   ├── plotPsi.cpython-312.pyc
+│   │   ├── plotPsi.cpython-313.pyc
+│   │   ├── plotPsi.cpython-38.pyc
+│   │   ├── plotPsi.cpython-39.pyc
+│   │   ├── SolvePotentialWell.cpython-311.pyc
+│   │   ├── SolvePotentialWell.cpython-312.pyc
+│   │   ├── SolvePotentialWell.cpython-313.pyc
+│   │   ├── SolvePotentialWell.cpython-38.pyc
+│   │   ├── SolvePotentialWell.cpython-39.pyc
+│   │   ├── ui_AddBarrierDock.cpython-311.pyc
+│   │   ├── ui_AddBarrierDock.cpython-312.pyc
+│   │   ├── ui_AddBarrierDock.cpython-313.pyc
+│   │   ├── ui_AddBarrierDock.cpython-38.pyc
+│   │   ├── ui_AddBarrierDock.cpython-39.pyc
+│   │   ├── ui_AddMultiBarriersDock.cpython-311.pyc
+│   │   ├── ui_AddMultiBarriersDock.cpython-312.pyc
+│   │   ├── ui_AddMultiBarriersDock.cpython-313.pyc
+│   │   ├── ui_AddMultiBarriersDock.cpython-38.pyc
+│   │   ├── ui_AddMultiBarriersDock.cpython-39.pyc
+│   │   ├── ui_AddSHODock.cpython-311.pyc
+│   │   ├── ui_AddSHODock.cpython-312.pyc
+│   │   ├── ui_AddSHODock.cpython-313.pyc
+│   │   ├── ui_AddSHODock.cpython-38.pyc
+│   │   ├── ui_AddSHODock.cpython-39.pyc
+│   │   ├── ui_AddSlopedPotentialDock.cpython-311.pyc
+│   │   ├── ui_AddSlopedPotentialDock.cpython-312.pyc
+│   │   ├── ui_AddSlopedPotentialDock.cpython-313.pyc
+│   │   ├── ui_AddSlopedPotentialDock.cpython-38.pyc
+│   │   ├── ui_AddSlopedPotentialDock.cpython-39.pyc
+│   │   ├── ui_AddVpeDock.cpython-311.pyc
+│   │   ├── ui_AddVpeDock.cpython-312.pyc
+│   │   ├── ui_AddVpeDock.cpython-313.pyc
+│   │   ├── ui_AddVpeDock.cpython-38.pyc
+│   │   ├── ui_AddVpeDock.cpython-39.pyc
+│   │   ├── ui_BuildWellDock.cpython-311.pyc
+│   │   ├── ui_BuildWellDock.cpython-312.pyc
+│   │   ├── ui_BuildWellDock.cpython-313.pyc
+│   │   ├── ui_BuildWellDock.cpython-38.pyc
+│   │   ├── ui_BuildWellDock.cpython-39.pyc
+│   │   ├── ui_FindStatesWellDock.cpython-311.pyc
+│   │   ├── ui_FindStatesWellDock.cpython-312.pyc
+│   │   ├── ui_FindStatesWellDock.cpython-313.pyc
+│   │   ├── ui_FindStatesWellDock.cpython-38.pyc
+│   │   ├── ui_FindStatesWellDock.cpython-39.pyc
+│   │   ├── ui_InfoDock.cpython-311.pyc
+│   │   ├── ui_InfoDock.cpython-312.pyc
+│   │   ├── ui_InfoDock.cpython-313.pyc
+│   │   ├── ui_InfoDock.cpython-38.pyc
+│   │   ├── ui_InfoDock.cpython-39.pyc
+│   │   ├── ui_MainDockWidget.cpython-311.pyc
+│   │   ├── ui_MainDockWidget.cpython-312.pyc
+│   │   ├── ui_MainDockWidget.cpython-313.pyc
+│   │   ├── ui_MainDockWidget.cpython-38.pyc
+│   │   ├── ui_MainDockWidget.cpython-39.pyc
+│   │   ├── ui_MessageDock.cpython-311.pyc
+│   │   ├── ui_MessageDock.cpython-312.pyc
+│   │   ├── ui_MessageDock.cpython-313.pyc
+│   │   ├── ui_MessageDock.cpython-38.pyc
+│   │   ├── ui_MessageDock.cpython-39.pyc
+│   │   ├── ui_RemoveBarrierDock.cpython-311.pyc
+│   │   ├── ui_RemoveBarrierDock.cpython-312.pyc
+│   │   ├── ui_RemoveBarrierDock.cpython-313.pyc
+│   │   ├── ui_RemoveBarrierDock.cpython-38.pyc
+│   │   ├── ui_RemoveBarrierDock.cpython-39.pyc
+│   │   ├── ui_SolveWellDock.cpython-311.pyc
+│   │   ├── ui_SolveWellDock.cpython-312.pyc
+│   │   ├── ui_SolveWellDock.cpython-313.pyc
+│   │   ├── ui_SolveWellDock.cpython-38.pyc
+│   │   ├── ui_SolveWellDock.cpython-39.pyc
+│   │   ├── utilQt.cpython-311.pyc
+│   │   ├── utilQt.cpython-312.pyc
+│   │   ├── utilQt.cpython-313.pyc
+│   │   ├── utilQt.cpython-38.pyc
+│   │   └── utilQt.cpython-39.pyc
+│   ├── activateAnaconda.bat
+│   ├── BuildPotentialWell.py
+│   ├── config.py
+│   ├── DataPotentialWell.py
+│   ├── designer_ui
+│   │   ├── AddBarrierDock.ui
+│   │   ├── AddMultiBarriersDock.ui
+│   │   ├── AddSHODock.ui
+│   │   ├── AddSlopedPotentialDock.ui
+│   │   ├── AddVpeDock.ui
+│   │   ├── BasicWell.ui
+│   │   ├── BuildWellDock.ui
+│   │   ├── DockWidget.ui
+│   │   ├── FindStatesWellDock.ui
+│   │   ├── InfoDock.ui
+│   │   ├── MainDockWidget.ui
+│   │   ├── Makefile
+│   │   ├── MessageDock.ui
+│   │   ├── RemoveBarrierDock.ui
+│   │   ├── SolveWellDock.ui
+│   │   └── untitled.ui
+│   ├── extendPsi.py
+│   ├── FindStationaryStates.py
+│   ├── Makefile
+│   ├── MatplotlibWidget.py
+│   ├── OrigFiles
+│   │   ├── activateAnaconda.bat
+│   │   ├── AddBarrierDock.ui
+│   │   ├── AddMultiBarriersDock.ui
+│   │   ├── AddSHODock.ui
+│   │   ├── AddSlopedPotentialDock.ui
+│   │   ├── AddVpeDock.ui
+│   │   ├── BasicWell.ui
+│   │   ├── BuildPotentialWell.py
+│   │   ├── BuildWellDock.ui
+│   │   ├── config.py
+│   │   ├── DataPotentialWell.py
+│   │   ├── DockWidget.ui
+│   │   ├── extendPsi.py
+│   │   ├── FindStatesWellDock.ui
+│   │   ├── FindStationaryStates.py
+│   │   ├── InfoDock.ui
+│   │   ├── MainDockWidget.ui
+│   │   ├── Makefile
+│   │   ├── MatplotlibWidget.py
+│   │   ├── MessageDock.ui
+│   │   ├── PlotPotentialWell.py
+│   │   ├── plotPsi.py
+│   │   ├── RemoveBarrierDock.ui
+│   │   ├── run_pyuic_Windows.bat
+│   │   ├── SolvePotentialWell.py
+│   │   ├── SolveWellDock.ui
+│   │   ├── stylesheet.txt
+│   │   ├── ui_AddBarrierDock.py
+│   │   ├── ui_AddMultiBarriersDock.py
+│   │   ├── ui_AddSHODock.py
+│   │   ├── ui_AddSlopedPotentialDock.py
+│   │   ├── ui_AddVpeDock.py
+│   │   ├── ui_BuildWellDock.py
+│   │   ├── ui_FindStatesWellDock.py
+│   │   ├── ui_InfoDock.py
+│   │   ├── ui_MainDockWidget.py
+│   │   ├── ui_MessageDock.py
+│   │   ├── ui_RemoveBarrierDock.py
+│   │   ├── ui_SolveWellDock.py
+│   │   ├── untitled text.txt
+│   │   ├── untitled.ui
+│   │   └── utilQt.py
+│   ├── PlotPotentialWell.py
+│   ├── plotPsi.py
+│   ├── run_pyuic_Windows.bat
+│   ├── SolvePotentialWell.py
+│   ├── stylesheet.txt
+│   ├── TestGui
+│   │   ├── Makefile
+│   │   ├── MessageDock.ui
+│   │   ├── ui_MessageDock.py
+│   │   └── untitled.ui
+│   ├── ui
+│   │   ├── __pycache__
+│   │   ├── ui_AddBarrierDock.py
+│   │   ├── ui_AddMultiBarriersDock.py
+│   │   ├── ui_AddSHODock.py
+│   │   ├── ui_AddSlopedPotentialDock.py
+│   │   ├── ui_AddVpeDock.py
+│   │   ├── ui_BuildWellDock.py
+│   │   ├── ui_FindStatesWellDock.py
+│   │   ├── ui_InfoDock.py
+│   │   ├── ui_MainDockWidget.py
+│   │   ├── ui_MessageDock.py
+│   │   ├── ui_RemoveBarrierDock.py
+│   │   └── ui_SolveWellDock.py
+│   ├── untitled text.txt
+│   └── utilQt.py
+├── startQWell.command
+├── Test
+│   ├── main.py
+│   ├── NewQuantumWell
+│   │   ├── CodeStructure1.txt
+│   │   ├── CodeStructure1.txt~
+│   │   ├── newQuantumCodeStructure.txt
+│   │   └── newQuantumCodeStructure.txt~
+│   ├── Package
+│   │   ├── main.py
+│   │   └── src
+│   ├── src
+│   │   ├── __pycache__
+│   │   └── main_window.py
+│   └── Test1
+│       ├── main.py
+│       └── src
+├── treeout
+├── Tutorials
+│   ├── __pycache__
+│   │   ├── getPath.cpython-38.pyc
+│   │   └── getPath.cpython-39.pyc
+│   ├── demo.mp4
+│   ├── getPath.py
+│   ├── psi1.dpw
+│   ├── psi1sho.dpw
+│   ├── psi2.dpw
+│   ├── psi2sho.dpw
+│   ├── testplot.ipynb
+│   ├── tutorial0_addPath.ipynb
+│   ├── tutorial1_readDpwFile.ipynb
+│   ├── tutorial2_writeDpwFile.ipynb
+│   ├── tutorial3_analysis.ipynb
+│   ├── tutorial4_composite.ipynb
+│   ├── tutorial5_animation_sho.ipynb
+│   ├── tutorial5_animation.ipynb
+│   └── Untitled.ipynb
+├── Untitled.ipynb
+├── Untitled1.ipynb
+└── Utilities
+    ├── __pycache__
+    │   └── getPath.cpython-38.pyc
+    ├── getPath.py
+    ├── PotWellBuildTemplate.ui
+    └── widgetTester.py
+
+23 directories, 270 files
