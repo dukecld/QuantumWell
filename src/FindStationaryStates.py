@@ -74,7 +74,7 @@ class FindStationaryStates:
                 "      after resetSolver() in FindStationaryStates::findStates"
             )
             self.dpw.printData()
-            psi = self.ws.solveSquareWell(self.eA[0], y0, y01A[0], x)
+            psi = self.ws.solveQuantumWell(self.eA[0], y0, y01A[0], x)
             for row in psi:
                 print(row)
 
@@ -103,7 +103,7 @@ class FindStationaryStates:
                 y01i = y01Inf
 
             # solve Schro.Eq for this energy between x=0 and x=wellWidth
-            psi = self.ws.solveSquareWell(e, y0, y01i, x)
+            psi = self.ws.solveQuantumWell(e, y0, y01i, x)
 
             # extract wavefunction and slope of wave function for all x
             wfunc = psi[:, 0]

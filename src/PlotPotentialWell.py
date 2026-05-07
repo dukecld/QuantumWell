@@ -92,13 +92,13 @@ class PlotPotentialWell:
             # add arrow and text to show infinite height
             self.ax.text(self.xlow * 0.9,
                          self.infiniteHeight * 0.95,
-                         '$\\uparrow$ to $\infty$',
+                         r'$\uparrow$ to $\infty$',
                          fontsize=16)
 
         if not np.isfinite(self.wellHeightRight):
             self.wellHeightRight = self.infiniteHeight
             self.ax.text(self.xhigh * 0.85, self.infiniteHeight * 0.95,
-                         '$\\uparrow$ to $\infty$', fontsize=16)
+                         r'$\uparrow$ to $\infty$', fontsize=16)
 
         # find vertical scale, need to treat ho as special case later
 

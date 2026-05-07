@@ -1,21 +1,18 @@
+# SolvePotentialWell class
+# C. Duke, Grinnell College,ver. 07Oct2022
 
 import numpy as np
 from scipy.integrate import odeint
-
 
 class SolvePotentialWell:
     """ SolvePotentialWell: solves Schroedinger's equation.
 
     methods:
 
-    constructor:__init__(dpw,numX)
+    constructor:__init__(dpw)
           dpw: DataPotentialWell reference, carriers all well parameters
-          numX: number of x values for the solved region
-                used to create several arrays in DataPotentialWell that
-                can be usedin odeint.  This is somewhat circular, but
-                is more flexible
 
-    solveS quareWell(e,y0,y01,x)
+    solveQuantumWell(e,y0,y01,x)
           e: energy (eV)
           y0:  psi initial condition
           y01: initial condition for derivative of psi
@@ -27,7 +24,7 @@ class SolvePotentialWell:
 
     getVFast(x):  quickly return value of potential energy at
                   position x, x values restricted to those in the
-                  x array specified in solveSquareWell method
+                  x array specified in solveQuantumWell method
 
                   Not currently used and is untested
 
@@ -40,10 +37,6 @@ class SolvePotentialWell:
 
         Parameters:
             dpw: DataPotentialWell reference, carriers all well parameters
-            numX: number of x values for the solved region
-                  used to create several arrays in DataPotentialWell that
-                  can be usedin odeint.  This is somewhat circular, but
-                  is more flexible
 
         """
 
@@ -54,9 +47,12 @@ class SolvePotentialWell:
         self.dpw = dpw
         self.resetSolver()
 
-    # call this method if change well details after instantiating the solver
+    ##############################################
     def resetSolver(self):
         """ Resets solver to default values
+
+        call this method if you change well details after
+        instantiating the solver
 
         """
 
@@ -83,8 +79,6 @@ class SolvePotentialWell:
         self.xLowMin = np.array([])
         self.xMaxHigh = np.array([])
 
-        # schro.eq; D2Y/DX2 = K2*(V-E)Y, where K2 = 26.25/(eV*nm*nm)
-        # K = sqrt(26.25)
         self.k2 = self.dpw.k2
         self.barrierDict = dict()
 
@@ -100,8 +94,10 @@ class SolvePotentialWell:
             self.makeXArray()
             # self.makeVArray()
 
-    def solveSquareWell(self, e, y0, y01, x):
-        """ Solve Schrodinger equation for energy # -*- coding: utf-8 -*-
+    ##############################################
+    def solveQuantumWell(self, e, y0, y01, x):
+        """ Solve Schrodinger equation using shooter method with
+        scipy odeint method for initial value problem
 
         Parameters:
             e: energy (eV)
@@ -119,18 +115,16 @@ class SolvePotentialWell:
         self.y0 = y0
         self.y01 = y01
         if debug:
-            print("-- in solveSquareWell")
+            print("-- in solveQuantumWell")
             print("   dpw ")
             self.dpw.printData()
             print("       e ", self.e)
             print("       self.y0,self.y01", self.y0, self.y01)
-
+            
         psi = odeint(self.deriv, (self.y0, self.y01), x)
 
-        # add x column and return
-        lenx = len(x)
-        xnew = x.reshape((lenx, 1))
-        psiX = np.append(psi, xnew, axis=1)
+        # add x column to psi array
+        psiX = np.column_stack( (psi, x))
 
         if debug:
             print("  following odeint: psi")
@@ -142,9 +136,9 @@ class SolvePotentialWell:
         #  psiX row, 3 columns: psi   psiDeriv   x
         return psiX
 
+    ##############################################
     def getV(self, x):
         """ Returns value of potential energy at position x
-            for constant, linear, and quadratic potentials
 
         """
 
@@ -152,10 +146,6 @@ class SolvePotentialWell:
             x = self.xmax
         v = -1.0
 
-        # import pdb; pdb.set_trace()
-        # if ( (self.xlow <= x) and (x <= self.xmin) ):
-
-        # if ( (self.xlow <= x) and (x < self.xmin) ):
         if (x < self.xmin):
             v = self.wellHeightLeft
 
@@ -165,8 +155,9 @@ class SolvePotentialWell:
         else:
             for bar in self.barriers:
                 if ((bar[0] <= x) and (x <= bar[1])):
-                    v = bar[2] + bar[3] * (x - bar[0]) + bar[4] * (
-                        x - bar[0]) * (x - bar[0])
+                    delxbar0 = x - bar[0]
+                    v = bar[2] + bar[3] * (delxbar0) + bar[4] * (
+                        delxbar0) * (delxbar0)
                     break
 
         if v < 0.0:
@@ -194,10 +185,11 @@ class SolvePotentialWell:
         return v
 
     # only use when x values are restricted to those in the x array!!!!!!
+    ##############################################
     def getVFast(self, x):
         """ Quickly return value of potential energy at
             position x, x values restricted to those in the
-            x array specified in solveSquareWell method
+            x array specified in solveQuantumWell method
 
             Not currently used and is untested
         """
@@ -218,6 +210,7 @@ class SolvePotentialWell:
 
         return v
 
+    ##############################################
     def makeVArray(self):
         """ Create array of V values for each value
             of x in the x array
@@ -239,6 +232,7 @@ class SolvePotentialWell:
         self.dpw.vA = vAA
         self.vA = vAA
 
+    ##############################################
     def deriv(self, y, x):
         debug = False
         v = self.getV(x)
@@ -248,6 +242,7 @@ class SolvePotentialWell:
         dret = [y[1], kk * y[0]]
         return dret
 
+    ##############################################
     def makeXArray(self):
         """ create x arrays for storage in DataPotentialWell
 

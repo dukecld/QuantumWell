@@ -17,11 +17,10 @@ if %ERRORLEVEL% NEQ 0 (
 	echo conda path not set
 	echo.
 	echo found path !pathOK!
-	echo running activate.bat file 
+	echo running anaconda activate.bat file 
 	call !pathOK!
 	
-) else (
-	echo we are here here 
+) else ( 
 	echo conda path already available
 	echo ready to call python script
 )
