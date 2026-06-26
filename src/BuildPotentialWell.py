@@ -211,7 +211,7 @@ class BuildPotentialWell:
         self.dpw.barriers[0][4] = vss
         self.dpw.barrierCt += 1
 
-        self.dpw.updateBarrierDict()
+        #self.dpw.updateBarrierDict()
         if False:
             print("after add sho barrier")
             print('ba')
@@ -311,7 +311,8 @@ class BuildPotentialWell:
         # reset dpw.barriers
         self.dpw.barriers = np.copy(ba)
         # update the barrier Dictionary from self.dpw.barriers
-        self.dpw.updateBarrierDict()
+        
+        #self.dpw.updateBarrierDict()
         if debug:
             print("after barrier addition")
             print(ba)
