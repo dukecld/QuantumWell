@@ -183,7 +183,7 @@ Methods:
 
         self.barrierCt = 0
 
-        self.updateBarrierDict()
+        #self.updateBarrierDict()
         self.barriers = np.array([])
 
         self.wellWidth = 0.0
@@ -337,6 +337,8 @@ Methods:
     def updateBarrierDict(self):
         """used when adding new barrier, see calls
            from BuildPotentialWell
+           THIS IS NO LONGER USED.  WORK WITH SELF.BARRIERS
+           ONLY. WILL DELETE THIS METHOD SOON.  
         """
         debug = False
         if debug:
